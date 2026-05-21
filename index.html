@@ -88,7 +88,6 @@
                     <span class="text-main">Productos y Colorantes</span>
                     <div class="double-lines"></div>
                 </div>
-                <span class="text-brand">N.G.S.</span>
             </div>
         </a>
         <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMenu">
@@ -129,12 +128,65 @@
                     </svg>Ver catálogo</a>
             </div>
         </div>
+
+        <div class="hero-carousel" aria-label="Galería de colorantes NGS">
+            <div class="carousel-track">
+                <figure class="carousel-slide active">
+                    <img src="./assets/carrusel-1.jpeg" alt="Cajas de productos NGS listas para distribución">
+                    <figcaption>Inventario listo para producción</figcaption>
+                </figure>
+                <figure class="carousel-slide">
+                    <img src="./assets/carrusel-2.jpeg" alt="Equipo de espectrofotometría Datacolor">
+                    <figcaption>Spectro 700 Datacolor</figcaption>
+                </figure>
+                <figure class="carousel-slide">
+                    <img src="./assets/carrusel-3.jpeg" alt="Área de trabajo de Productos y Colorantes NGS">
+                    <figcaption>Atención cercana y especializada</figcaption>
+                </figure>
+                <figure class="carousel-slide">
+                    <img src="./assets/carrusel-4.jpeg" alt="Placa con logotipo de Productos y Colorantes NGS">
+                    <figcaption>Más de 30 años de experiencia</figcaption>
+                </figure>
+                <figure class="carousel-slide">
+                    <img src="./assets/carrusel-5.jpeg" alt="Equipo y materiales de laboratorio textil">
+                    <figcaption>Productos del laboratorio</figcaption>
+                </figure>
+                <figure class="carousel-slide">
+                    <img src="./assets/carrusel-6.jpeg" alt="Instalaciones de Productos y Colorantes NGS">
+                    <figcaption>Soluciones textiles a la medida</figcaption>
+                </figure>
+                <figure class="carousel-slide">
+                    <img src="./assets/carrusel-7.jpeg" alt="Equipo de laboratorio para pruebas textiles">
+                    <figcaption>Máquina Suttex para igualaciones</figcaption>
+                </figure>
+                <button type="button" class="carousel-arrow carousel-prev" aria-label="Imagen anterior">
+                    <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+                        <path d="m15 18-6-6 6-6"></path>
+                    </svg>
+                </button>
+                <button type="button" class="carousel-arrow carousel-next" aria-label="Imagen siguiente">
+                    <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+                        <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="carousel-dots" aria-label="Controles del carrusel">
+                <button type="button" class="active" aria-label="Mostrar imagen 1"></button>
+                <button type="button" aria-label="Mostrar imagen 2"></button>
+                <button type="button" aria-label="Mostrar imagen 3"></button>
+                <button type="button" aria-label="Mostrar imagen 4"></button>
+                <button type="button" aria-label="Mostrar imagen 5"></button>
+                <button type="button" aria-label="Mostrar imagen 6"></button>
+                <button type="button" aria-label="Mostrar imagen 7"></button>
+            </div>
+        </div>
     </section>
 
     <section id="empresa">
-        <h2>Nuestra Trayectoria</h2>
-        <div class="grid-trayectoria">
-            <div>
+        <div class="trayectoria-showcase">
+            <div class="trayectoria-copy">
+                <span class="section-kicker">Más de 30 años en la industria textil</span>
+                <h2>Nuestra Trayectoria</h2>
                 <p>En NGS trabajamos con un fuerte compromiso hacia la innovación y la competitividad, ofreciendo
                     productos que responden a las necesidades actuales de la industria textil. Nuestra experiencia,
                     atención cercana y enfoque en la mejora continua nos permiten brindar opciones eficientes y
@@ -143,51 +195,109 @@
                 <p>Con más de 30 años de trayectoria, nos especializamos en productos químicos y colorantes para la
                     industria textil, siempre enfocados en ofrecer un servicio personalizado y atención de calidad.</p>
             </div>
-            <div class="card-azul">
-                <div class="icon-badge icon-badge-light">
-                    <svg class="icon" aria-hidden="true">
-                        <use href="#icon-target"></use>
-                    </svg>
-                </div>
-                <h3>Igualaciones Precisas</h3>
-                <p>Tecnología de punta para replicar cualquier tonalidad con exactitud milimétrica.</p>
-            </div>
+            <figure class="trayectoria-photo">
+                <img src="./assets/carrusel-4.jpeg" alt="Placa con el logotipo de Productos y Colorantes NGS">
+            </figure>
         </div>
 
         <div class="features-grid">
+            <div class="feature-card precision-card">
+                <div class="feature-header">
+                    <div class="icon-badge">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="#icon-target"></use>
+                        </svg>
+                    </div>
+                    <h4>Igualaciones precisas</h4>
+                </div>
+
+                <div class="feature-description">
+                    <p>Tecnología de punta para replicar cualquier tonalidad con exactitud milimétrica.</p>
+                </div>
+            </div>
+
             <div class="feature-card f-rojo">
-                <div class="icon-badge">
-                    <svg class="icon" aria-hidden="true">
-                        <use href="#icon-headset"></use>
-                    </svg>
+                <div class="feature-header">
+                    <div class="icon-badge">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="#icon-headset"></use>
+                        </svg>
+                    </div>
+                    <h4>Soporte especializado</h4>
                 </div>
-                <h4>Soporte Técnico</h4>
-                <p>Asesoría especializada en procesos de teñido y acabados químicos.</p>
-            </div>
-            <div class="feature-card f-amarillo">
-                <div class="icon-badge">
-                    <svg class="icon" aria-hidden="true">
-                        <use href="#icon-award"></use>
-                    </svg>
+
+                <div class="feature-description">
+                    <p>Asesoría especializada en procesos de teñido y acabados químicos.</p>
                 </div>
-                <h4>Experiencia Comprobada</h4>
-                <p>30 años liderando el mercado con soluciones de alta eficiencia.</p>
             </div>
+
             <div class="feature-card f-verde">
-                <div class="icon-badge">
-                    <svg class="icon" aria-hidden="true">
-                        <use href="#icon-layers"></use>
-                    </svg>
+                <div class="feature-header">
+                    <div class="icon-badge">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="#icon-layers"></use>
+                        </svg>
+                    </div>
+                    <h4>Amplio portafolio</h4>
                 </div>
-                <h4>Amplio Portafolio</h4>
-                <p>Desde colorantes reactivos hasta auxiliares especializados.</p>
+
+                <div class="feature-description">
+                    <p>Desde colorantes reactivos hasta auxiliares especializados.</p>
+                </div>
             </div>
+
+            <div class="feature-card f-azul">
+                <div class="feature-header">
+                    <div class="icon-badge">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="#icon-message"></use>
+                        </svg>
+                    </div>
+                    <h4>Atención personalizada</h4>
+                </div>
+
+                <div class="feature-description">
+                    <p>Acompañamiento cercano para elegir la solución adecuada para cada proceso textil.</p>
+                </div>
+            </div>
+
+            <div class="feature-card f-amarillo">
+                <div class="feature-header">
+                    <div class="icon-badge">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="#icon-award"></use>
+                        </svg>
+                    </div>
+                    <h4>Experiencia comprobada</h4>
+                </div>
+
+                <div class="feature-description">
+                    <p>30 años liderando el mercado con soluciones de alta eficiencia.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <section id="productos">
-        <h2>Catálogo de Soluciones</h2>
-        <p class="section-subtitle">Usa el buscador o los botones para filtrar los productos en tiempo real.</p>
+        <h2>Catálogo de Productos</h2>
+        <p class="section-subtitle">Explora por categoría, busca por nombre o abre solo los productos que necesites.</p>
+
+        <div class="catalog-spotlight">
+            <div>
+                <span class="section-kicker">Catálogo interactivo</span>
+                <h3>Encuentra rápido el colorante adecuado</h3>
+                <p>El catálogo inicia compacto para que no tengas que recorrer una lista enorme. Elige una categoría o
+                    usa el buscador para acotar resultados.</p>
+            </div>
+            <div class="catalog-total">
+                <strong id="catalogTotal">0</strong>
+                <span>productos disponibles</span>
+            </div>
+        </div>
+
+        <div class="category-cards" id="categoryCards" aria-label="Categorías principales del catálogo">
+        </div>
 
         <div class="search-filter-container">
             <div class="search-box">
@@ -208,63 +318,77 @@
             </div>
         </div>
 
+        <div class="catalog-results-bar">
+            <span id="productsCount">Mostrando productos</span>
+            <button type="button" id="collapseProductsBtn">Contraer lista</button>
+        </div>
+
         <div class="products-grid" id="productsGrid">
         </div>
+
+        <button type="button" class="load-more-products" id="loadMoreProducts">Ver más productos</button>
     </section>
 
     <section id="servicios">
-        <h2>Servicios Técnicos Especializados</h2>
-        <p class="section-subtitle" style="color: #cbd5e0;">No solo proveemos químicos, entregamos soluciones operativas
-            integrales.</p>
+        <div class="value-services">
+            <h2 class="value-title">Servicios de Valor Agregado</h2>
 
-        <div class="servicios-grid">
-            <div class="servicio-item">
-                <div class="service-icon">
-                    <svg class="icon" aria-hidden="true">
-                        <use href="#icon-target"></use>
-                    </svg>
-                </div>
-                <strong>01. Igualación de color</strong>
-                <p>Desarrollo de matices específicos bajo estándares internacionales de calidad.</p>
-            </div>
-            <div class="servicio-item">
-                <div class="service-icon">
-                    <svg class="icon" aria-hidden="true">
-                        <use href="#icon-flask"></use>
-                    </svg>
-                </div>
-                <strong>02. Laboratorio analítico</strong>
-                <p>Pruebas de solidez, viscosidad y estabilidad química certificadas internamente.</p>
-            </div>
-            <div class="servicio-item">
-                <div class="service-icon">
-                    <svg class="icon" aria-hidden="true">
-                        <use href="#icon-tools"></use>
-                    </svg>
-                </div>
-                <strong>03. Servicio técnico</strong>
-                <p>Acompañamiento en planta para la optimización de procesos de teñido.</p>
-            </div>
-            <div class="servicio-item">
-                <div class="service-icon">
-                    <svg class="icon" aria-hidden="true">
-                        <use href="#icon-truck"></use>
-                    </svg>
-                </div>
-                <strong>04. Distribución logística</strong>
-                <p>Entregas programadas y urgentes con flota propia en la zona metropolitana.</p>
+            <div class="value-list">
+                <article class="value-item">
+                    <div class="value-icon">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="#icon-flask"></use>
+                        </svg>
+                    </div>
+
+                    <div class="value-content">
+                        <h3>Igualaciones Precisas</h3>
+                        <p>Desarrollamos el tono exacto que su producción requiere mediante tecnología de
+                            espectrofotometría avanzada.</p>
+                    </div>
+                </article>
+
+                <article class="value-item">
+                    <div class="value-icon">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="#icon-tools"></use>
+                        </svg>
+                    </div>
+
+                    <div class="value-content">
+                        <h3>Laboratorio de Control</h3>
+                        <p>Cada lote es sometido a rigurosas pruebas de solidez y calidad antes de su entrega.</p>
+                    </div>
+                </article>
+
+                <article class="value-item">
+                    <div class="value-icon">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="#icon-truck"></use>
+                        </svg>
+                    </div>
+
+                    <div class="value-content">
+                        <h3>Distribución Logística</h3>
+                        <p>Red de entrega eficiente para asegurar que sus insumos lleguen justo a tiempo para su proceso
+                            textil.</p>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
 
     <section id="contacto">
         <div class="contacto-wrapper">
-            <h2>Hablemos de su próximo proyecto</h2>
-            <p class="section-subtitle">Complete los datos y envíe su consulta directo a nuestro WhatsApp de atención.
-            </p>
+            <div class="contacto-intro">
+                <span class="section-kicker">Cotización directa</span>
+                <h2>Comienza tu cotización aquí</h2>
+                <p class="section-subtitle">Complete los datos y envíe su consulta directo a nuestro WhatsApp de
+                    atención.</p>
+            </div>
 
             <div class="contacto-layout">
-                <form id="wppForm">
+                <form id="wppForm" class="contacto-form">
                     <div class="form-group">
                         <label for="nombre">Nombre Completo:</label>
                         <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required>
@@ -283,6 +407,10 @@
                 </form>
 
                 <div class="map-container">
+                    <div class="map-label">
+                        <strong>Productos y Colorantes NGS</strong>
+                        <span>Nezahualcóyotl, Estado de México</span>
+                    </div>
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.9773960401176!2d-99.0095803!3d19.4133826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e335adc0f5dd%3A0xc4ff776948b1da99!2sLas%20Coronelas%20302%2C%20Benito%20Ju%C3%A1rez%2C%2057000%20Cdad.%20Nezahualc%C3%B3yotl%2C%20M%C3%A9x.!5e0!3m2!1ses-419!2smx!4v1779314990215!5m2!1ses-419!2smx"
                         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -292,149 +420,17 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Productos y Colorantes NGS. Todos los derechos reservados. <br> Nezahualcóyotl, Estado de México.
-        </p>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="./assets/NGS_logo_3_sin_fondo.png" alt="Logo NGS">
+                <span>Productos y Colorantes NGS</span>
+            </div>
+            <p>&copy; 2026 Todos los derechos reservados. Nezahualcóyotl, Estado de México.</p>
+        </div>
     </footer>
 
     <script src="./productos.js"></script>
-    <script>
-        let currentCategory = 'todos';
-
-        // --- FUNCIÓN PARA MOSTRAR LOS PRODUCTOS ---
-        function displayProducts() {
-            const grid = document.getElementById('productsGrid');
-            const searchInput = document.getElementById('searchInput').value.toLowerCase();
-
-            grid.innerHTML = ''; // Limpiar grilla
-
-            // Filtrar arreglo por categoría y término de búsqueda
-            const filteredProducts = productosData.filter(product => {
-                const matchCategory = (currentCategory === 'todos' || product.category === currentCategory);
-                const matchSearch = product.name.toLowerCase().includes(searchInput) ||
-                    product.subcategory.toLowerCase().includes(searchInput);
-                return matchCategory && matchSearch;
-            });
-
-            // Validar si existen resultados
-            if (filteredProducts.length === 0) {
-                grid.innerHTML = `<div class="no-results">No se encontraron productos que coincidan con tu búsqueda.</div>`;
-                return;
-            }
-
-            // Construir e inyectar HTML de las tarjetas
-            filteredProducts.forEach(product => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <div>
-                        <span class="badge-category badge-${product.classKey}">${getFriendlyCategoryName(product.category)}</span>
-                        <div class="product-name">${product.name}</div>
-                        <div class="product-subcategory">${product.subcategory}</div>
-                    </div>
-                    <a href="#contacto" class="btn-card-quote" onclick="prefillQuote('${product.name}')">Cotizar este producto</a>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // Retornar nombres legibles de categorías para los Badges
-        function getFriendlyCategoryName(cat) {
-            const names = {
-                algodon: "Para Algodón",
-                poliester: "Para Poliéster",
-                acidos: "Ácidos",
-                solventes: "Solventes",
-                pigmentos: "Pigmentos",
-                glitters: "Glitters",
-                auxiliares: "Auxiliares",
-                blancos: "Ópticos"
-            };
-            return names[cat] || cat;
-        }
-
-        // Manejar cambio de Tabs de filtrado
-        function filterCategory(category) {
-            currentCategory = category;
-
-            // Actualizar clase activa en botones
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            displayProducts();
-        }
-
-        // Al dar clic en "Cotizar este producto", autocompleta el formulario de abajo
-        function prefillQuote(productName) {
-            document.getElementById('mensaje').value = `Hola, me interesa solicitar una cotización del siguiente producto: ${productName}.`;
-        }
-
-        // Escucha del buscador interactivo
-        document.getElementById('searchInput').addEventListener('input', displayProducts);
-
-        // Menú hamburguesa en pantallas pequeñas
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navMenu = document.getElementById('navMenu');
-
-        menuToggle.addEventListener('click', function () {
-            const isOpen = navMenu.classList.toggle('open');
-            menuToggle.classList.toggle('active', isOpen);
-            menuToggle.setAttribute('aria-expanded', isOpen);
-        });
-
-        navMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function () {
-                setActiveNavLink(link.getAttribute('href').replace('#', ''));
-                navMenu.classList.remove('open');
-                menuToggle.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-            });
-        });
-
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        const sections = document.querySelectorAll('section[id]');
-
-        function setActiveNavLink(sectionId) {
-            navLinks.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === `#${sectionId}`);
-            });
-        }
-
-        const sectionObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setActiveNavLink(entry.target.id);
-                }
-            });
-        }, {
-            rootMargin: '-45% 0px -45% 0px',
-            threshold: 0
-        });
-
-        sections.forEach(section => sectionObserver.observe(section));
-        setActiveNavLink('inicio');
-
-        // Inicializar renderizado al cargar la página
-        window.onload = displayProducts;
-
-
-        // --- MANEJO DEL FORMULARIO DE WHATSAPP ---
-        document.getElementById('wppForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            // Configura aquí el número de la empresa anteponiendo el código de país (52 para México)
-            const telefonoEmpresa = "525545698672";
-
-            const nombre = document.getElementById('nombre').value;
-            const mensaje = document.getElementById('mensaje').value;
-
-            const textoMensaje = `Hola, mi nombre es *${nombre}*. Me comunico desde el sitio web con el siguiente interés:\n\n${mensaje}`;
-            const mensajeCodificado = encodeURIComponent(textoMensaje);
-            const urlWhatsApp = `https://wa.me/${telefonoEmpresa}?text=${mensajeCodificado}`;
-
-            window.open(urlWhatsApp, '_blank');
-        });
-    </script>
+    <script src="./script.js"></script>
 </body>
 
 </html>
