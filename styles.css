@@ -889,8 +889,7 @@
       max-width: 430px;
       margin-bottom: 0;
       color: #20242d;
-      background:
-          linear-gradient(90deg, #171923 0%, #171923 34%, #0846d8 48%, #e53e3e 63%, #f4c400 76%, #171923 92%);
+      background: linear-gradient(135deg, #031a63 0%, #0846d8 46%, #0f5cff 72%, #04267f 100%);
       background-size: 220% 100%;
       -webkit-background-clip: text;
       background-clip: text;
@@ -908,7 +907,7 @@
       height: 8px;
       margin-top: 18px;
       border-radius: 999px;
-      background: linear-gradient(90deg, var(--azul-claro), #e53e3e 48%, var(--amarillo-ngs));
+      background: linear-gradient(90deg, #031a63 0%, #0846d8 46%, #0f5cff 72%, #04267f 100%);
       box-shadow: 0 12px 28px rgba(8, 70, 216, 0.18);
       animation: titleUnderlinePulse 3.6s ease-in-out infinite;
   }
@@ -939,7 +938,7 @@
       position: absolute;
       inset: 0 auto 0 0;
       width: 5px;
-      background: linear-gradient(180deg, var(--azul-claro), #e53e3e 52%, var(--amarillo-ngs));
+      background: linear-gradient(180deg, #031a63 0%, #0846d8 46%, #0f5cff 72%, #04267f 100%);
   }
 
   .value-item:hover {
@@ -978,7 +977,9 @@
   }
 
   @keyframes titleColorFlow {
-      0%, 100% {
+
+      0%,
+      100% {
           background-position: 0% 50%;
       }
 
@@ -988,7 +989,9 @@
   }
 
   @keyframes titleUnderlinePulse {
-      0%, 100% {
+
+      0%,
+      100% {
           transform: scaleX(0.82);
           transform-origin: left;
           opacity: 0.72;
@@ -1001,6 +1004,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+
       .value-title,
       .value-title::after {
           animation: none;
@@ -1168,8 +1172,8 @@
           flex-direction: column;
           position: absolute;
           top: calc(100% + 8px);
-          left: 0;
-          width: 100%;
+          right: 0;
+          width: 50%;
           gap: 2px;
           overflow-x: visible;
           padding: 8px;
@@ -1190,12 +1194,13 @@
           border-radius: 8px;
           background-color: transparent;
           font-size: 0.9rem;
+          justify-content: center;
       }
 
       .nav-menu a::after {
-          left: 12px;
+          left: auto;
           right: auto;
-          width: 34px;
+          width: 50%;
           bottom: 6px;
       }
 
@@ -1316,8 +1321,8 @@
           padding: 9px 10px;
       }
 
-      .brand-logo {
-          width: clamp(132px, 50vw, 168px);
+      .text-main {
+          font-size: 0.9rem;
       }
 
       section {
@@ -1405,7 +1410,7 @@
       inset: 0 0 auto;
       height: 5px;
       border-radius: 8px 8px 0 0;
-      background: linear-gradient(90deg, var(--azul-claro), #e53e3e 48%, var(--amarillo-ngs));
+      background: linear-gradient(90deg, #031a63 0%, #0846d8 46%, #0f5cff 72%, #04267f 100%);
   }
 
   .map-container {
@@ -1484,7 +1489,7 @@
       position: absolute;
       inset: 0 0 auto;
       height: 4px;
-      background: linear-gradient(90deg, var(--azul-claro), #e53e3e, var(--amarillo-ngs), var(--azul-claro));
+      background: linear-gradient(90deg, #031a63 0%, #0846d8 46%, #0f5cff 72%, #04267f 100%);
       background-size: 220% 100%;
       animation: footerColorFlow 8s ease-in-out infinite;
   }
@@ -1519,7 +1524,9 @@
   }
 
   @keyframes footerColorFlow {
-      0%, 100% {
+
+      0%,
+      100% {
           background-position: 0% 50%;
       }
 
@@ -1570,14 +1577,14 @@
       pointer-events: none;
   }
 
-  #productos > h2,
-  #productos > .section-subtitle,
-  #productos > .catalog-spotlight,
-  #productos > .category-cards,
-  #productos > .search-filter-container,
-  #productos > .catalog-results-bar,
-  #productos > .products-grid,
-  #productos > .load-more-products {
+  #productos>h2,
+  #productos>.section-subtitle,
+  #productos>.catalog-spotlight,
+  #productos>.category-cards,
+  #productos>.search-filter-container,
+  #productos>.catalog-results-bar,
+  #productos>.products-grid,
+  #productos>.load-more-products {
       position: relative;
       z-index: 1;
   }
@@ -1662,7 +1669,7 @@
       position: absolute;
       inset: 0 0 auto;
       height: 5px;
-      background: linear-gradient(90deg, var(--azul-claro), #e53e3e, var(--amarillo-ngs));
+      background: linear-gradient(90deg, var(--azul-claro), #000820);
       opacity: 0.72;
   }
 
