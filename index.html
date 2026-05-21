@@ -1,807 +1,20 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos y Colorantes NGS</title>
     <link rel="icon" type="image/png" href="./assets/NGS_logo_3_sin_fondo.png">
-    <style>
-        /* --- ESTILOS GENERALES Y VARIABLES --- */
-        :root {
-            --azul-principal: #0b2f9f;
-            --azul-claro: #0846d8;
-            --amarillo-ngs: #f4c400;
-            --gris-fondo: #f3f2ec;
-            --texto-oscuro: #171923;
-            --blanco: #ffffff;
-            --borde: #deded7;
-            --whatsapp-color: #25D366;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--gris-fondo);
-            color: var(--texto-oscuro);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* --- NAVBAR --- */
-        .navbar {
-            position: fixed;
-            top: 16px;
-            left: 50%;
-            width: calc(100% - 48px);
-            max-width: 1180px;
-            transform: translateX(-50%);
-            background-color: rgba(255,255,255,0.97);
-            border: 1px solid rgba(20,24,32,0.1);
-            border-radius: 18px;
-            box-shadow: 0 10px 28px rgba(20,24,32,0.12);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 18px;
-            z-index: 1000;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            flex: 0 0 auto;
-            text-decoration: none;
-        }
-
-        .brand-logo {
-            display: block;
-            width: clamp(170px, 22vw, 260px);
-            height: auto;
-            object-fit: contain;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 6px;
-        }
-
-        .menu-toggle {
-            display: none;
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(26,54,93,0.12);
-            border-radius: 10px;
-            background-color: #f8fafc;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 5px;
-            transition: background-color 0.25s, border-color 0.25s;
-        }
-
-        .menu-toggle:hover,
-        .menu-toggle.active {
-            background-color: #edf2f7;
-            border-color: rgba(26,54,93,0.22);
-        }
-
-        .menu-toggle span {
-            width: 22px;
-            height: 2px;
-            background-color: var(--azul-principal);
-            border-radius: 999px;
-            transition: transform 0.25s, opacity 0.25s;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
-        }
-
-        .nav-menu a {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            text-decoration: none;
-            color: #171923;
-            font-weight: 600;
-            font-size: 0.92rem;
-            padding: 8px 12px 12px;
-            border-radius: 8px;
-            transition: color 0.3s, background-color 0.3s;
-        }
-
-        .nav-menu a::after {
-            content: "";
-            position: absolute;
-            left: 12px;
-            right: 12px;
-            bottom: 3px;
-            height: 2px;
-            background-color: var(--azul-claro);
-            border-radius: 999px;
-            transform: scaleX(0);
-            transform-origin: center;
-            opacity: 0;
-            transition: transform 0.25s ease, opacity 0.25s ease;
-        }
-
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            background-color: transparent;
-            color: var(--azul-claro);
-        }
-
-        .nav-menu a:hover::after,
-        .nav-menu a.active::after {
-            opacity: 1;
-            transform: scaleX(1);
-        }
-
-        .icon-symbols {
-            display: none;
-        }
-
-        .icon {
-            width: 1em;
-            height: 1em;
-            flex: 0 0 auto;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .nav-menu .icon {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* --- LAYOUT SECCIÓNES --- */
-        section {
-            padding: 100px 50px 60px 50px;
-            min-height: 80vh;
-            scroll-margin-top: 84px;
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            color: var(--azul-principal);
-            margin-bottom: 10px;
-        }
-
-        .section-subtitle {
-            color: #718096;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-
-        /* --- SECCIÓN INICIO (HERO) --- */
-        #inicio {
-            background:
-                linear-gradient(90deg, rgba(243,242,236,0.98) 0%, rgba(243,242,236,0.86) 43%, rgba(243,242,236,0.18) 74%),
-                linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04)),
-                url("./assets/fondo.jpg") right center / cover no-repeat;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 92vh;
-        }
-
-        .hero-content {
-            max-width: 760px;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(3.2rem, 7.6vw, 6.5rem);
-            color: #111318;
-            font-weight: 900;
-            margin-bottom: 20px;
-            line-height: 0.98;
-        }
-
-        .hero-content h1 span {
-            color: var(--azul-claro);
-        }
-
-        .hero-content p {
-            max-width: 580px;
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 30px;
-            color: #252936;
-        }
-
-        .btn-container {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 13px 28px;
-            border-radius: 3px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.2s, background-color 0.2s;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn .icon {
-            width: 18px;
-            height: 18px;
-        }
-
-        .btn-primary {
-            background:
-                linear-gradient(135deg, #031a63 0%, #0846d8 46%, #0f5cff 72%, #04267f 100%);
-            color: var(--blanco);
-            border: 1px solid rgba(255,255,255,0.22);
-            box-shadow:
-                0 16px 30px rgba(3,26,99,0.34),
-                0 0 22px rgba(8,70,216,0.28),
-                inset 0 1px 0 rgba(255,255,255,0.26);
-        }
-
-        .btn-primary:hover {
-            background:
-                linear-gradient(135deg, #02134c 0%, #0637b4 40%, #0b63ff 76%, #031f72 100%);
-            box-shadow:
-                0 18px 34px rgba(3,26,99,0.42),
-                0 0 28px rgba(8,70,216,0.36),
-                inset 0 1px 0 rgba(255,255,255,0.3);
-        }
-
-        .btn-secondary {
-            background-color: rgba(255,255,255,0.88);
-            border: 1px solid rgba(20,24,32,0.08);
-            color: #171923;
-            box-shadow: 0 8px 18px rgba(20,24,32,0.08);
-        }
-
-        /* --- SECCIÓN EMPRESA --- */
-        #empresa {
-            background-color: var(--blanco);
-            border-top: 1px solid #ebe9e2;
-        }
-
-        .grid-trayectoria {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
-            margin-top: 30px;
-        }
-
-        .card-azul {
-            background-color: var(--azul-claro);
-            color: var(--blanco);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 18px 34px rgba(8,70,216,0.2);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .feature-card {
-            padding: 20px;
-            border-radius: 8px;
-            color: var(--texto-oscuro);
-            box-shadow: 0 10px 28px rgba(20,24,32,0.06);
-        }
-
-        .icon-badge {
-            width: 42px;
-            height: 42px;
-            display: grid;
-            place-items: center;
-            margin-bottom: 14px;
-            border-radius: 10px;
-            background-color: rgba(8,70,216,0.1);
-            color: var(--azul-claro);
-        }
-
-        .icon-badge .icon {
-            width: 22px;
-            height: 22px;
-        }
-
-        .icon-badge-light {
-            background-color: rgba(255,255,255,0.16);
-            color: var(--blanco);
-        }
-
-        .f-rojo { background-color: #fff5f5; border-top: 4px solid #e53e3e; }
-        .f-amarillo { background-color: #fefcbf; border-top: 4px solid #ecc94b; }
-        .f-verde { background-color: #f0fff4; border-top: 4px solid #38a169; }
-
-        /* --- SECCIÓN PRODUCTOS (BUSCADOR Y FILTROS INTERACTIVOS) --- */
-        #productos {
-            background-color: #f7fafc;
-        }
-
-        .search-filter-container {
-            background-color: var(--blanco);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .search-box {
-            position: relative;
-            width: 100%;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 15px 20px;
-            font-size: 1.1rem;
-            border: 2px solid var(--borde);
-            border-radius: 8px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .search-box input:focus {
-            border-color: var(--azul-claro);
-        }
-
-        .filter-tabs {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 10px 18px;
-            background-color: #edf2f7;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #4a5568;
-            transition: all 0.3s;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background-color: var(--azul-claro);
-            color: var(--blanco);
-        }
-
-        /* Contenedor de las tarjetas de productos */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .product-card {
-            background-color: var(--blanco);
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            border: 1px solid var(--borde);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-        }
-
-        .badge-category {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-weight: bold;
-            padding: 4px 8px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: 10px;
-            width: fit-content;
-        }
-
-        /* Colores dinámicos por categoría principal */
-        .badge-algodon { background-color: #ebf8ff; color: #2b6cb0; }
-        .badge-poliester { background-color: #faf5ff; color: #6b46c1; }
-        .badge-acidos { background-color: #fff5f5; color: #c53030; }
-        .badge-solventes { background-color: #feebc8; color: #c05621; }
-        .badge-pigmentos { background-color: #e6fffa; color: #234e52; }
-        .badge-glitters { background-color: #edf2f7; color: #4a5568; }
-        .badge-auxiliares { background-color: #f0fff4; color: #2f855a; }
-        .badge-blancos { background-color: #fffaf0; color: #9c4221; }
-
-        .product-name {
-            font-size: 1.2rem;
-            color: var(--azul-principal);
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .product-subcategory {
-            font-size: 0.85rem;
-            color: #718096;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-
-        .btn-card-quote {
-            background-color: #f7fafc;
-            border: 1px solid var(--azul-claro);
-            color: var(--azul-claro);
-            text-align: center;
-            padding: 10px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-        }
-
-        .btn-card-quote:hover {
-            background-color: var(--azul-claro);
-            color: var(--blanco);
-        }
-
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 40px;
-            color: #a0aec0;
-            font-size: 1.2rem;
-        }
-
-        /* --- SECCIÓN SERVICIOS --- */
-        #servicios {
-            background-color: var(--azul-claro);
-            color: var(--blanco);
-        }
-
-        .servicios-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .servicio-item {
-            background-color: rgba(255,255,255,0.12);
-            padding: 20px;
-            border: 1px solid rgba(255,255,255,0.16);
-            border-radius: 8px;
-            border-left: 3px solid var(--amarillo-ngs);
-        }
-
-        .service-icon {
-            width: 36px;
-            height: 36px;
-            display: grid;
-            place-items: center;
-            margin-bottom: 14px;
-            border-radius: 8px;
-            background-color: rgba(255,255,255,0.12);
-            color: var(--amarillo-ngs);
-        }
-
-        .service-icon .icon {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* --- SECCIÓN CONTACTO --- */
-        #contacto {
-            background-color: var(--blanco);
-        }
-
-        .contacto-wrapper {
-            max-width: 1080px;
-            margin: 0 auto;
-        }
-
-        .contacto-layout {
-            display: grid;
-            grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
-            gap: 32px;
-            align-items: stretch;
-        }
-
-        .map-container {
-            min-height: 450px;
-            overflow: hidden;
-            border: 1px solid var(--borde);
-            border-radius: 10px;
-            box-shadow: 0 12px 30px rgba(26,54,93,0.08);
-            background-color: #edf2f7;
-        }
-
-        .map-container iframe {
-            display: block;
-            width: 100%;
-            height: 100%;
-            min-height: 450px;
-            border: 0;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #cbd5e0;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .btn-wpp {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: var(--whatsapp-color);
-            color: white;
-            border: none;
-            width: 100%;
-            cursor: pointer;
-            font-size: 1.1rem;
-            padding: 15px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        .btn-wpp .icon {
-            width: 20px;
-            height: 20px;
-        }
-
-        .btn-wpp:hover {
-            background-color: #1ebd54;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #1a202c;
-            color: #a0aec0;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9rem;
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 1024px) {
-            .navbar {
-                width: calc(100% - 32px);
-                padding: 12px 16px;
-            }
-
-            section {
-                padding: 112px 32px 56px;
-            }
-
-            .grid-trayectoria {
-                grid-template-columns: 1fr;
-            }
-
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .servicios-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .contacto-layout {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 760px) {
-            .navbar {
-                align-items: center;
-                flex-direction: row;
-                flex-wrap: wrap;
-                gap: 10px;
-                top: 10px;
-                width: calc(100% - 24px);
-                padding: 10px 12px;
-                border-radius: 12px;
-            }
-
-            .logo-container {
-                width: calc(100% - 54px);
-            }
-
-            .brand-logo {
-                width: clamp(145px, 48vw, 190px);
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: calc(100% + 8px);
-                left: 0;
-                width: 100%;
-                gap: 2px;
-                overflow-x: visible;
-                padding: 8px;
-                background-color: rgba(255,255,255,0.98);
-                border: 1px solid rgba(226,232,240,0.95);
-                border-radius: 12px;
-                box-shadow: 0 18px 36px rgba(26,54,93,0.14);
-                backdrop-filter: blur(14px);
-            }
-
-            .nav-menu.open {
-                display: flex;
-            }
-
-            .nav-menu a {
-                display: flex;
-                padding: 11px 12px;
-                border-radius: 8px;
-                background-color: transparent;
-                font-size: 0.9rem;
-            }
-
-            .nav-menu a::after {
-                left: 12px;
-                right: auto;
-                width: 34px;
-                bottom: 6px;
-            }
-
-            section {
-                min-height: auto;
-                padding: 112px 20px 48px;
-                scroll-margin-top: 104px;
-            }
-
-            #inicio {
-                min-height: 100vh;
-                background:
-                    linear-gradient(90deg, rgba(243,242,236,0.96) 0%, rgba(243,242,236,0.84) 62%, rgba(243,242,236,0.32) 100%),
-                    linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04)),
-                    url("./assets/fondo.jpg") center center / cover no-repeat;
-            }
-
-            .hero-content h1 {
-                font-size: clamp(3.1rem, 14vw, 4.8rem);
-            }
-
-            .hero-content p,
-            .section-subtitle {
-                font-size: 1rem;
-            }
-
-            h2 {
-                font-size: 1.8rem;
-                line-height: 1.2;
-            }
-
-            .btn-container {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-
-            .search-filter-container {
-                padding: 18px;
-            }
-
-            .search-box input {
-                font-size: 1rem;
-                padding: 13px 14px;
-            }
-
-            .filter-tabs {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                padding-bottom: 6px;
-                scrollbar-width: thin;
-            }
-
-            .filter-btn {
-                flex: 0 0 auto;
-                white-space: nowrap;
-            }
-
-            .products-grid,
-            .features-grid,
-            .servicios-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .product-card {
-                padding: 20px;
-            }
-        }
-
-        @media (max-width: 420px) {
-            .navbar {
-                width: calc(100% - 18px);
-                padding: 9px 10px;
-            }
-
-            .brand-logo {
-                width: clamp(132px, 50vw, 168px);
-            }
-
-            section {
-                padding: 106px 16px 42px;
-            }
-
-            .hero-content h1 {
-                font-size: clamp(2.9rem, 13vw, 4rem);
-            }
-
-            h2 {
-                font-size: 1.55rem;
-            }
-
-            .card-azul,
-            .feature-card,
-            .servicio-item {
-                padding: 18px;
-            }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
     <svg class="icon-symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <symbol id="icon-home" viewBox="0 0 24 24">
@@ -868,8 +81,15 @@
     </svg>
 
     <nav class="navbar">
-        <a href="#inicio" class="logo-container" aria-label="Ir al inicio">
-            <img class="brand-logo" src="./assets/NGS_logo_2_sin_fondo.png" alt="Productos y Colorantes NGS">
+        <a href="#inicio" class="logo-container" aria-label="Ir al inicio de Productos y Colorantes NGS">
+            <img class="brand-logo" src="./assets/NGS_logo_1_sin_fondo.png" alt="Logo circular NGS">
+            <div class="logo-text">
+                <div class="text-left-side">
+                    <span class="text-main">Productos y Colorantes</span>
+                    <div class="double-lines"></div>
+                </div>
+                <span class="text-brand">N.G.S.</span>
+            </div>
         </a>
         <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMenu">
             <span></span>
@@ -877,21 +97,36 @@
             <span></span>
         </button>
         <ul class="nav-menu" id="navMenu">
-            <li><a href="#inicio"><svg class="icon" aria-hidden="true"><use href="#icon-home"></use></svg>Inicio</a></li>
-            <li><a href="#empresa"><svg class="icon" aria-hidden="true"><use href="#icon-building"></use></svg>Empresa</a></li>
-            <li><a href="#productos"><svg class="icon" aria-hidden="true"><use href="#icon-package"></use></svg>Productos</a></li>
-            <li><a href="#servicios"><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg>Servicios</a></li>
-            <li><a href="#contacto"><svg class="icon" aria-hidden="true"><use href="#icon-message"></use></svg>Contacto</a></li>
+            <li><a href="#inicio"><svg class="icon" aria-hidden="true">
+                        <use href="#icon-home"></use>
+                    </svg>Inicio</a></li>
+            <li><a href="#empresa"><svg class="icon" aria-hidden="true">
+                        <use href="#icon-building"></use>
+                    </svg>Empresa</a></li>
+            <li><a href="#productos"><svg class="icon" aria-hidden="true">
+                        <use href="#icon-package"></use>
+                    </svg>Productos</a></li>
+            <li><a href="#servicios"><svg class="icon" aria-hidden="true">
+                        <use href="#icon-tools"></use>
+                    </svg>Servicios</a></li>
+            <li><a href="#contacto"><svg class="icon" aria-hidden="true">
+                        <use href="#icon-message"></use>
+                    </svg>Contacto</a></li>
         </ul>
     </nav>
 
     <section id="inicio">
         <div class="hero-content">
-            <h1>Colores que <span>compiten</span>, calidad que destaca.</h1>
-            <p>Expertos en síntesis química y colorimetría industrial. Transformamos la precisión técnica en soluciones textiles vibrantes.</p>
+            <h1>Colores que compiten, <span>calidad </span> que destaca.</h1>
+            <p>NGS es una empresa líder en la comercialización de colorantes y auxiliares dirigidos a la industria
+                textil.</p>
             <div class="btn-container">
-                <a href="#contacto" class="btn btn-primary"><svg class="icon" aria-hidden="true"><use href="#icon-message"></use></svg>Solicitar cotización</a>
-                <a href="#productos" class="btn btn-secondary"><svg class="icon" aria-hidden="true"><use href="#icon-catalog"></use></svg>Ver catálogo</a>
+                <a href="#contacto" class="btn btn-primary"><svg class="icon" aria-hidden="true">
+                        <use href="#icon-message"></use>
+                    </svg>Solicitar cotización</a>
+                <a href="#productos" class="btn btn-secondary"><svg class="icon" aria-hidden="true">
+                        <use href="#icon-catalog"></use>
+                    </svg>Ver catálogo</a>
             </div>
         </div>
     </section>
@@ -900,11 +135,19 @@
         <h2>Nuestra Trayectoria</h2>
         <div class="grid-trayectoria">
             <div>
-                <p>Con más de tres décadas de experiencia, Productos y Colorantes NGS se ha consolidado como un referente en la industria química mexicana. Nuestra filosofía de "Precisión Humana" une el rigor científico con el compromiso personalizado hacia cada cliente en Nezahualcóyotl y todo el país.</p>
+                <p>En NGS trabajamos con un fuerte compromiso hacia la innovación y la competitividad, ofreciendo
+                    productos que responden a las necesidades actuales de la industria textil. Nuestra experiencia,
+                    atención cercana y enfoque en la mejora continua nos permiten brindar opciones eficientes y
+                    confiables para cada cliente.</p>
+
+                <p>Con más de 30 años de trayectoria, nos especializamos en productos químicos y colorantes para la
+                    industria textil, siempre enfocados en ofrecer un servicio personalizado y atención de calidad.</p>
             </div>
             <div class="card-azul">
                 <div class="icon-badge icon-badge-light">
-                    <svg class="icon" aria-hidden="true"><use href="#icon-target"></use></svg>
+                    <svg class="icon" aria-hidden="true">
+                        <use href="#icon-target"></use>
+                    </svg>
                 </div>
                 <h3>Igualaciones Precisas</h3>
                 <p>Tecnología de punta para replicar cualquier tonalidad con exactitud milimétrica.</p>
@@ -914,21 +157,27 @@
         <div class="features-grid">
             <div class="feature-card f-rojo">
                 <div class="icon-badge">
-                    <svg class="icon" aria-hidden="true"><use href="#icon-headset"></use></svg>
+                    <svg class="icon" aria-hidden="true">
+                        <use href="#icon-headset"></use>
+                    </svg>
                 </div>
                 <h4>Soporte Técnico</h4>
                 <p>Asesoría especializada en procesos de teñido y acabados químicos.</p>
             </div>
             <div class="feature-card f-amarillo">
                 <div class="icon-badge">
-                    <svg class="icon" aria-hidden="true"><use href="#icon-award"></use></svg>
+                    <svg class="icon" aria-hidden="true">
+                        <use href="#icon-award"></use>
+                    </svg>
                 </div>
                 <h4>Experiencia Comprobada</h4>
                 <p>30 años liderando el mercado con soluciones de alta eficiencia.</p>
             </div>
             <div class="feature-card f-verde">
                 <div class="icon-badge">
-                    <svg class="icon" aria-hidden="true"><use href="#icon-layers"></use></svg>
+                    <svg class="icon" aria-hidden="true">
+                        <use href="#icon-layers"></use>
+                    </svg>
                 </div>
                 <h4>Amplio Portafolio</h4>
                 <p>Desde colorantes reactivos hasta auxiliares especializados.</p>
@@ -942,9 +191,10 @@
 
         <div class="search-filter-container">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Buscar por nombre de producto, clave o subcategoría... (ej. Reactivo 160, Directo, Disperso)">
+                <input type="text" id="searchInput"
+                    placeholder="Buscar por nombre de producto, clave o subcategoría... (ej. Reactivo 160, Directo, Disperso)">
             </div>
-            
+
             <div class="filter-tabs">
                 <button class="filter-btn active" onclick="filterCategory('todos')">Todos</button>
                 <button class="filter-btn" onclick="filterCategory('algodon')">Para Algodón</button>
@@ -959,38 +209,47 @@
         </div>
 
         <div class="products-grid" id="productsGrid">
-            </div>
+        </div>
     </section>
 
     <section id="servicios">
         <h2>Servicios Técnicos Especializados</h2>
-        <p class="section-subtitle" style="color: #cbd5e0;">No solo proveemos químicos, entregamos soluciones operativas integrales.</p>
-        
+        <p class="section-subtitle" style="color: #cbd5e0;">No solo proveemos químicos, entregamos soluciones operativas
+            integrales.</p>
+
         <div class="servicios-grid">
             <div class="servicio-item">
                 <div class="service-icon">
-                    <svg class="icon" aria-hidden="true"><use href="#icon-target"></use></svg>
+                    <svg class="icon" aria-hidden="true">
+                        <use href="#icon-target"></use>
+                    </svg>
                 </div>
                 <strong>01. Igualación de color</strong>
                 <p>Desarrollo de matices específicos bajo estándares internacionales de calidad.</p>
             </div>
             <div class="servicio-item">
                 <div class="service-icon">
-                    <svg class="icon" aria-hidden="true"><use href="#icon-flask"></use></svg>
+                    <svg class="icon" aria-hidden="true">
+                        <use href="#icon-flask"></use>
+                    </svg>
                 </div>
                 <strong>02. Laboratorio analítico</strong>
                 <p>Pruebas de solidez, viscosidad y estabilidad química certificadas internamente.</p>
             </div>
             <div class="servicio-item">
                 <div class="service-icon">
-                    <svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg>
+                    <svg class="icon" aria-hidden="true">
+                        <use href="#icon-tools"></use>
+                    </svg>
                 </div>
                 <strong>03. Servicio técnico</strong>
                 <p>Acompañamiento en planta para la optimización de procesos de teñido.</p>
             </div>
             <div class="servicio-item">
                 <div class="service-icon">
-                    <svg class="icon" aria-hidden="true"><use href="#icon-truck"></use></svg>
+                    <svg class="icon" aria-hidden="true">
+                        <use href="#icon-truck"></use>
+                    </svg>
                 </div>
                 <strong>04. Distribución logística</strong>
                 <p>Entregas programadas y urgentes con flota propia en la zona metropolitana.</p>
@@ -1001,7 +260,8 @@
     <section id="contacto">
         <div class="contacto-wrapper">
             <h2>Hablemos de su próximo proyecto</h2>
-            <p class="section-subtitle">Complete los datos y envíe su consulta directo a nuestro WhatsApp de atención.</p>
+            <p class="section-subtitle">Complete los datos y envíe su consulta directo a nuestro WhatsApp de atención.
+            </p>
 
             <div class="contacto-layout">
                 <form id="wppForm">
@@ -1009,24 +269,31 @@
                         <label for="nombre">Nombre Completo:</label>
                         <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="mensaje">Mensaje o Producto de Interés:</label>
-                        <textarea id="mensaje" rows="5" placeholder="Cuéntenos sobre sus necesidades de colorantes o servicios..." required></textarea>
+                        <textarea id="mensaje" rows="5"
+                            placeholder="Cuéntenos sobre sus necesidades de colorantes o servicios..."
+                            required></textarea>
                     </div>
 
-                    <button type="submit" class="btn-wpp"><svg class="icon" aria-hidden="true"><use href="#icon-send"></use></svg>Enviar Consulta por WhatsApp</button>
+                    <button type="submit" class="btn-wpp"><svg class="icon" aria-hidden="true">
+                            <use href="#icon-send"></use>
+                        </svg>Enviar Consulta por WhatsApp</button>
                 </form>
 
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.9773960401176!2d-99.0095803!3d19.4133826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e335adc0f5dd%3A0xc4ff776948b1da99!2sLas%20Coronelas%20302%2C%20Benito%20Ju%C3%A1rez%2C%2057000%20Cdad.%20Nezahualc%C3%B3yotl%2C%20M%C3%A9x.!5e0!3m2!1ses-419!2smx!4v1779314990215!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.9773960401176!2d-99.0095803!3d19.4133826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e335adc0f5dd%3A0xc4ff776948b1da99!2sLas%20Coronelas%20302%2C%20Benito%20Ju%C3%A1rez%2C%2057000%20Cdad.%20Nezahualc%C3%B3yotl%2C%20M%C3%A9x.!5e0!3m2!1ses-419!2smx!4v1779314990215!5m2!1ses-419!2smx"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Productos y Colorantes NGS. Todos los derechos reservados. <br> Nezahualcóyotl, Estado de México.</p>
+        <p>&copy; 2026 Productos y Colorantes NGS. Todos los derechos reservados. <br> Nezahualcóyotl, Estado de México.
+        </p>
     </footer>
 
     <script src="./productos.js"></script>
@@ -1037,19 +304,19 @@
         function displayProducts() {
             const grid = document.getElementById('productsGrid');
             const searchInput = document.getElementById('searchInput').value.toLowerCase();
-            
+
             grid.innerHTML = ''; // Limpiar grilla
 
             // Filtrar arreglo por categoría y término de búsqueda
             const filteredProducts = productosData.filter(product => {
                 const matchCategory = (currentCategory === 'todos' || product.category === currentCategory);
-                const matchSearch = product.name.toLowerCase().includes(searchInput) || 
-                                    product.subcategory.toLowerCase().includes(searchInput);
+                const matchSearch = product.name.toLowerCase().includes(searchInput) ||
+                    product.subcategory.toLowerCase().includes(searchInput);
                 return matchCategory && matchSearch;
             });
 
             // Validar si existen resultados
-            if(filteredProducts.length === 0) {
+            if (filteredProducts.length === 0) {
                 grid.innerHTML = `<div class="no-results">No se encontraron productos que coincidan con tu búsqueda.</div>`;
                 return;
             }
@@ -1088,7 +355,7 @@
         // Manejar cambio de Tabs de filtrado
         function filterCategory(category) {
             currentCategory = category;
-            
+
             // Actualizar clase activa en botones
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
@@ -1109,14 +376,14 @@
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.getElementById('navMenu');
 
-        menuToggle.addEventListener('click', function() {
+        menuToggle.addEventListener('click', function () {
             const isOpen = navMenu.classList.toggle('open');
             menuToggle.classList.toggle('active', isOpen);
             menuToggle.setAttribute('aria-expanded', isOpen);
         });
 
         navMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 setActiveNavLink(link.getAttribute('href').replace('#', ''));
                 navMenu.classList.remove('open');
                 menuToggle.classList.remove('active');
@@ -1152,11 +419,11 @@
 
 
         // --- MANEJO DEL FORMULARIO DE WHATSAPP ---
-        document.getElementById('wppForm').addEventListener('submit', function(event) {
+        document.getElementById('wppForm').addEventListener('submit', function (event) {
             event.preventDefault();
 
             // Configura aquí el número de la empresa anteponiendo el código de país (52 para México)
-            const telefonoEmpresa = "525545698672"; 
+            const telefonoEmpresa = "525545698672";
 
             const nombre = document.getElementById('nombre').value;
             const mensaje = document.getElementById('mensaje').value;
@@ -1169,4 +436,5 @@
         });
     </script>
 </body>
+
 </html>
