@@ -261,6 +261,48 @@ const sectionObserver = new IntersectionObserver(entries => {
 sections.forEach(section => sectionObserver.observe(section));
 setActiveNavLink('inicio');
 
+const companyFeatureCards = Array.from(document.querySelectorAll('#empresa .feature-card'));
+const companyFeaturesGrid = document.querySelector('#empresa .features-grid');
+let featureCardsExpanded = false;
+let featureAnimationTimers = [];
+
+function clearFeatureAnimationTimers() {
+    featureAnimationTimers.forEach(timer => clearTimeout(timer));
+    featureAnimationTimers = [];
+}
+
+function setCompanyCardsExpanded(expanded) {
+    if (!companyFeatureCards.length || featureCardsExpanded === expanded) return;
+
+    featureCardsExpanded = expanded;
+    clearFeatureAnimationTimers();
+
+    const orderedCards = expanded ? companyFeatureCards : [...companyFeatureCards].reverse();
+
+    orderedCards.forEach((card, index) => {
+        const timer = setTimeout(() => {
+            card.classList.toggle('active', expanded);
+        }, index * 135);
+
+        featureAnimationTimers.push(timer);
+    });
+}
+
+if (companyFeaturesGrid && 'IntersectionObserver' in window) {
+    const companyCardsObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            setCompanyCardsExpanded(entry.isIntersecting && entry.intersectionRatio >= 0.18);
+        });
+    }, {
+        threshold: [0, 0.18, 0.45],
+        rootMargin: '-8% 0px -14% 0px'
+    });
+
+    companyCardsObserver.observe(companyFeaturesGrid);
+} else {
+    companyFeatureCards.forEach(card => card.classList.add('active'));
+}
+
 const carouselSlides = document.querySelectorAll('.carousel-slide');
 const carouselDots = document.querySelectorAll('.carousel-dots button');
 const carouselTrack = document.querySelector('.carousel-track');
@@ -364,9 +406,4 @@ document.getElementById('wppForm').addEventListener('submit', function (event) {
     const urlWhatsApp = `https://wa.me/${telefonoEmpresa}?text=${mensajeCodificado}`;
 
     window.open(urlWhatsApp, '_blank');
-});
-document.querySelectorAll('.feature-card').forEach(card => {
-    card.addEventListener('click', () => {
-        card.classList.toggle('active');
-    });
 });
