@@ -1,6 +1,6 @@
 ﻿// --- BASE DE DATOS JSON DE PRODUCTOS LIMPIOS (SIN TACHADOS) ---
 const productosData = [
-            // PARA ALGODÃ“N - REACTIVOS BIFUNCIONALES
+            // PARA ALGODÓN - REACTIVOS BIFUNCIONALES
             { name: "Amarillo Reactivo 160", category: "algodon", classKey: "algodon", subcategory: "Colorantes Reactivos - Bifuncionales" },
             { name: "Amarillo Reactivo 145", category: "algodon", classKey: "algodon", subcategory: "Colorantes Reactivos - Bifuncionales" },
             { name: "Naranja Reactivo 122", category: "algodon", classKey: "algodon", subcategory: "Colorantes Reactivos - Bifuncionales" },
@@ -14,7 +14,7 @@ const productosData = [
             { name: "Negro Reactivo RGB", category: "algodon", classKey: "algodon", subcategory: "Colorantes Reactivos - Bifuncionales" },
             { name: "Negro Reactivo Intenso NS", category: "algodon", classKey: "algodon", subcategory: "Colorantes Reactivos - Bifuncionales" },
 
-            // PARA ALGODÃ“N - MONOCLOROTRIAZINA (HE)
+            // PARA ALGODÓN - MONOCLOROTRIAZINA (HE)
             { name: "Amarillo Reactivo 84", category: "algodon", classKey: "algodon", subcategory: "Colorantes Reactivos - Monoclorotriazina (HE)" },
             { name: "Naranja Reactivo 84", category: "algodon", classKey: "algodon", subcategory: "Colorantes Reactivos - Monoclorotriazina (HE)" },
             { name: "Rojo Reactivo 120", category: "algodon", classKey: "algodon", subcategory: "Colorantes Reactivos - Monoclorotriazina (HE)" },
@@ -23,7 +23,7 @@ const productosData = [
             { name: "Azul Reactivo 198", category: "algodon", classKey: "algodon", subcategory: "Colorantes Reactivos - Monoclorotriazina (HE)" },
             { name: "Azul Reactivo 171", category: "algodon", classKey: "algodon", subcategory: "Colorantes Reactivos - Monoclorotriazina (HE)" },
 
-            // PARA ALGODÃ“N - COLORANTES DIRECTOS
+            // PARA ALGODÓN - COLORANTES DIRECTOS
             { name: "Amarillo Directo Fluo F8G", category: "algodon", classKey: "algodon", subcategory: "Colorantes Directos" },
             { name: "Amarillo Directo 44", category: "algodon", classKey: "algodon", subcategory: "Colorantes Directos" },
             { name: "Amarillo Directo 50", category: "algodon", classKey: "algodon", subcategory: "Colorantes Directos" },
@@ -32,8 +32,8 @@ const productosData = [
             { name: "Rojo Directo 81", category: "algodon", classKey: "algodon", subcategory: "Colorantes Directos" },
             { name: "Rojo Directo 23", category: "algodon", classKey: "algodon", subcategory: "Colorantes Directos" },
             { name: "Rojo Directo 243", category: "algodon", classKey: "algodon", subcategory: "Colorantes Directos" },
-            { name: "Cafe Directo 95", category: "algodon", classKey: "algodon", subcategory: "Colorantes Directos" },
-            { name: "Cafe Directo 2", category: "algodon", classKey: "algodon", subcategory: "Colorantes Directos" },
+            { name: "Café Directo 95", category: "algodon", classKey: "algodon", subcategory: "Colorantes Directos" },
+            { name: "Café Directo 2", category: "algodon", classKey: "algodon", subcategory: "Colorantes Directos" },
             { name: "Verde Directo 1", category: "algodon", classKey: "algodon", subcategory: "Colorantes Directos" },
             { name: "Violeta Directo 51", category: "algodon", classKey: "algodon", subcategory: "Colorantes Directos" },
             { name: "Azul Directo 86", category: "algodon", classKey: "algodon", subcategory: "Colorantes Directos" },
@@ -52,7 +52,7 @@ const productosData = [
             // COLORANTES AL AZUFRE
             { name: "Negro al Azufre", category: "algodon", classKey: "algodon", subcategory: "Colorantes al Azufre" },
 
-            // PARA POLIESTER - DISPERSOS
+            // PARA POLIÉSTER - DISPERSOS
             { name: "Amarillo Disperso Fluo 82", category: "poliester", classKey: "poliester", subcategory: "Colorantes Dispersos" },
             { name: "Amarillo Disperso Fluo 10 G", category: "poliester", classKey: "poliester", subcategory: "Colorantes Dispersos" },
             { name: "Naranja Disperso Fluo", category: "poliester", classKey: "poliester", subcategory: "Colorantes Dispersos" },
@@ -82,7 +82,7 @@ const productosData = [
             { name: "Negro Disperso CC3R", category: "poliester", classKey: "poliester", subcategory: "Colorantes Dispersos" },
             { name: "Negro Disperso NSPG", category: "poliester", classKey: "poliester", subcategory: "Colorantes Dispersos" },
 
-            // PARA POLIESTER - TRANSFER
+            // PARA POLIÉSTER - TRANSFER
             { name: "Amarillo Transfer NS Fluo", category: "poliester", classKey: "poliester", subcategory: "Colorantes para Transfer" },
             { name: "Rosa Transfer NS Fluo", category: "poliester", classKey: "poliester", subcategory: "Colorantes para Transfer" },
             { name: "Amarillo Transfer 4G", category: "poliester", classKey: "poliester", subcategory: "Colorantes para Transfer" },
@@ -93,24 +93,24 @@ const productosData = [
             { name: "Turquesa Transfer BP", category: "poliester", classKey: "poliester", subcategory: "Colorantes para Transfer" },
             { name: "Negro Transfer NST", category: "poliester", classKey: "poliester", subcategory: "Colorantes para Transfer" },
 
-            // COLORANTES ACIDOS
-            { name: "Amarillo Ãcido 49", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
-            { name: "Amarillo Ãcido 219", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
-            { name: "Naranja Ãcido 67", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
-            { name: "Naranja Ãcido 156", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
-            { name: "Rojo Ãcido 52", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
-            { name: "Rojo Ãcido NG", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
-            { name: "Rojo Ãcido 151", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
-            { name: "Rojo Ãcido 114", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
-            { name: "Rojo Ãcido 131", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
-            { name: "Rojo Ãcido 249", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
-            { name: "Rojo Ãcido 337", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
-            { name: "Rojo Ãcido 299", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
-            { name: "Azul Ãcido 185", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
-            { name: "Azul Ãcido 324", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
-            { name: "Azul Ãcido 62", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
-            { name: "Azul Ãcido 113", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
-            { name: "Negro Ãcido 194", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ãcidos" },
+            // COLORANTES ÁCIDOS
+            { name: "Amarillo Ácido 49", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
+            { name: "Amarillo Ácido 219", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
+            { name: "Naranja Ácido 67", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
+            { name: "Naranja Ácido 156", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
+            { name: "Rojo Ácido 52", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
+            { name: "Rojo Ácido NG", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
+            { name: "Rojo Ácido 151", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
+            { name: "Rojo Ácido 114", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
+            { name: "Rojo Ácido 131", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
+            { name: "Rojo Ácido 249", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
+            { name: "Rojo Ácido 337", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
+            { name: "Rojo Ácido 299", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
+            { name: "Azul Ácido 185", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
+            { name: "Azul Ácido 324", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
+            { name: "Azul Ácido 62", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
+            { name: "Azul Ácido 113", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
+            { name: "Negro Ácido 194", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos" },
 
             // COLORANTES SOLVENTES
             { name: "Amarillo Solvente Fluo 3G", category: "solventes", classKey: "solventes", subcategory: "Colorantes Solventes" },
@@ -124,10 +124,10 @@ const productosData = [
 
             // PIGMENTOS
             { name: "Amarillo Pigmento Fluo", category: "pigmentos", classKey: "pigmentos", subcategory: "Pigmentos" },
-            { name: "SalmÃ³n Pigmento Fluo", category: "pigmentos", classKey: "pigmentos", subcategory: "Pigmentos" },
+            { name: "Salmón Pigmento Fluo", category: "pigmentos", classKey: "pigmentos", subcategory: "Pigmentos" },
             { name: "Coral Pigmento Fluo", category: "pigmentos", classKey: "pigmentos", subcategory: "Pigmentos" },
             { name: "Rosa Pigmento Fluo", category: "pigmentos", classKey: "pigmentos", subcategory: "Pigmentos" },
-            { name: "LimÃ³n Pigmento Fluo", category: "pigmentos", classKey: "pigmentos", subcategory: "Pigmentos" },
+            { name: "Limón Pigmento Fluo", category: "pigmentos", classKey: "pigmentos", subcategory: "Pigmentos" },
 
             // GLITTERS
             { name: "Glitter Multicolor", category: "glitters", classKey: "glitters", subcategory: "Glitters" },
@@ -137,32 +137,32 @@ const productosData = [
 
             // PRODUCTOS AUXILIARES
             { name: "Alfamilaza", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Enzimas" },
-            { name: "Enzima Ãcida", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Enzimas" },
+            { name: "Enzima Ácida", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Enzimas" },
             { name: "Enzima Neutra", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Enzimas" },
             { name: "Detergente Neutro", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Detergentes" },
             { name: "Detergente Alcalino", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Detergentes" },
             { name: "Betes Clean", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Detergentes" },
             { name: "Humectante", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Humectantes" },
             { name: "Fijador", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Fijadores" },
-            { name: "Base Bloqueador PoliÃ©ster", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Bloqueadores" },
+            { name: "Base Bloqueador Poliéster", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Bloqueadores" },
             { name: "Dispersante para Nylon", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Dispersantes" },
             { name: "Dispersante", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Dispersantes" },
-            { name: "Disp. p/ algodÃ³n (AnotaciÃ³n)", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Dispersantes" },
+            { name: "Disp. p/ algodón (Anotación)", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Dispersantes" },
             { name: "Base Suavizante Miel", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Suavizantes" },
             { name: "Suavizante para Nylon", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Suavizantes" },
             { name: "Silicon", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Suavizantes" },
-            { name: "BÃ­nder", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Otros" },
+            { name: "Bínder", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Otros" },
             { name: "Secuestrante", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Otros" },
-            { name: "Antiespumante (AnotaciÃ³n)", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Otros" },
+            { name: "Antiespumante (Anotación)", category: "auxiliares", classKey: "auxiliares", subcategory: "Auxiliares - Otros" },
 
-            // BLANCOS OPTICOS
-            { name: "White BYX H/C", category: "blancos", classKey: "blancos", subcategory: "Blancos Ã“pticos - Para AlgodÃ³n" },
-            { name: "Ã“ptico Stone 2B", category: "blancos", classKey: "blancos", subcategory: "Blancos Ã“pticos - Para AlgodÃ³n" },
-            { name: "Ã“ptico Abrillantador 2B", category: "blancos", classKey: "blancos", subcategory: "Blancos Ã“pticos - Para AlgodÃ³n" },
-            { name: "White Cotton NS", category: "blancos", classKey: "blancos", subcategory: "Blancos Ã“pticos - Para AlgodÃ³n" },
-            { name: "White BYX NYL H/C", category: "blancos", classKey: "blancos", subcategory: "Blancos Ã“pticos - Para Nylon" },
-            { name: "Abrillantador PET NSN", category: "blancos", classKey: "blancos", subcategory: "Blancos Ã“pticos - Para PoliÃ©ster" },
-            { name: "Abrillantador PET NSB", category: "blancos", classKey: "blancos", subcategory: "Blancos Ã“pticos - Para PoliÃ©ster" },
-            { name: "White OB-1", category: "blancos", classKey: "blancos", subcategory: "Blancos Ã“pticos - Para PlÃ¡stico" }
+            // BLANCOS ÓPTICOS
+            { name: "White BYX H/C", category: "blancos", classKey: "blancos", subcategory: "Blancos Ópticos - Para Algodón" },
+            { name: "Óptico Stone 2B", category: "blancos", classKey: "blancos", subcategory: "Blancos Ópticos - Para Algodón" },
+            { name: "Óptico Abrillantador 2B", category: "blancos", classKey: "blancos", subcategory: "Blancos Ópticos - Para Algodón" },
+            { name: "White Cotton NS", category: "blancos", classKey: "blancos", subcategory: "Blancos Ópticos - Para Algodón" },
+            { name: "White BYX NYL H/C", category: "blancos", classKey: "blancos", subcategory: "Blancos Ópticos - Para Nylon" },
+            { name: "Abrillantador PET NSN", category: "blancos", classKey: "blancos", subcategory: "Blancos Ópticos - Para Poliéster" },
+            { name: "Abrillantador PET NSB", category: "blancos", classKey: "blancos", subcategory: "Blancos Ópticos - Para Poliéster" },
+            { name: "White OB-1", category: "blancos", classKey: "blancos", subcategory: "Blancos Ópticos - Para Plástico" }
         ];
 

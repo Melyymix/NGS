@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos y Colorantes NGS</title>
-
+    <link rel="icon" type="image/png" href="./assets/NGS_logo_3_sin_fondo.png">
     <style>
+        /* --- ESTILOS GENERALES Y VARIABLES --- */
         :root {
             --azul-principal: #0b2f9f;
             --azul-claro: #0846d8;
@@ -35,6 +36,7 @@
             overflow-x: hidden;
         }
 
+        /* --- NAVBAR --- */
         .navbar {
             position: fixed;
             top: 16px;
@@ -57,25 +59,15 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            flex: 0 0 auto;
+            text-decoration: none;
         }
 
-        .logo-placeholder {
-            width: 36px;
-            height: 36px;
-            background:
-                radial-gradient(circle at 50% 52%, #ffffff 0 16%, transparent 17%),
-                conic-gradient(from 15deg, #e3262f 0 34%, #f4c400 34% 68%, #0846d8 68% 100%);
-            border-radius: 50%;
-            border: 2px solid #ffffff;
-            box-shadow: 0 2px 8px rgba(20,24,32,0.18);
-            display: inline-block;
-        }
-
-        .logo-text {
-            font-weight: bold;
-            color: var(--azul-principal);
-            font-size: 1.1rem;
+        .brand-logo {
+            display: block;
+            width: clamp(170px, 22vw, 260px);
+            height: auto;
+            object-fit: contain;
         }
 
         .nav-menu {
@@ -129,6 +121,7 @@
             position: relative;
             display: inline-flex;
             align-items: center;
+            gap: 7px;
             text-decoration: none;
             color: #171923;
             font-weight: 600;
@@ -165,6 +158,27 @@
             transform: scaleX(1);
         }
 
+        .icon-symbols {
+            display: none;
+        }
+
+        .icon {
+            width: 1em;
+            height: 1em;
+            flex: 0 0 auto;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .nav-menu .icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* --- LAYOUT SECCIÓNES --- */
         section {
             padding: 100px 50px 60px 50px;
             min-height: 80vh;
@@ -183,10 +197,12 @@
             font-size: 1.1rem;
         }
 
+        /* --- SECCIÓN INICIO (HERO) --- */
         #inicio {
             background:
-                linear-gradient(90deg, rgba(243,242,236,0.98) 0%, rgba(243,242,236,0.88) 47%, rgba(243,242,236,0.34) 76%),
-                url("./assets/hero-texture.png") right center / cover no-repeat;
+                linear-gradient(90deg, rgba(243,242,236,0.98) 0%, rgba(243,242,236,0.86) 43%, rgba(243,242,236,0.18) 74%),
+                linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04)),
+                url("./assets/fondo.jpg") right center / cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -224,6 +240,10 @@
         }
 
         .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             padding: 13px 28px;
             border-radius: 3px;
             text-decoration: none;
@@ -235,14 +255,29 @@
             transform: translateY(-2px);
         }
 
+        .btn .icon {
+            width: 18px;
+            height: 18px;
+        }
+
         .btn-primary {
-            background-color: var(--azul-claro);
+            background:
+                linear-gradient(135deg, #031a63 0%, #0846d8 46%, #0f5cff 72%, #04267f 100%);
             color: var(--blanco);
-            box-shadow: 0 10px 20px rgba(8,70,216,0.25);
+            border: 1px solid rgba(255,255,255,0.22);
+            box-shadow:
+                0 16px 30px rgba(3,26,99,0.34),
+                0 0 22px rgba(8,70,216,0.28),
+                inset 0 1px 0 rgba(255,255,255,0.26);
         }
 
         .btn-primary:hover {
-            background-color: var(--azul-principal);
+            background:
+                linear-gradient(135deg, #02134c 0%, #0637b4 40%, #0b63ff 76%, #031f72 100%);
+            box-shadow:
+                0 18px 34px rgba(3,26,99,0.42),
+                0 0 28px rgba(8,70,216,0.36),
+                inset 0 1px 0 rgba(255,255,255,0.3);
         }
 
         .btn-secondary {
@@ -252,6 +287,7 @@
             box-shadow: 0 8px 18px rgba(20,24,32,0.08);
         }
 
+        /* --- SECCIÓN EMPRESA --- */
         #empresa {
             background-color: var(--blanco);
             border-top: 1px solid #ebe9e2;
@@ -286,10 +322,32 @@
             box-shadow: 0 10px 28px rgba(20,24,32,0.06);
         }
 
+        .icon-badge {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 14px;
+            border-radius: 10px;
+            background-color: rgba(8,70,216,0.1);
+            color: var(--azul-claro);
+        }
+
+        .icon-badge .icon {
+            width: 22px;
+            height: 22px;
+        }
+
+        .icon-badge-light {
+            background-color: rgba(255,255,255,0.16);
+            color: var(--blanco);
+        }
+
         .f-rojo { background-color: #fff5f5; border-top: 4px solid #e53e3e; }
         .f-amarillo { background-color: #fefcbf; border-top: 4px solid #ecc94b; }
         .f-verde { background-color: #f0fff4; border-top: 4px solid #38a169; }
 
+        /* --- SECCIÓN PRODUCTOS (BUSCADOR Y FILTROS INTERACTIVOS) --- */
         #productos {
             background-color: #f7fafc;
         }
@@ -342,12 +400,12 @@
             transition: all 0.3s;
         }
 
-        .filter-btn.active,
-        .filter-btn:hover {
+        .filter-btn.active, .filter-btn:hover {
             background-color: var(--azul-claro);
             color: var(--blanco);
         }
 
+        /* Contenedor de las tarjetas de productos */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -382,6 +440,7 @@
             width: fit-content;
         }
 
+        /* Colores dinámicos por categoría principal */
         .badge-algodon { background-color: #ebf8ff; color: #2b6cb0; }
         .badge-poliester { background-color: #faf5ff; color: #6b46c1; }
         .badge-acidos { background-color: #fff5f5; color: #c53030; }
@@ -431,6 +490,7 @@
             font-size: 1.2rem;
         }
 
+        /* --- SECCIÓN SERVICIOS --- */
         #servicios {
             background-color: var(--azul-claro);
             color: var(--blanco);
@@ -451,6 +511,23 @@
             border-left: 3px solid var(--amarillo-ngs);
         }
 
+        .service-icon {
+            width: 36px;
+            height: 36px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 14px;
+            border-radius: 8px;
+            background-color: rgba(255,255,255,0.12);
+            color: var(--amarillo-ngs);
+        }
+
+        .service-icon .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* --- SECCIÓN CONTACTO --- */
         #contacto {
             background-color: var(--blanco);
         }
@@ -494,8 +571,7 @@
             font-weight: bold;
         }
 
-        .form-group input,
-        .form-group textarea {
+        .form-group input, .form-group textarea {
             width: 100%;
             padding: 10px;
             border: 1px solid #cbd5e0;
@@ -504,6 +580,10 @@
         }
 
         .btn-wpp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             background-color: var(--whatsapp-color);
             color: white;
             border: none;
@@ -516,10 +596,16 @@
             transition: background-color 0.3s;
         }
 
+        .btn-wpp .icon {
+            width: 20px;
+            height: 20px;
+        }
+
         .btn-wpp:hover {
             background-color: #1ebd54;
         }
 
+        /* --- FOOTER --- */
         footer {
             background-color: #1a202c;
             color: #a0aec0;
@@ -527,69 +613,560 @@
             padding: 20px;
             font-size: 0.9rem;
         }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .navbar {
+                width: calc(100% - 32px);
+                padding: 12px 16px;
+            }
+
+            section {
+                padding: 112px 32px 56px;
+            }
+
+            .grid-trayectoria {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .servicios-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contacto-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .navbar {
+                align-items: center;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 10px;
+                top: 10px;
+                width: calc(100% - 24px);
+                padding: 10px 12px;
+                border-radius: 12px;
+            }
+
+            .logo-container {
+                width: calc(100% - 54px);
+            }
+
+            .brand-logo {
+                width: clamp(145px, 48vw, 190px);
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: calc(100% + 8px);
+                left: 0;
+                width: 100%;
+                gap: 2px;
+                overflow-x: visible;
+                padding: 8px;
+                background-color: rgba(255,255,255,0.98);
+                border: 1px solid rgba(226,232,240,0.95);
+                border-radius: 12px;
+                box-shadow: 0 18px 36px rgba(26,54,93,0.14);
+                backdrop-filter: blur(14px);
+            }
+
+            .nav-menu.open {
+                display: flex;
+            }
+
+            .nav-menu a {
+                display: flex;
+                padding: 11px 12px;
+                border-radius: 8px;
+                background-color: transparent;
+                font-size: 0.9rem;
+            }
+
+            .nav-menu a::after {
+                left: 12px;
+                right: auto;
+                width: 34px;
+                bottom: 6px;
+            }
+
+            section {
+                min-height: auto;
+                padding: 112px 20px 48px;
+                scroll-margin-top: 104px;
+            }
+
+            #inicio {
+                min-height: 100vh;
+                background:
+                    linear-gradient(90deg, rgba(243,242,236,0.96) 0%, rgba(243,242,236,0.84) 62%, rgba(243,242,236,0.32) 100%),
+                    linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04)),
+                    url("./assets/fondo.jpg") center center / cover no-repeat;
+            }
+
+            .hero-content h1 {
+                font-size: clamp(3.1rem, 14vw, 4.8rem);
+            }
+
+            .hero-content p,
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+                line-height: 1.2;
+            }
+
+            .btn-container {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .search-filter-container {
+                padding: 18px;
+            }
+
+            .search-box input {
+                font-size: 1rem;
+                padding: 13px 14px;
+            }
+
+            .filter-tabs {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 6px;
+                scrollbar-width: thin;
+            }
+
+            .filter-btn {
+                flex: 0 0 auto;
+                white-space: nowrap;
+            }
+
+            .products-grid,
+            .features-grid,
+            .servicios-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .navbar {
+                width: calc(100% - 18px);
+                padding: 9px 10px;
+            }
+
+            .brand-logo {
+                width: clamp(132px, 50vw, 168px);
+            }
+
+            section {
+                padding: 106px 16px 42px;
+            }
+
+            .hero-content h1 {
+                font-size: clamp(2.9rem, 13vw, 4rem);
+            }
+
+            h2 {
+                font-size: 1.55rem;
+            }
+
+            .card-azul,
+            .feature-card,
+            .servicio-item {
+                padding: 18px;
+            }
+        }
     </style>
 </head>
-
 <body>
+    <svg class="icon-symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <symbol id="icon-home" viewBox="0 0 24 24">
+            <path d="M3 11.5 12 4l9 7.5"></path>
+            <path d="M5 10.5V20h14v-9.5"></path>
+            <path d="M9.5 20v-5h5v5"></path>
+        </symbol>
+        <symbol id="icon-building" viewBox="0 0 24 24">
+            <rect x="4" y="3" width="16" height="18" rx="2"></rect>
+            <path d="M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01"></path>
+        </symbol>
+        <symbol id="icon-package" viewBox="0 0 24 24">
+            <path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"></path>
+            <path d="m4 7.5 8 4.5 8-4.5"></path>
+            <path d="M12 12v9"></path>
+        </symbol>
+        <symbol id="icon-tools" viewBox="0 0 24 24">
+            <path d="M14.7 6.3a4 4 0 0 0 5 5L10 21l-6-6 9.7-9.7Z"></path>
+            <path d="m5 14 5 5"></path>
+        </symbol>
+        <symbol id="icon-message" viewBox="0 0 24 24">
+            <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"></path>
+        </symbol>
+        <symbol id="icon-send" viewBox="0 0 24 24">
+            <path d="M22 2 11 13"></path>
+            <path d="m22 2-7 20-4-9-9-4 20-7Z"></path>
+        </symbol>
+        <symbol id="icon-catalog" viewBox="0 0 24 24">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5v-13A2.5 2.5 0 0 1 6.5 3Z"></path>
+            <path d="M8 7h8M8 11h6"></path>
+        </symbol>
+        <symbol id="icon-target" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"></circle>
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v4M12 18v4M2 12h4M18 12h4"></path>
+        </symbol>
+        <symbol id="icon-headset" viewBox="0 0 24 24">
+            <path d="M4 13a8 8 0 0 1 16 0"></path>
+            <path d="M4 13v3a2 2 0 0 0 2 2h1v-6H6a2 2 0 0 0-2 2Z"></path>
+            <path d="M20 13v3a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2Z"></path>
+            <path d="M14 21h2a4 4 0 0 0 4-4"></path>
+        </symbol>
+        <symbol id="icon-award" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="5"></circle>
+            <path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"></path>
+        </symbol>
+        <symbol id="icon-layers" viewBox="0 0 24 24">
+            <path d="m12 3 9 5-9 5-9-5 9-5Z"></path>
+            <path d="m3 12 9 5 9-5"></path>
+            <path d="m3 16 9 5 9-5"></path>
+        </symbol>
+        <symbol id="icon-flask" viewBox="0 0 24 24">
+            <path d="M9 3h6"></path>
+            <path d="M10 3v6l-5 9a2 2 0 0 0 1.7 3h10.6A2 2 0 0 0 19 18l-5-9V3"></path>
+            <path d="M8 15h8"></path>
+        </symbol>
+        <symbol id="icon-truck" viewBox="0 0 24 24">
+            <path d="M3 6h12v11H3Z"></path>
+            <path d="M15 10h4l2 3v4h-6Z"></path>
+            <circle cx="7" cy="19" r="2"></circle>
+            <circle cx="17" cy="19" r="2"></circle>
+        </symbol>
+    </svg>
 
     <nav class="navbar">
-        <div class="logo-container">
-            <span class="logo-placeholder"></span>
-            <span class="logo-text">Productos y Colorantes NGS</span>
-        </div>
-
+        <a href="#inicio" class="logo-container" aria-label="Ir al inicio">
+            <img class="brand-logo" src="./assets/NGS_logo_2_sin_fondo.png" alt="Productos y Colorantes NGS">
+        </a>
         <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMenu">
             <span></span>
             <span></span>
             <span></span>
         </button>
-
         <ul class="nav-menu" id="navMenu">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#empresa">Empresa</a></li>
-            <li><a href="#productos">Productos</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#inicio"><svg class="icon" aria-hidden="true"><use href="#icon-home"></use></svg>Inicio</a></li>
+            <li><a href="#empresa"><svg class="icon" aria-hidden="true"><use href="#icon-building"></use></svg>Empresa</a></li>
+            <li><a href="#productos"><svg class="icon" aria-hidden="true"><use href="#icon-package"></use></svg>Productos</a></li>
+            <li><a href="#servicios"><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg>Servicios</a></li>
+            <li><a href="#contacto"><svg class="icon" aria-hidden="true"><use href="#icon-message"></use></svg>Contacto</a></li>
         </ul>
     </nav>
 
     <section id="inicio">
         <div class="hero-content">
             <h1>Colores que <span>compiten</span>, calidad que destaca.</h1>
-
-            <p>
-                Expertos en síntesis química y colorimetría industrial.
-                Transformamos la precisión técnica en soluciones textiles vibrantes.
-            </p>
-
+            <p>Expertos en síntesis química y colorimetría industrial. Transformamos la precisión técnica en soluciones textiles vibrantes.</p>
             <div class="btn-container">
-                <a href="#contacto" class="btn btn-primary">Solicitar cotización</a>
-                <a href="#productos" class="btn btn-secondary">Ver catálogo</a>
+                <a href="#contacto" class="btn btn-primary"><svg class="icon" aria-hidden="true"><use href="#icon-message"></use></svg>Solicitar cotización</a>
+                <a href="#productos" class="btn btn-secondary"><svg class="icon" aria-hidden="true"><use href="#icon-catalog"></use></svg>Ver catálogo</a>
             </div>
         </div>
     </section>
 
     <section id="empresa">
         <h2>Nuestra Trayectoria</h2>
-
         <div class="grid-trayectoria">
             <div>
-                <p>
-                    Con más de tres décadas de experiencia, Productos y Colorantes NGS
-                    se ha consolidado como un referente en la industria química mexicana.
-                    Nuestra filosofía de “Precisión Humana” une el rigor científico con
-                    el compromiso personalizado hacia cada cliente en Nezahualcóyotl y todo el país.
-                </p>
+                <p>Con más de tres décadas de experiencia, Productos y Colorantes NGS se ha consolidado como un referente en la industria química mexicana. Nuestra filosofía de "Precisión Humana" une el rigor científico con el compromiso personalizado hacia cada cliente en Nezahualcóyotl y todo el país.</p>
             </div>
-
             <div class="card-azul">
+                <div class="icon-badge icon-badge-light">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-target"></use></svg>
+                </div>
                 <h3>Igualaciones Precisas</h3>
-                <p>
-                    Tecnología de punta para replicar cualquier tonalidad con exactitud milimétrica.
-                </p>
+                <p>Tecnología de punta para replicar cualquier tonalidad con exactitud milimétrica.</p>
+            </div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card f-rojo">
+                <div class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-headset"></use></svg>
+                </div>
+                <h4>Soporte Técnico</h4>
+                <p>Asesoría especializada en procesos de teñido y acabados químicos.</p>
+            </div>
+            <div class="feature-card f-amarillo">
+                <div class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-award"></use></svg>
+                </div>
+                <h4>Experiencia Comprobada</h4>
+                <p>30 años liderando el mercado con soluciones de alta eficiencia.</p>
+            </div>
+            <div class="feature-card f-verde">
+                <div class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-layers"></use></svg>
+                </div>
+                <h4>Amplio Portafolio</h4>
+                <p>Desde colorantes reactivos hasta auxiliares especializados.</p>
             </div>
         </div>
     </section>
 
+    <section id="productos">
+        <h2>Catálogo de Soluciones</h2>
+        <p class="section-subtitle">Usa el buscador o los botones para filtrar los productos en tiempo real.</p>
+
+        <div class="search-filter-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar por nombre de producto, clave o subcategoría... (ej. Reactivo 160, Directo, Disperso)">
+            </div>
+            
+            <div class="filter-tabs">
+                <button class="filter-btn active" onclick="filterCategory('todos')">Todos</button>
+                <button class="filter-btn" onclick="filterCategory('algodon')">Para Algodón</button>
+                <button class="filter-btn" onclick="filterCategory('poliester')">Para Poliéster</button>
+                <button class="filter-btn" onclick="filterCategory('acidos')">Colorantes Ácidos</button>
+                <button class="filter-btn" onclick="filterCategory('solventes')">Colorantes Solventes</button>
+                <button class="filter-btn" onclick="filterCategory('pigmentos')">Pigmentos</button>
+                <button class="filter-btn" onclick="filterCategory('glitters')">Glitters</button>
+                <button class="filter-btn" onclick="filterCategory('auxiliares')">Auxiliares</button>
+                <button class="filter-btn" onclick="filterCategory('blancos')">Blancos Ópticos</button>
+            </div>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+            </div>
+    </section>
+
+    <section id="servicios">
+        <h2>Servicios Técnicos Especializados</h2>
+        <p class="section-subtitle" style="color: #cbd5e0;">No solo proveemos químicos, entregamos soluciones operativas integrales.</p>
+        
+        <div class="servicios-grid">
+            <div class="servicio-item">
+                <div class="service-icon">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-target"></use></svg>
+                </div>
+                <strong>01. Igualación de color</strong>
+                <p>Desarrollo de matices específicos bajo estándares internacionales de calidad.</p>
+            </div>
+            <div class="servicio-item">
+                <div class="service-icon">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-flask"></use></svg>
+                </div>
+                <strong>02. Laboratorio analítico</strong>
+                <p>Pruebas de solidez, viscosidad y estabilidad química certificadas internamente.</p>
+            </div>
+            <div class="servicio-item">
+                <div class="service-icon">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg>
+                </div>
+                <strong>03. Servicio técnico</strong>
+                <p>Acompañamiento en planta para la optimización de procesos de teñido.</p>
+            </div>
+            <div class="servicio-item">
+                <div class="service-icon">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-truck"></use></svg>
+                </div>
+                <strong>04. Distribución logística</strong>
+                <p>Entregas programadas y urgentes con flota propia en la zona metropolitana.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <div class="contacto-wrapper">
+            <h2>Hablemos de su próximo proyecto</h2>
+            <p class="section-subtitle">Complete los datos y envíe su consulta directo a nuestro WhatsApp de atención.</p>
+
+            <div class="contacto-layout">
+                <form id="wppForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje o Producto de Interés:</label>
+                        <textarea id="mensaje" rows="5" placeholder="Cuéntenos sobre sus necesidades de colorantes o servicios..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-wpp"><svg class="icon" aria-hidden="true"><use href="#icon-send"></use></svg>Enviar Consulta por WhatsApp</button>
+                </form>
+
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.9773960401176!2d-99.0095803!3d19.4133826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e335adc0f5dd%3A0xc4ff776948b1da99!2sLas%20Coronelas%20302%2C%20Benito%20Ju%C3%A1rez%2C%2057000%20Cdad.%20Nezahualc%C3%B3yotl%2C%20M%C3%A9x.!5e0!3m2!1ses-419!2smx!4v1779314990215!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Productos y Colorantes NGS. Todos los derechos reservados. <br> Nezahualcóyotl, Estado de México.</p>
+    </footer>
+
+    <script src="./productos.js"></script>
+    <script>
+        let currentCategory = 'todos';
+
+        // --- FUNCIÓN PARA MOSTRAR LOS PRODUCTOS ---
+        function displayProducts() {
+            const grid = document.getElementById('productsGrid');
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            
+            grid.innerHTML = ''; // Limpiar grilla
+
+            // Filtrar arreglo por categoría y término de búsqueda
+            const filteredProducts = productosData.filter(product => {
+                const matchCategory = (currentCategory === 'todos' || product.category === currentCategory);
+                const matchSearch = product.name.toLowerCase().includes(searchInput) || 
+                                    product.subcategory.toLowerCase().includes(searchInput);
+                return matchCategory && matchSearch;
+            });
+
+            // Validar si existen resultados
+            if(filteredProducts.length === 0) {
+                grid.innerHTML = `<div class="no-results">No se encontraron productos que coincidan con tu búsqueda.</div>`;
+                return;
+            }
+
+            // Construir e inyectar HTML de las tarjetas
+            filteredProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div>
+                        <span class="badge-category badge-${product.classKey}">${getFriendlyCategoryName(product.category)}</span>
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-subcategory">${product.subcategory}</div>
+                    </div>
+                    <a href="#contacto" class="btn-card-quote" onclick="prefillQuote('${product.name}')">Cotizar este producto</a>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Retornar nombres legibles de categorías para los Badges
+        function getFriendlyCategoryName(cat) {
+            const names = {
+                algodon: "Para Algodón",
+                poliester: "Para Poliéster",
+                acidos: "Ácidos",
+                solventes: "Solventes",
+                pigmentos: "Pigmentos",
+                glitters: "Glitters",
+                auxiliares: "Auxiliares",
+                blancos: "Ópticos"
+            };
+            return names[cat] || cat;
+        }
+
+        // Manejar cambio de Tabs de filtrado
+        function filterCategory(category) {
+            currentCategory = category;
+            
+            // Actualizar clase activa en botones
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            displayProducts();
+        }
+
+        // Al dar clic en "Cotizar este producto", autocompleta el formulario de abajo
+        function prefillQuote(productName) {
+            document.getElementById('mensaje').value = `Hola, me interesa solicitar una cotización del siguiente producto: ${productName}.`;
+        }
+
+        // Escucha del buscador interactivo
+        document.getElementById('searchInput').addEventListener('input', displayProducts);
+
+        // Menú hamburguesa en pantallas pequeñas
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', function() {
+            const isOpen = navMenu.classList.toggle('open');
+            menuToggle.classList.toggle('active', isOpen);
+            menuToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                setActiveNavLink(link.getAttribute('href').replace('#', ''));
+                navMenu.classList.remove('open');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        const sections = document.querySelectorAll('section[id]');
+
+        function setActiveNavLink(sectionId) {
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${sectionId}`);
+            });
+        }
+
+        const sectionObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActiveNavLink(entry.target.id);
+                }
+            });
+        }, {
+            rootMargin: '-45% 0px -45% 0px',
+            threshold: 0
+        });
+
+        sections.forEach(section => sectionObserver.observe(section));
+        setActiveNavLink('inicio');
+
+        // Inicializar renderizado al cargar la página
+        window.onload = displayProducts;
+
+
+        // --- MANEJO DEL FORMULARIO DE WHATSAPP ---
+        document.getElementById('wppForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Configura aquí el número de la empresa anteponiendo el código de país (52 para México)
+            const telefonoEmpresa = "525500000000"; 
+
+            const nombre = document.getElementById('nombre').value;
+            const mensaje = document.getElementById('mensaje').value;
+
+            const textoMensaje = `Hola, mi nombre es *${nombre}*. Me comunico desde el sitio web con el siguiente interés:\n\n${mensaje}`;
+            const mensajeCodificado = encodeURIComponent(textoMensaje);
+            const urlWhatsApp = `https://wa.me/${telefonoEmpresa}?text=${mensajeCodificado}`;
+
+            window.open(urlWhatsApp, '_blank');
+        });
+    </script>
 </body>
 </html>
