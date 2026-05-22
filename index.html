@@ -47,6 +47,14 @@
             <path d="M6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5v-13A2.5 2.5 0 0 1 6.5 3Z"></path>
             <path d="M8 7h8M8 11h6"></path>
         </symbol>
+        <symbol id="icon-arrow-up" viewBox="0 0 24 24">
+            <path d="M12 19V5"></path>
+            <path d="m5 12 7-7 7 7"></path>
+        </symbol>
+        <symbol id="icon-x" viewBox="0 0 24 24">
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+        </symbol>
         <symbol id="icon-target" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="9"></circle>
             <circle cx="12" cy="12" r="4"></circle>
@@ -133,7 +141,7 @@
             <div class="carousel-track">
                 <figure class="carousel-slide active">
                     <img src="./assets/carrusel-1.jpeg" alt="Cajas de productos NGS listas para distribución">
-                    <figcaption>Inventario listo para producción</figcaption>
+                    <figcaption>Inventario listo para distribución</figcaption>
                 </figure>
                 <figure class="carousel-slide">
                     <img src="./assets/carrusel-2.jpeg" alt="Equipo de espectrofotometría Datacolor">
@@ -144,16 +152,8 @@
                     <figcaption>Atención cercana y especializada</figcaption>
                 </figure>
                 <figure class="carousel-slide">
-                    <img src="./assets/carrusel-4.jpeg" alt="Placa con logotipo de Productos y Colorantes NGS">
-                    <figcaption>Más de 30 años de experiencia</figcaption>
-                </figure>
-                <figure class="carousel-slide">
                     <img src="./assets/carrusel-5.jpeg" alt="Equipo y materiales de laboratorio textil">
                     <figcaption>Productos del laboratorio</figcaption>
-                </figure>
-                <figure class="carousel-slide">
-                    <img src="./assets/carrusel-6.jpeg" alt="Instalaciones de Productos y Colorantes NGS">
-                    <figcaption>Soluciones textiles a la medida</figcaption>
                 </figure>
                 <figure class="carousel-slide">
                     <img src="./assets/carrusel-7.jpeg" alt="Equipo de laboratorio para pruebas textiles">
@@ -176,8 +176,6 @@
                 <button type="button" aria-label="Mostrar imagen 3"></button>
                 <button type="button" aria-label="Mostrar imagen 4"></button>
                 <button type="button" aria-label="Mostrar imagen 5"></button>
-                <button type="button" aria-label="Mostrar imagen 6"></button>
-                <button type="button" aria-label="Mostrar imagen 7"></button>
             </div>
         </div>
     </section>
@@ -227,7 +225,7 @@
                 </div>
 
                 <div class="feature-description">
-                    <p>Asesoría especializada en procesos de teñido y acabados químicos.</p>
+                    <p>Asesoría especializada en procesos de teñido y acabados textiles.</p>
                 </div>
             </div>
 
@@ -299,10 +297,16 @@
         <div class="category-cards" id="categoryCards" aria-label="Categorías principales del catálogo">
         </div>
 
-        <div class="search-filter-container">
+        <div class="search-filter-container" id="catalogControls">
             <div class="search-box">
                 <input type="text" id="searchInput"
                     placeholder="Buscar por nombre de producto, clave o subcategoría... (ej. Reactivo 160, Directo, Disperso)">
+                <button type="button" class="search-clear-button" id="clearSearchInput" aria-label="Borrar búsqueda"
+                    title="Borrar búsqueda" tabindex="-1" aria-hidden="true">
+                    <svg class="icon" aria-hidden="true">
+                        <use href="#icon-x"></use>
+                    </svg>
+                </button>
             </div>
 
             <div class="filter-tabs">
@@ -318,7 +322,7 @@
             </div>
         </div>
 
-        <div class="catalog-results-bar">
+        <div class="catalog-results-bar" id="products">
             <span id="productsCount">Mostrando productos</span>
             <button type="button" id="collapseProductsBtn">Contraer lista</button>
         </div>
@@ -327,6 +331,13 @@
         </div>
 
         <button type="button" class="load-more-products" id="loadMoreProducts">Ver más productos</button>
+        <button type="button" class="catalog-filter-jump" id="catalogFilterJump" tabindex="-1" aria-hidden="true"
+            aria-label="Volver al buscador y categorías de productos" title="Volver a filtros">
+            <svg class="icon" aria-hidden="true">
+                <use href="#icon-arrow-up"></use>
+            </svg>
+            <span>Filtros</span>
+        </button>
     </section>
 
     <section id="servicios">
@@ -356,7 +367,7 @@
                     </div>
 
                     <div class="value-content">
-                        <h3>Laboratorio de Control</h3>
+                        <h3>Control de Calidad</h3>
                         <p>Cada lote es sometido a rigurosas pruebas de solidez y calidad antes de su entrega.</p>
                     </div>
                 </article>
