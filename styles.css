@@ -33,19 +33,38 @@
   }
 
   .intro-screen {
+      --intro-logo-x: 50.2%;
+      --intro-logo-y: 43.8%;
+      --intro-logo-size: min(50vw, 680px);
+      --intro-logo-offset-x: 0px;
+      --intro-logo-offset-y: -1.5vh;
       position: fixed;
       inset: 0;
       z-index: 5000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: block;
       overflow: hidden;
-      background:
-          radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.98) 0 24%, rgba(255, 255, 255, 0.92) 48%, rgba(244, 242, 236, 0.96) 82%),
-          linear-gradient(180deg, #ffffff 0%, #f5f2ea 100%);
+      background: #f5f2ea;
       opacity: 1;
       visibility: visible;
       transition: opacity 0.85s ease, visibility 0.85s ease;
+  }
+
+  .intro-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+  }
+
+  .intro-bg img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center center;
+      transform: scale(1.04);
+      filter: saturate(1.05) contrast(1.02);
+      animation: introBgReveal 3.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .intro-screen::before,
@@ -58,11 +77,12 @@
 
   .intro-screen::before {
       background:
-          radial-gradient(ellipse at 29% 45%, rgba(244, 196, 0, 0.36), transparent 36%),
-          radial-gradient(ellipse at 67% 35%, rgba(8, 70, 216, 0.31), transparent 38%),
-          radial-gradient(ellipse at 70% 58%, rgba(218, 37, 42, 0.28), transparent 40%);
+          radial-gradient(ellipse at var(--intro-logo-x) var(--intro-logo-y), rgba(68, 56, 40, 0.28), transparent 17%),
+          radial-gradient(ellipse at var(--intro-logo-x) calc(var(--intro-logo-y) - 2%), rgba(255, 255, 255, 0.58), transparent 24%);
       opacity: 0;
-      transform: scale(0.94);
+      z-index: 1;
+      filter: blur(0.6px);
+      transform: scale(0.97) translateX(-2%);
       animation: introBackdrop 3.1s ease forwards;
   }
 
@@ -71,6 +91,7 @@
           linear-gradient(105deg, transparent 0 32%, rgba(255, 255, 255, 0.18) 40%, rgba(255, 255, 255, 0.98) 49%, rgba(255, 255, 255, 0.18) 58%, transparent 68%),
           radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.68), transparent 30%);
       opacity: 0;
+      z-index: 6;
       transform: translateX(-58%) skewX(-12deg);
       mix-blend-mode: screen;
       animation: introLightSweep 3.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -82,19 +103,20 @@
       pointer-events: none;
   }
 
-  .intro-art {
-      position: relative;
+  .intro-logo-mark {
+      position: absolute;
       z-index: 4;
-      width: min(92vw, 1010px);
-      max-height: min(68vh, 640px);
+      left: var(--intro-logo-x);
+      top: var(--intro-logo-y);
+      width: var(--intro-logo-size);
+      max-width: 90vw;
       height: auto;
-      margin-top: -7vh;
       object-fit: contain;
       filter:
-          drop-shadow(0 30px 40px rgba(20, 24, 32, 0.28))
-          drop-shadow(0 0 64px rgba(255, 255, 255, 0.86));
+          drop-shadow(0 20px 22px rgba(20, 24, 32, 0.28))
+          drop-shadow(0 7px 0 rgba(255, 255, 255, 0.74));
       transform-origin: center;
-      animation: introArtReveal 3.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: introLogoPress 3.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .intro-orbit {
@@ -208,6 +230,42 @@
       color: #a91019;
   }
 
+  @media (orientation: portrait) {
+      .intro-screen {
+          --intro-logo-x: 57%;
+          --intro-logo-y: 52.5%;
+          --intro-logo-size: min(96vw, 560px);
+          --intro-logo-offset-x: -3vw;
+          --intro-logo-offset-y: -2vh;
+      }
+
+      .intro-bg img {
+          object-position: center center;
+      }
+
+      .intro-orbit {
+          left: var(--intro-logo-x);
+          top: var(--intro-logo-y);
+          width: min(118vw, 700px);
+          height: min(72vw, 470px);
+      }
+
+      .intro-copy {
+          bottom: clamp(44px, 8vh, 84px);
+          width: min(94vw, 560px);
+          letter-spacing: 0.02em;
+      }
+
+      .intro-copy p {
+          font-size: clamp(0.76rem, 3.45vw, 1.06rem);
+      }
+
+      .intro-copy span {
+          gap: 0.26em;
+          font-size: clamp(0.74rem, 3.4vw, 1rem);
+      }
+  }
+
   .intro-sparkles span:nth-child(1) {
       left: 22%;
       top: 42%;
@@ -250,10 +308,72 @@
       animation-delay: 0.72s;
   }
 
-  @keyframes introArtReveal {
+  .intro-sink {
+      position: absolute;
+      z-index: 2;
+      left: var(--intro-logo-x);
+      top: var(--intro-logo-y);
+      width: calc(var(--intro-logo-size) * 1.55);
+      height: calc(var(--intro-logo-size) * 0.88);
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+      background:
+          radial-gradient(ellipse at 50% 50%, rgba(58, 50, 38, 0.36) 0 12%, rgba(112, 100, 78, 0.25) 24%, rgba(255, 255, 255, 0.62) 36%, transparent 61%),
+          radial-gradient(ellipse at 44% 38%, rgba(255, 255, 255, 0.82), transparent 37%),
+          radial-gradient(ellipse at 57% 66%, rgba(72, 62, 46, 0.28), transparent 49%);
+      filter: blur(1.4px);
+      transform: translate(-50%, -50%) scale(0.68);
+      animation: introSinkPress 3.08s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .intro-sink::before,
+  .intro-sink::after {
+      content: "";
+      position: absolute;
+      inset: -18% -30%;
+      border-radius: 50%;
+      pointer-events: none;
+  }
+
+  .intro-sink::before {
+      background:
+          linear-gradient(172deg, transparent 0 23%, rgba(120, 110, 92, 0.24) 29%, rgba(255, 255, 255, 0.72) 35%, rgba(118, 108, 90, 0.15) 41%, transparent 53%),
+          linear-gradient(166deg, transparent 0 33%, rgba(255, 255, 255, 0.64) 43%, rgba(122, 112, 94, 0.15) 50%, transparent 63%),
+          linear-gradient(160deg, transparent 0 46%, rgba(110, 100, 84, 0.14) 55%, rgba(255, 255, 255, 0.48) 64%, transparent 76%);
+      opacity: 0.8;
+      transform: translateX(-24%);
+      filter: blur(1.2px);
+      mix-blend-mode: multiply;
+  }
+
+  .intro-sink::after {
+      inset: 18% 2% 6%;
+      background:
+          radial-gradient(ellipse at 50% 52%, transparent 0 33%, rgba(255, 255, 255, 0.68) 43%, rgba(76, 66, 50, 0.28) 54%, transparent 70%);
+      filter: blur(4px);
+      opacity: 0.82;
+  }
+
+  @keyframes introBgReveal {
       0% {
           opacity: 0;
-          transform: scale(0.72) translateY(26px) rotate(-2.5deg);
+          transform: scale(1.09);
+          filter: blur(8px) saturate(0.92) contrast(0.98);
+      }
+
+      34%,
+      100% {
+          opacity: 1;
+          transform: scale(1);
+          filter: blur(0) saturate(1.05) contrast(1.02);
+      }
+  }
+
+  @keyframes introLogoPress {
+      0% {
+          opacity: 0;
+          transform: translate(calc(-50% + var(--intro-logo-offset-x)), calc(-50% + var(--intro-logo-offset-y))) scale(0.62) translateY(18px) rotate(-4deg);
           filter:
               blur(13px)
               drop-shadow(0 24px 30px rgba(20, 24, 32, 0.16))
@@ -262,28 +382,28 @@
 
       28% {
           opacity: 1;
-          transform: scale(1.075) translateY(-2px) rotate(0deg);
+          transform: translate(calc(-50% + var(--intro-logo-offset-x)), calc(-50% + var(--intro-logo-offset-y))) scale(1.08) translateY(-3px) rotate(0deg);
           filter:
               blur(0)
-              drop-shadow(0 34px 48px rgba(20, 24, 32, 0.3))
-              drop-shadow(0 0 82px rgba(255, 255, 255, 0.96));
+              drop-shadow(0 28px 34px rgba(20, 24, 32, 0.34))
+              drop-shadow(0 8px 0 rgba(255, 255, 255, 0.78));
       }
 
       64%,
       100% {
           opacity: 1;
-          transform: scale(1) translateY(0);
+          transform: translate(calc(-50% + var(--intro-logo-offset-x)), calc(-50% + var(--intro-logo-offset-y))) scale(1) translateY(0);
           filter:
               blur(0)
-              drop-shadow(0 30px 40px rgba(20, 24, 32, 0.28))
-              drop-shadow(0 0 64px rgba(255, 255, 255, 0.86));
+              drop-shadow(0 20px 22px rgba(20, 24, 32, 0.28))
+              drop-shadow(0 7px 0 rgba(255, 255, 255, 0.74));
       }
   }
 
   @keyframes introBackdrop {
       0% {
           opacity: 0;
-          transform: scale(0.94);
+          transform: scale(0.97) translateX(-2%);
       }
 
       42% {
@@ -292,7 +412,24 @@
 
       100% {
           opacity: 0.86;
-          transform: scale(1);
+          transform: scale(1.02) translateX(0);
+      }
+  }
+
+  @keyframes introSinkPress {
+      0% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.46);
+      }
+
+      28% {
+          opacity: 0.96;
+          transform: translate(-50%, -50%) scale(1.08);
+      }
+
+      100% {
+          opacity: 0.78;
+          transform: translate(-50%, -50%) scale(1);
       }
   }
 
@@ -385,11 +522,15 @@
       .intro-screen,
       .intro-screen::before,
       .intro-screen::after,
+      .intro-bg img,
       .intro-orbit,
       .intro-sparkles,
       .intro-sparkles span,
+      .intro-sink,
+      .intro-sink::before,
+      .intro-sink::after,
       .intro-copy,
-      .intro-art {
+      .intro-logo-mark {
           animation: none;
           transition-duration: 0.2s;
       }
