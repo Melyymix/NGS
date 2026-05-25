@@ -149,14 +149,16 @@ function prefillQuote(productName) {
         updateQuoteSelectionUI();
         displayProducts();
     } else {
-        document.getElementById('mensaje').value = `Hola, me interesa solicitar una cotización del siguiente producto: ${productName}.`;
+        document.getElementById('mensaje').value = `${QUOTE_MESSAGE_SINGLE_PREFIX} ${productName}.`;
     }
 }
 
 let visibleProducts = 12;
 const PRODUCTS_PAGE_SIZE = 12;
 const selectedQuoteProducts = new Map();
-const QUOTE_MESSAGE_PREFIX = 'Hola, me interesa solicitar una cotización de los siguientes productos:';
+const QUOTE_MESSAGE_SINGLE_PREFIX = 'Hola, me interesa solicitar información del siguiente producto:';
+const QUOTE_MESSAGE_MULTI_PREFIX = 'Hola, me interesa solicitar información de los siguientes productos:';
+const QUOTE_MESSAGE_PREFIXES = [QUOTE_MESSAGE_SINGLE_PREFIX, QUOTE_MESSAGE_MULTI_PREFIX];
 
 function getProductKey(product) {
     return `${product.category}::${product.name}::${product.subcategory}`;
@@ -182,11 +184,16 @@ function buildQuoteMessage() {
         return '';
     }
 
+    if (selectedProducts.length === 1) {
+        const [product] = selectedProducts;
+        return `${QUOTE_MESSAGE_SINGLE_PREFIX}\n\n${product.name} - ${product.subcategory}`;
+    }
+
     const productLines = selectedProducts
         .map((product, index) => `${index + 1}. ${product.name} - ${product.subcategory}`)
         .join('\n');
 
-    return `${QUOTE_MESSAGE_PREFIX}\n\n${productLines}`;
+    return `${QUOTE_MESSAGE_MULTI_PREFIX}\n\n${productLines}`;
 }
 
 function ensureQuoteSelectionBar() {
@@ -204,7 +211,7 @@ function ensureQuoteSelectionBar() {
         </div>
         <div class="quote-selection-actions">
             <button type="button" class="quote-selection-clear" id="clearQuoteSelection">Limpiar</button>
-            <button type="button" class="quote-selection-submit" id="submitQuoteSelection">Solicitar cotización</button>
+            <button type="button" class="quote-selection-submit" id="submitQuoteSelection">Solicitar información</button>
         </div>
     `;
 
@@ -231,7 +238,7 @@ function updateQuoteMessage() {
 
     if (messageField && quoteMessage) {
         messageField.value = quoteMessage;
-    } else if (messageField && messageField.value.startsWith(QUOTE_MESSAGE_PREFIX)) {
+    } else if (messageField && QUOTE_MESSAGE_PREFIXES.some(prefix => messageField.value.startsWith(prefix))) {
         messageField.value = '';
     }
 }
@@ -266,21 +273,80 @@ function toggleQuoteProduct(product) {
     displayProducts();
 }
 
+const CATALOG_FILTERS = [
+    { id: 'todos', label: 'Todos', showCard: false, match: () => true },
+    { id: 'directos', label: 'Directos', match: product => normalizeText(product.subcategory).includes('directos') },
+    {
+        id: 'reactivos',
+        label: 'Reactivos',
+        match: product => normalizeText(product.subcategory).includes('reactivos')
+    },
+    { id: 'dispersos', label: 'Dispersos', match: product => normalizeText(product.subcategory).includes('dispersos') },
+    { id: 'acidos', label: 'Ácidos', match: product => product.category === 'acidos' },
+    { id: 'azufre', label: 'Azufre', match: product => normalizeText(product.subcategory).includes('azufre') },
+    { id: 'transfer', label: 'Transfer', match: product => normalizeText(product.subcategory).includes('transfer') },
+    { id: 'solventes', label: 'Solventes', match: product => product.category === 'solventes' },
+    { id: 'pigmentos', label: 'Pigmentos', match: product => product.category === 'pigmentos' },
+    { id: 'glitters', label: 'Glitters', match: product => product.category === 'glitters' },
+    { id: 'auxiliares', label: 'Auxiliares', match: product => product.category === 'auxiliares' },
+    {
+        id: 'blancos',
+        label: '+ Ópticos',
+        badgeLabel: 'Ópticos',
+        match: product => product.category === 'blancos'
+    }
+];
+
+function normalizeText(value) {
+    return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-zA-Z0-9]+/g, ' ')
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, ' ');
+}
+
+function getCatalogFilter(filterId) {
+    return CATALOG_FILTERS.find(filter => filter.id === filterId);
+}
+
+function productMatchesFilter(product, filterId) {
+    const filter = getCatalogFilter(filterId);
+
+    if (filter) {
+        return filter.match(product);
+    }
+
+    return product.category === filterId;
+}
+
+function getProductBadgeLabel(product) {
+    const filter = CATALOG_FILTERS.find(item => item.id !== 'todos' && item.match(product));
+
+    return filter?.badgeLabel || filter?.label || getFriendlyCategoryName(product.category);
+}
+
 function getFilteredProducts() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase().trim();
+    const searchInput = normalizeText(document.getElementById('searchInput').value);
 
     return productosData.filter(product => {
-        const matchCategory = currentCategory === 'todos' || product.category === currentCategory;
-        const matchSearch = product.name.toLowerCase().includes(searchInput) ||
-            product.subcategory.toLowerCase().includes(searchInput);
+        const matchCategory = productMatchesFilter(product, currentCategory);
+        const searchableText = normalizeText([
+            product.name,
+            product.subcategory,
+            getProductBadgeLabel(product),
+            getFriendlyCategoryName(product.category)
+        ].join(' '));
+        const matchSearch = !searchInput || searchableText.includes(searchInput);
         return matchCategory && matchSearch;
     });
 }
 
 function getFriendlyCategoryName(cat) {
     const names = {
-        algodon: "Directos",
-        poliester: "Reactivos",
+        algodon: "Colorantes",
+        poliester: "Colorantes",
         acidos: "Ácidos",
         solventes: "Solventes",
         pigmentos: "Pigmentos",
@@ -337,13 +403,13 @@ function displayProducts() {
         card.innerHTML = `
     <span class="product-selected-mark" aria-hidden="true">✓</span>
     <div>
-        <span class="badge-category badge-${product.classKey}">${escapeHtml(getFriendlyCategoryName(product.category))}</span>
+        <span class="badge-category badge-${product.classKey}">${escapeHtml(getProductBadgeLabel(product))}</span>
         <div class="product-name">${escapeHtml(product.name)}</div>
         <div class="product-subcategory">${escapeHtml(product.subcategory)}</div>
         ${renderColorCode(product)}
     </div>
     <button type="button" class="btn-card-quote" aria-pressed="${isSelected}">
-        ${isSelected ? 'Seleccionado' : 'Agregar a cotización'}
+        ${isSelected ? 'Seleccionado' : 'Más información'}
     </button>
     `;
         card.querySelector('.btn-card-quote').addEventListener('click', () => toggleQuoteProduct(product));
@@ -359,24 +425,25 @@ function displayProducts() {
 function renderCategoryCards() {
     const categoryCards = document.getElementById('categoryCards');
     const catalogTotal = document.getElementById('catalogTotal');
-    const categoryOrder = ['algodon', 'poliester', 'acidos', 'solventes', 'pigmentos', 'glitters', 'auxiliares', 'blancos'];
+    const categoryFilters = CATALOG_FILTERS.filter(filter => filter.showCard !== false);
 
     if (!categoryCards) return;
 
     catalogTotal.textContent = productosData.length;
     categoryCards.innerHTML = '';
 
-    categoryOrder.forEach(category => {
-        const count = productosData.filter(product => product.category === category).length;
+    categoryFilters.forEach(filter => {
+        const count = productosData.filter(product => productMatchesFilter(product, filter.id)).length;
         const card = document.createElement('button');
         card.type = 'button';
-        card.className = `category-card category-${category}`;
+        card.className = `category-card category-${filter.id}`;
+        card.dataset.filterId = filter.id;
         card.innerHTML = `
-            <span>${getFriendlyCategoryName(category)}</span>
+            <span>${filter.cardLabel || filter.label}</span>
             <strong>${count}</strong>
             <small>productos</small>
         `;
-        card.addEventListener('click', () => filterCategory(category));
+        card.addEventListener('click', () => filterCategory(filter.id));
         categoryCards.appendChild(card);
     });
 }
@@ -384,11 +451,12 @@ function renderCategoryCards() {
 function syncCatalogControls() {
     document.querySelectorAll('.filter-btn').forEach(btn => {
         const onclick = btn.getAttribute('onclick') || '';
-        btn.classList.toggle('active', onclick.includes(`'${currentCategory}'`));
+        const filterId = btn.dataset.filterId || onclick.match(/filterCategory\('([^']+)'\)/)?.[1];
+        btn.classList.toggle('active', filterId === currentCategory);
     });
 
     document.querySelectorAll('.category-card').forEach(card => {
-        card.classList.toggle('active', card.classList.contains(`category-${currentCategory}`));
+        card.classList.toggle('active', card.dataset.filterId === currentCategory);
     });
 }
 
@@ -467,14 +535,18 @@ window.addEventListener('scroll', updateCatalogFilterJump, { passive: true });
 window.addEventListener('resize', updateCatalogFilterJump);
 
 searchInput?.addEventListener('input', () => {
+    currentCategory = 'todos';
     visibleProducts = PRODUCTS_PAGE_SIZE;
+    syncCatalogControls();
     displayProducts();
     updateSearchClearButton();
 });
 
 clearSearchInput?.addEventListener('click', () => {
     searchInput.value = '';
+    currentCategory = 'todos';
     visibleProducts = PRODUCTS_PAGE_SIZE;
+    syncCatalogControls();
     displayProducts();
     updateSearchClearButton();
     searchInput.focus();

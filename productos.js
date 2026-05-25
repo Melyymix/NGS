@@ -112,7 +112,7 @@ const productosData = [
     { name: "Azul Ácido 185", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos", hex: "#00478F" },
     { name: "Azul Ácido 324", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos", hex: "#002F75" },
     { name: "Azul Ácido 62", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos", hex: "#003EB3" },
-    { name: "Azul Ácido 113", category: "acidos", classKey: "acidos", subcategory: "Colorantes Acidos", hex: "#09142E" },
+    { name: "Azul Ácido 113", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos", hex: "#09142E" },
     { name: "Negro Ácido 194", category: "acidos", classKey: "acidos", subcategory: "Colorantes Ácidos", hex: "#121419" },
 
     // COLORANTES SOLVENTES

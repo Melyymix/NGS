@@ -158,13 +158,13 @@
 
     <section id="inicio">
         <div class="hero-content">
-            <h1>Colores que compiten, <span>calidad </span> que destaca.</h1>
+            <h1>Con la <span>naturaleza</span> del <span class="red">color</span>.</h1>
             <p>NGS es una empresa líder en la comercialización de colorantes y auxiliares dirigidos a la industria
                 textil.</p>
             <div class="btn-container">
                 <a href="#contacto" class="btn btn-primary"><svg class="icon" aria-hidden="true">
                         <use href="#icon-message"></use>
-                    </svg>Solicitar cotización</a>
+                    </svg>Contáctanos</a>
                 <a href="#productos" class="btn btn-secondary"><svg class="icon" aria-hidden="true">
                         <use href="#icon-catalog"></use>
                     </svg>Ver catálogo</a>
@@ -366,15 +366,28 @@
             </div>
 
             <div class="filter-tabs">
-                <button class="filter-btn active" onclick="filterCategory('todos')">Todos</button>
-                <button class="filter-btn" onclick="filterCategory('algodon')">Directos</button>
-                <button class="filter-btn" onclick="filterCategory('poliester')">Reactivos</button>
-                <button class="filter-btn" onclick="filterCategory('acidos')">Colorantes Ácidos</button>
-                <button class="filter-btn" onclick="filterCategory('solventes')">Colorantes Solventes</button>
-                <button class="filter-btn" onclick="filterCategory('pigmentos')">Pigmentos</button>
-                <button class="filter-btn" onclick="filterCategory('glitters')">Glitters</button>
-                <button class="filter-btn" onclick="filterCategory('auxiliares')">Auxiliares</button>
-                <button class="filter-btn" onclick="filterCategory('blancos')">Blancos Ópticos</button>
+                <button class="filter-btn active" data-filter-id="todos" onclick="filterCategory('todos')">Todos</button>
+                <button class="filter-btn" data-filter-id="directos"
+                    onclick="filterCategory('directos')">Directos</button>
+                <button class="filter-btn" data-filter-id="reactivos"
+                    onclick="filterCategory('reactivos')">Reactivos</button>
+                <button class="filter-btn" data-filter-id="dispersos"
+                    onclick="filterCategory('dispersos')">Dispersos</button>
+                <button class="filter-btn" data-filter-id="acidos" onclick="filterCategory('acidos')">Ácidos</button>
+                <button class="filter-btn" data-filter-id="azufre"
+                    onclick="filterCategory('azufre')">Azufre</button>
+                <button class="filter-btn" data-filter-id="transfer"
+                    onclick="filterCategory('transfer')">Transfer</button>
+                <button class="filter-btn" data-filter-id="solventes"
+                    onclick="filterCategory('solventes')">Solventes</button>
+                <button class="filter-btn" data-filter-id="pigmentos"
+                    onclick="filterCategory('pigmentos')">Pigmentos</button>
+                <button class="filter-btn" data-filter-id="glitters"
+                    onclick="filterCategory('glitters')">Glitters</button>
+                <button class="filter-btn" data-filter-id="auxiliares"
+                    onclick="filterCategory('auxiliares')">Auxiliares</button>
+                <button class="filter-btn" data-filter-id="blancos"
+                    onclick="filterCategory('blancos')">+ Ópticos</button>
             </div>
         </div>
 
@@ -481,7 +494,7 @@
                 <div class="ubicacion-column">
                     <div class="ubicacion-intro">
                         <h2>Ubicación</h2>
-                        <p class="section-subtitle">Visitanos en Las Coronelas 302, Benito Juárez, 57000 Cdad. Nezahualcóyotl, Méx.</p>
+                        <p class="section-subtitle">Visítanos en: Las Coronelas 302, Benito Juárez, 57000 Cdad. Nezahualcóyotl, Méx.</p>
                     </div>
 
                     <div class="map-container">

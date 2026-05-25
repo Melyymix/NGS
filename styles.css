@@ -815,7 +815,11 @@
   }
 
   .hero-content h1 span {
-      color: var(--azul-claro);
+      color: var(--azul-principal);
+  }
+
+  .hero-content h1 span.red {
+      color: #830000;
   }
 
   .hero-content p {
@@ -1455,9 +1459,16 @@
       transition: all 0.3s;
   }
 
-  .btn-card-quote:hover {
-      background-color: var(--azul-claro);
-      color: var(--blanco);
+  .btn-card-quote:active {
+      background-color: rgba(8, 70, 216, 0.1);
+      color: var(--azul-claro);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+      .btn-card-quote:hover {
+          background-color: var(--azul-claro);
+          color: var(--blanco);
+      }
   }
 
   .product-card.selected .btn-card-quote {
@@ -2181,10 +2192,6 @@
       color: var(--azul-principal);
       font-size: clamp(2rem, 3.4vw, 3rem);
       line-height: 1.05;
-  }
-
-  .ubicacion-intro {
-      margin-bottom: 30px;
   }
 
   .contacto-intro .section-subtitle {
