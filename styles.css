@@ -28,6 +28,382 @@
       overflow-x: hidden;
   }
 
+  body.intro-lock {
+      overflow: hidden;
+  }
+
+  .intro-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background:
+          radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.98) 0 24%, rgba(255, 255, 255, 0.92) 48%, rgba(244, 242, 236, 0.96) 82%),
+          linear-gradient(180deg, #ffffff 0%, #f5f2ea 100%);
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.85s ease, visibility 0.85s ease;
+  }
+
+  .intro-screen::before,
+  .intro-screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+  }
+
+  .intro-screen::before {
+      background:
+          radial-gradient(ellipse at 29% 45%, rgba(244, 196, 0, 0.36), transparent 36%),
+          radial-gradient(ellipse at 67% 35%, rgba(8, 70, 216, 0.31), transparent 38%),
+          radial-gradient(ellipse at 70% 58%, rgba(218, 37, 42, 0.28), transparent 40%);
+      opacity: 0;
+      transform: scale(0.94);
+      animation: introBackdrop 3.1s ease forwards;
+  }
+
+  .intro-screen::after {
+      background:
+          linear-gradient(105deg, transparent 0 32%, rgba(255, 255, 255, 0.18) 40%, rgba(255, 255, 255, 0.98) 49%, rgba(255, 255, 255, 0.18) 58%, transparent 68%),
+          radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.68), transparent 30%);
+      opacity: 0;
+      transform: translateX(-58%) skewX(-12deg);
+      mix-blend-mode: screen;
+      animation: introLightSweep 3.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .intro-screen.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+  }
+
+  .intro-art {
+      position: relative;
+      z-index: 4;
+      width: min(92vw, 1010px);
+      max-height: min(68vh, 640px);
+      height: auto;
+      margin-top: -7vh;
+      object-fit: contain;
+      filter:
+          drop-shadow(0 30px 40px rgba(20, 24, 32, 0.28))
+          drop-shadow(0 0 64px rgba(255, 255, 255, 0.86));
+      transform-origin: center;
+      animation: introArtReveal 3.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .intro-orbit {
+      position: absolute;
+      z-index: 1;
+      left: 50%;
+      top: 50%;
+      width: min(86vw, 920px);
+      height: min(42vw, 410px);
+      border-radius: 999px;
+      opacity: 0;
+      filter: blur(18px) saturate(1.22);
+      transform: translate(-50%, -50%) rotate(var(--orbit-angle)) scale(0.72);
+      animation: introOrbit 3.2s ease forwards;
+  }
+
+  .orbit-yellow {
+      --orbit-angle: -16deg;
+      background: radial-gradient(ellipse at 20% 52%, rgba(244, 196, 0, 0.66), transparent 42%);
+      animation-delay: 0.1s;
+  }
+
+  .orbit-blue {
+      --orbit-angle: 9deg;
+      background: radial-gradient(ellipse at 74% 36%, rgba(8, 70, 216, 0.58), transparent 46%);
+      animation-delay: 0.18s;
+  }
+
+  .orbit-red {
+      --orbit-angle: 13deg;
+      background: radial-gradient(ellipse at 75% 62%, rgba(218, 37, 42, 0.52), transparent 46%);
+      animation-delay: 0.26s;
+  }
+
+  .intro-sparkles {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      opacity: 0;
+      animation: sparklesLayer 3s ease forwards;
+  }
+
+  .intro-sparkles span {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 16px currentColor;
+      opacity: 0;
+      animation: sparkleDrift 2.2s ease-in-out forwards;
+  }
+
+  .intro-copy {
+      position: absolute;
+      left: 50%;
+      bottom: clamp(34px, 8vh, 70px);
+      z-index: 5;
+      width: min(90vw, 760px);
+      text-align: center;
+      letter-spacing: 0.08em;
+      opacity: 0;
+      transform: translate(-50%, 18px) scale(0.96);
+      animation: introCopyReveal 3.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .intro-copy p {
+      margin: 0 0 10px;
+      color: #22252c;
+      font-size: clamp(0.95rem, 2.15vw, 1.35rem);
+      font-weight: 900;
+      line-height: 1.2;
+      text-shadow:
+          0 2px 0 rgba(255, 255, 255, 0.98),
+          0 10px 24px rgba(20, 24, 32, 0.18);
+  }
+
+  .intro-copy strong {
+      font-style: italic;
+      font-weight: 950;
+  }
+
+  .intro-copy span {
+      display: inline-flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.34em;
+      font-size: clamp(0.86rem, 1.9vw, 1.22rem);
+      font-weight: 950;
+      line-height: 1.2;
+      text-shadow:
+          0 2px 0 rgba(255, 255, 255, 0.98),
+          0 8px 20px rgba(20, 24, 32, 0.2);
+  }
+
+  .intro-copy b {
+      font: inherit;
+      -webkit-text-stroke: 0.35px rgba(255, 255, 255, 0.75);
+  }
+
+  .quote-gold {
+      color: #b87900;
+  }
+
+  .quote-blue {
+      color: #063fa8;
+  }
+
+  .quote-red {
+      color: #a91019;
+  }
+
+  .intro-sparkles span:nth-child(1) {
+      left: 22%;
+      top: 42%;
+      color: rgba(244, 196, 0, 0.92);
+      animation-delay: 0.28s;
+  }
+
+  .intro-sparkles span:nth-child(2) {
+      left: 33%;
+      top: 34%;
+      color: rgba(244, 196, 0, 0.78);
+      animation-delay: 0.5s;
+  }
+
+  .intro-sparkles span:nth-child(3) {
+      left: 67%;
+      top: 29%;
+      color: rgba(8, 70, 216, 0.82);
+      animation-delay: 0.38s;
+  }
+
+  .intro-sparkles span:nth-child(4) {
+      left: 78%;
+      top: 42%;
+      color: rgba(8, 70, 216, 0.7);
+      animation-delay: 0.62s;
+  }
+
+  .intro-sparkles span:nth-child(5) {
+      left: 70%;
+      top: 60%;
+      color: rgba(218, 37, 42, 0.78);
+      animation-delay: 0.46s;
+  }
+
+  .intro-sparkles span:nth-child(6) {
+      left: 58%;
+      top: 64%;
+      color: rgba(218, 37, 42, 0.7);
+      animation-delay: 0.72s;
+  }
+
+  @keyframes introArtReveal {
+      0% {
+          opacity: 0;
+          transform: scale(0.72) translateY(26px) rotate(-2.5deg);
+          filter:
+              blur(13px)
+              drop-shadow(0 24px 30px rgba(20, 24, 32, 0.16))
+              drop-shadow(0 0 44px rgba(255, 255, 255, 0.6));
+      }
+
+      28% {
+          opacity: 1;
+          transform: scale(1.075) translateY(-2px) rotate(0deg);
+          filter:
+              blur(0)
+              drop-shadow(0 34px 48px rgba(20, 24, 32, 0.3))
+              drop-shadow(0 0 82px rgba(255, 255, 255, 0.96));
+      }
+
+      64%,
+      100% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+          filter:
+              blur(0)
+              drop-shadow(0 30px 40px rgba(20, 24, 32, 0.28))
+              drop-shadow(0 0 64px rgba(255, 255, 255, 0.86));
+      }
+  }
+
+  @keyframes introBackdrop {
+      0% {
+          opacity: 0;
+          transform: scale(0.94);
+      }
+
+      42% {
+          opacity: 1;
+      }
+
+      100% {
+          opacity: 0.86;
+          transform: scale(1);
+      }
+  }
+
+  @keyframes introLightSweep {
+      0%,
+      28% {
+          opacity: 0;
+          transform: translateX(-54%) skewX(-12deg);
+      }
+
+      44% {
+          opacity: 0.95;
+      }
+
+      70%,
+      100% {
+          opacity: 0;
+          transform: translateX(58%) skewX(-12deg);
+      }
+  }
+
+  @keyframes introOrbit {
+      0% {
+          opacity: 0;
+          transform: translate(-50%, -50%) rotate(var(--orbit-angle)) scale(0.66);
+      }
+
+      35% {
+          opacity: 0.9;
+      }
+
+      100% {
+          opacity: 0.62;
+          transform: translate(-50%, -50%) rotate(calc(var(--orbit-angle) + 16deg)) scale(1.2);
+      }
+  }
+
+  @keyframes introCopyReveal {
+      0%,
+      28% {
+          opacity: 0;
+          transform: translate(-50%, 18px) scale(0.96);
+      }
+
+      45% {
+          opacity: 1;
+          transform: translate(-50%, -2px) scale(1.02);
+      }
+
+      100% {
+          opacity: 1;
+          transform: translate(-50%, 0) scale(1);
+      }
+  }
+
+  @keyframes sparklesLayer {
+      0%,
+      16% {
+          opacity: 0;
+      }
+
+      34%,
+      68% {
+          opacity: 1;
+      }
+
+      100% {
+          opacity: 0;
+      }
+  }
+
+  @keyframes sparkleDrift {
+      0% {
+          opacity: 0;
+          transform: translate3d(0, 12px, 0) scale(0.45);
+      }
+
+      38% {
+          opacity: 0.9;
+          transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      100% {
+          opacity: 0;
+          transform: translate3d(18px, -26px, 0) scale(0.2);
+      }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+      .intro-screen,
+      .intro-screen::before,
+      .intro-screen::after,
+      .intro-orbit,
+      .intro-sparkles,
+      .intro-sparkles span,
+      .intro-copy,
+      .intro-art {
+          animation: none;
+          transition-duration: 0.2s;
+      }
+
+      .intro-screen {
+          display: none;
+      }
+
+      body.intro-lock {
+          overflow-x: hidden;
+          overflow-y: auto;
+      }
+  }
+
   /* --- NAVBAR --- */
   .navbar {
       position: fixed;

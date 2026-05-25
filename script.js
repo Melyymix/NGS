@@ -1,6 +1,28 @@
 
 let currentCategory = 'todos';
 
+function initIntro() {
+    const introScreen = document.getElementById('introScreen');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!introScreen || reduceMotion) {
+        return;
+    }
+
+    document.body.classList.add('intro-lock');
+
+    window.setTimeout(() => {
+        introScreen.classList.add('is-hidden');
+        document.body.classList.remove('intro-lock');
+    }, 3200);
+
+    window.setTimeout(() => {
+        introScreen.remove();
+    }, 4200);
+}
+
+document.addEventListener('DOMContentLoaded', initIntro);
+
 // --- FUNCIÓN PARA MOSTRAR LOS PRODUCTOS ---
 function displayProducts() {
     const grid = document.getElementById('productsGrid');
