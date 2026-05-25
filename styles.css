@@ -35,9 +35,9 @@
   .intro-screen {
       --intro-logo-x: 50.2%;
       --intro-logo-y: 43.8%;
-      --intro-logo-size: min(50vw, 680px);
+      --intro-logo-size: min(36vw, 470px);
       --intro-logo-offset-x: 0px;
-      --intro-logo-offset-y: -1.5vh;
+      --intro-logo-offset-y: -0.8vh;
       position: fixed;
       inset: 0;
       z-index: 5000;
@@ -47,6 +47,18 @@
       opacity: 1;
       visibility: visible;
       transition: opacity 0.85s ease, visibility 0.85s ease;
+  }
+
+  .intro-screen:not(.intro-ready) .intro-bg img,
+  .intro-screen:not(.intro-ready)::before,
+  .intro-screen:not(.intro-ready)::after,
+  .intro-screen:not(.intro-ready) .intro-orbit,
+  .intro-screen:not(.intro-ready) .intro-sparkles,
+  .intro-screen:not(.intro-ready) .intro-logo-mark,
+  .intro-screen:not(.intro-ready) .intro-sink,
+  .intro-screen:not(.intro-ready) .intro-copy {
+      animation-play-state: paused;
+      opacity: 0;
   }
 
   .intro-bg {
@@ -62,7 +74,7 @@
       display: block;
       object-fit: cover;
       object-position: center center;
-      transform: scale(1.04);
+      transform: scale(1.02);
       filter: saturate(1.05) contrast(1.02);
       animation: introBgReveal 3.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
@@ -234,13 +246,15 @@
       .intro-screen {
           --intro-logo-x: 57%;
           --intro-logo-y: 52.5%;
-          --intro-logo-size: min(96vw, 560px);
-          --intro-logo-offset-x: -3vw;
-          --intro-logo-offset-y: -2vh;
+          --intro-logo-size: min(70vw, 410px);
+          --intro-logo-offset-x: -0.6vw;
+          --intro-logo-offset-y: -1vh;
       }
 
       .intro-bg img {
           object-position: center center;
+          transform: scale(1.01);
+          filter: saturate(1.08) contrast(1.04);
       }
 
       .intro-orbit {
@@ -358,8 +372,8 @@
   @keyframes introBgReveal {
       0% {
           opacity: 0;
-          transform: scale(1.09);
-          filter: blur(8px) saturate(0.92) contrast(0.98);
+          transform: scale(1.035);
+          filter: blur(3px) saturate(0.98) contrast(1);
       }
 
       34%,

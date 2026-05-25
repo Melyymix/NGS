@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos y Colorantes NGS</title>
     <link rel="icon" type="image/png" href="./assets/NGS_logo_3_sin_fondo.png">
+    <link rel="preload" as="image" href="./assets/inicio-horizontal.png" media="(orientation: landscape)">
+    <link rel="preload" as="image" href="./assets/inicio-vertical.png" media="(orientation: portrait)">
+    <link rel="preload" as="image" href="./assets/inicio2.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -91,7 +94,7 @@
     <div class="intro-screen" id="introScreen" aria-hidden="true">
         <picture class="intro-bg">
             <source srcset="./assets/inicio-vertical.png" media="(orientation: portrait)">
-            <img src="./assets/inicio-horizontal.png" alt="">
+            <img src="./assets/inicio-horizontal.png" alt="" fetchpriority="high" decoding="async">
         </picture>
         <div class="intro-orbit orbit-yellow"></div>
         <div class="intro-orbit orbit-blue"></div>

@@ -11,14 +11,41 @@ function initIntro() {
 
     document.body.classList.add('intro-lock');
 
-    window.setTimeout(() => {
-        introScreen.classList.add('is-hidden');
-        document.body.classList.remove('intro-lock');
-    }, 3200);
+    const introImages = Array.from(introScreen.querySelectorAll('img'));
+    const imageReady = image => {
+        if (image.complete && image.naturalWidth > 0) {
+            return Promise.resolve();
+        }
 
-    window.setTimeout(() => {
-        introScreen.remove();
-    }, 4200);
+        if (typeof image.decode === 'function') {
+            return image.decode().catch(() => undefined);
+        }
+
+        return new Promise(resolve => {
+            image.addEventListener('load', resolve, { once: true });
+            image.addEventListener('error', resolve, { once: true });
+        });
+    };
+
+    const readyTimeout = new Promise(resolve => {
+        window.setTimeout(resolve, 4500);
+    });
+
+    Promise.race([
+        Promise.all(introImages.map(imageReady)),
+        readyTimeout
+    ]).then(() => {
+        introScreen.classList.add('intro-ready');
+
+        window.setTimeout(() => {
+            introScreen.classList.add('is-hidden');
+            document.body.classList.remove('intro-lock');
+        }, 3200);
+
+        window.setTimeout(() => {
+            introScreen.remove();
+        }, 4200);
+    });
 }
 
 document.addEventListener('DOMContentLoaded', initIntro);
