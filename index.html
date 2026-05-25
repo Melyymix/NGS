@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos y Colorantes NGS</title>
     <link rel="icon" type="image/png" href="./assets/NGS_logo_3_sin_fondo.png">
-    <link rel="preload" as="image" href="./assets/inicio-horizontal.png" media="(orientation: landscape)">
-    <link rel="preload" as="image" href="./assets/inicio-vertical.png" media="(orientation: portrait)">
-    <link rel="preload" as="image" href="./assets/inicio2.png">
+    <link rel="preload" as="image" href="./assets/inicio-horizontal.png?v=2" media="(orientation: landscape)">
+    <link rel="preload" as="image" href="./assets/inicio-vertical.png?v=2" media="(orientation: portrait)">
+    <link rel="preload" as="image" href="./assets/inicio2.png?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -93,8 +93,8 @@
 
     <div class="intro-screen" id="introScreen" aria-hidden="true">
         <picture class="intro-bg">
-            <source srcset="./assets/inicio-vertical.png" media="(orientation: portrait)">
-            <img src="./assets/inicio-horizontal.png" alt="" fetchpriority="high" decoding="async">
+            <source srcset="./assets/inicio-vertical.png?v=2" media="(orientation: portrait)">
+            <img src="./assets/inicio-horizontal.png?v=2" alt="" fetchpriority="high" decoding="async">
         </picture>
         <div class="intro-orbit orbit-yellow"></div>
         <div class="intro-orbit orbit-blue"></div>
@@ -108,7 +108,7 @@
             <span></span>
         </div>
         <div class="intro-sink" aria-hidden="true"></div>
-        <img src="./assets/inicio2.png" alt="" class="intro-logo-mark">
+        <img src="./assets/inicio2.png?v=2" alt="" class="intro-logo-mark" fetchpriority="high" decoding="async">
         <div class="intro-copy">
             <p>PRODUCTOS Y COLORANTES <strong>NGS</strong> SA DE CV</p>
             <span>
@@ -451,35 +451,44 @@
 
     <section id="contacto">
         <div class="contacto-wrapper">
-            <div class="contacto-intro">
-                <h2>Contáctanos</h2>
-                <p class="section-subtitle">Complete los datos y envíe su consulta directo a nuestro WhatsApp de
-                    atención.</p>
-            </div>
-
             <div class="contacto-layout">
-                <form id="wppForm" class="contacto-form">
-                    <div class="form-group">
-                        <label for="nombre">Nombre Completo:</label>
-                        <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required>
+                <div class="contacto-column">
+                    <div class="contacto-intro">
+                        <h2>Contáctanos</h2>
+                        <p class="section-subtitle">Complete los datos y envíe su consulta directo a nuestro WhatsApp de
+                            atención.</p>
                     </div>
 
-                    <div class="form-group">
-                        <label for="mensaje">Mensaje o Producto de Interés:</label>
-                        <textarea id="mensaje" rows="5"
-                            placeholder="Cuéntenos sobre sus necesidades de colorantes o servicios..."
-                            required></textarea>
+                    <form id="wppForm" class="contacto-form">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo:</label>
+                            <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje o Producto de Interés:</label>
+                            <textarea id="mensaje" rows="5"
+                                placeholder="Cuéntenos sobre sus necesidades de colorantes o servicios..."
+                                required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-wpp"><svg class="icon" aria-hidden="true">
+                                <use href="#icon-send"></use>
+                            </svg>Enviar Consulta por WhatsApp</button>
+                    </form>
+                </div>
+
+                <div class="ubicacion-column">
+                    <div class="ubicacion-intro">
+                        <h2>Ubicación</h2>
+                        <p class="section-subtitle">Visitanos en Las Coronelas 302, Benito Juárez, 57000 Cdad. Nezahualcóyotl, Méx.</p>
                     </div>
 
-                    <button type="submit" class="btn-wpp"><svg class="icon" aria-hidden="true">
-                            <use href="#icon-send"></use>
-                        </svg>Enviar Consulta por WhatsApp</button>
-                </form>
-
-                <div class="map-container">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.9773960401176!2d-99.0095803!3d19.4133826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e335adc0f5dd%3A0xc4ff776948b1da99!2sLas%20Coronelas%20302%2C%20Benito%20Ju%C3%A1rez%2C%2057000%20Cdad.%20Nezahualc%C3%B3yotl%2C%20M%C3%A9x.!5e0!3m2!1ses-419!2smx!4v1779314990215!5m2!1ses-419!2smx"
-                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.9773960401176!2d-99.0095803!3d19.4133826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e335adc0f5dd%3A0xc4ff776948b1da99!2sLas%20Coronelas%20302%2C%20Benito%20Ju%C3%A1rez%2C%2057000%20Cdad.%20Nezahualc%C3%B3yotl%2C%20M%C3%A9x.!5e0!3m2!1ses-419!2smx!4v1779314990215!5m2!1ses-419!2smx"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>
         </div>

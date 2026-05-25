@@ -4,8 +4,30 @@ let currentCategory = 'todos';
 function initIntro() {
     const introScreen = document.getElementById('introScreen');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const introShownKey = 'ngsIntroShown';
+    const storage = {
+        get() {
+            try {
+                return localStorage.getItem(introShownKey);
+            } catch (error) {
+                return null;
+            }
+        },
+        set() {
+            try {
+                localStorage.setItem(introShownKey, 'true');
+            } catch (error) {
+                // Ignore storage restrictions; the intro still works for this visit.
+            }
+        }
+    };
 
     if (!introScreen || reduceMotion) {
+        return;
+    }
+
+    if (storage.get() === 'true') {
+        introScreen.remove();
         return;
     }
 
@@ -36,6 +58,7 @@ function initIntro() {
         readyTimeout
     ]).then(() => {
         introScreen.classList.add('intro-ready');
+        storage.set();
 
         window.setTimeout(() => {
             introScreen.classList.add('is-hidden');
