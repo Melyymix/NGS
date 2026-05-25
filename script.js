@@ -207,8 +207,8 @@ function getFilteredProducts() {
 
 function getFriendlyCategoryName(cat) {
     const names = {
-        algodon: "Para Algodón",
-        poliester: "Para Poliéster",
+        algodon: "Directos",
+        poliester: "Reactivos",
         acidos: "Ácidos",
         solventes: "Solventes",
         pigmentos: "Pigmentos",

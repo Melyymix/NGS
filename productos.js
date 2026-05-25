@@ -13,6 +13,7 @@ const productosData = [
     { name: "Negro Reactivo HFGR", category: "algodon", classKey: "algodon", subcategory: "Colorantes Reactivos - Bifuncionales", hex: "#121316" },
     { name: "Negro Reactivo RGB", category: "algodon", classKey: "algodon", subcategory: "Colorantes Reactivos - Bifuncionales", hex: "#15161A" },
     { name: "Negro Reactivo Intenso NS", category: "algodon", classKey: "algodon", subcategory: "Colorantes Reactivos - Bifuncionales", hex: "#101114" },
+    { name: "Negro Reactivo NG", category: "algodon", classKey: "algodon", subcategory: "Colorantes Reactivos - Bifuncionales", hex: "#101114" },
 
     // PARA ALGODÓN - MONOCLOROTRIAZINA (HE)
     { name: "Amarillo Reactivo 105", category: "algodon", classKey: "algodon", subcategory: "Colorantes Reactivos - Monoclorotriazina (HE)", hex: "#D6D11B" },
