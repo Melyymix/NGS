@@ -327,15 +327,31 @@ function getProductBadgeLabel(product) {
     return filter?.badgeLabel || filter?.label || getFriendlyCategoryName(product.category);
 }
 
+function getReactiveTemperatureTag(product) {
+    const subcategory = normalizeText(product.subcategory);
+
+    if (subcategory.includes('bifuncionales')) {
+        return { label: '60°', type: 'bi' };
+    }
+
+    if (subcategory.includes('monoclorotriazina') || subcategory.includes('monofuncional')) {
+        return { label: '80°', type: 'mono' };
+    }
+
+    return null;
+}
+
 function getFilteredProducts() {
     const searchInput = normalizeText(document.getElementById('searchInput').value);
 
     return productosData.filter(product => {
+        const reactiveTag = getReactiveTemperatureTag(product);
         const matchCategory = productMatchesFilter(product, currentCategory);
         const searchableText = normalizeText([
             product.name,
             product.subcategory,
             getProductBadgeLabel(product),
+            reactiveTag?.label,
             getFriendlyCategoryName(product.category)
         ].join(' '));
         const matchSearch = !searchInput || searchableText.includes(searchInput);
@@ -398,9 +414,11 @@ function displayProducts() {
         const card = document.createElement('div');
         const productKey = getProductKey(product);
         const isSelected = selectedQuoteProducts.has(productKey);
+        const reactiveTag = getReactiveTemperatureTag(product);
 
-        card.className = `product-card${isSelected ? ' selected' : ''}`;
+        card.className = `product-card${isSelected ? ' selected' : ''}${reactiveTag ? ' has-process-tag' : ''}`;
         card.innerHTML = `
+    ${reactiveTag ? `<span class="product-process-tag product-process-${reactiveTag.type}">${escapeHtml(reactiveTag.label)}</span>` : ''}
     <span class="product-selected-mark" aria-hidden="true">✓</span>
     <div>
         <span class="badge-category badge-${product.classKey}">${escapeHtml(getProductBadgeLabel(product))}</span>

@@ -807,7 +807,7 @@
   }
 
   .hero-content h1 {
-      font-size: clamp(3.2rem, 7.6vw, 6.5rem);
+      font-size: clamp(3.2rem, 8.6vw, 6.5rem);
       color: #111318;
       font-weight: 900;
       margin-bottom: 20px;
@@ -1337,6 +1337,42 @@
           inset 0 0 0 1px rgba(8, 70, 216, 0.08);
   }
 
+  .product-card.has-process-tag {
+      padding-top: 56px;
+  }
+
+  .product-process-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 28px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(8, 70, 216, 0.16);
+      background-color: rgba(235, 243, 255, 0.95);
+      color: var(--azul-principal);
+      font-size: 0.76rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 0;
+      box-shadow: 0 10px 20px rgba(8, 70, 216, 0.08);
+  }
+
+  .product-process-mono {
+      border-color: rgba(244, 196, 0, 0.42);
+      background-color: rgba(255, 249, 219, 0.96);
+      color: #6d5100;
+  }
+
+  .product-process-bi {
+      border-color: rgba(8, 70, 216, 0.2);
+      background-color: rgba(235, 243, 255, 0.98);
+      color: var(--azul-principal);
+  }
+
   .product-selected-mark {
       position: absolute;
       top: 14px;
@@ -1354,6 +1390,11 @@
       transform: scale(0.7);
       transition: opacity 0.2s ease, transform 0.2s ease;
       box-shadow: 0 10px 18px rgba(8, 70, 216, 0.28);
+  }
+
+  .product-card.has-process-tag .product-selected-mark {
+      right: auto;
+      left: 14px;
   }
 
   .product-card.selected .product-selected-mark {
@@ -2000,7 +2041,7 @@
       }
 
       .hero-content h1 {
-          font-size: clamp(2.45rem, 9.5vw, 3.7rem);
+          font-size: clamp(2.45rem, 10.5vw, 3.7rem);
       }
 
       .hero-carousel {
@@ -2114,7 +2155,7 @@
       }
 
       .hero-content h1 {
-          font-size: clamp(2.15rem, 9vw, 2.9rem);
+          font-size: clamp(2.15rem, 10vw, 2.9rem);
       }
 
       h2 {
