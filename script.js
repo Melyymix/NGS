@@ -291,7 +291,7 @@ const CATALOG_FILTERS = [
     { id: 'auxiliares', label: 'Auxiliares', match: product => product.category === 'auxiliares' },
     {
         id: 'blancos',
-        label: '+ Ópticos',
+        label: 'Ópticos',
         badgeLabel: 'Ópticos',
         match: product => product.category === 'blancos'
     }
