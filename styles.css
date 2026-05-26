@@ -792,7 +792,7 @@
       background:
           linear-gradient(90deg, rgba(243, 242, 236, 0.98) 0%, rgba(243, 242, 236, 0.86) 43%, rgba(243, 242, 236, 0.18) 74%),
           linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04)),
-          url("./assets/fondo.jpg") right center / cover no-repeat;
+          url("./assets/fondo2.jpg") right center / cover no-repeat;
       display: grid;
       grid-template-columns: minmax(0, 0.95fr) minmax(320px, 430px);
       gap: clamp(28px, 5vw, 72px);
@@ -954,7 +954,7 @@
           background:
               linear-gradient(90deg, rgba(243, 242, 236, 0.98) 0%, rgba(243, 242, 236, 0.86) 43%, rgba(243, 242, 236, 0.18) 74%),
               linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04)),
-              url("./assets/fondo-horizontal.jpg") center center / cover no-repeat;
+              url("./assets/fondo2-horizontal.jpg") center center / cover no-repeat;
       }
   }
 
@@ -1627,7 +1627,7 @@
       left: -8%;
       width: min(58vw, 760px);
       height: 150%;
-      background: url("./assets/fondo-horizontal.jpg") center / cover no-repeat;
+      background: url("./assets/fondo2-horizontal.jpg") center / cover no-repeat;
       opacity: 0.22;
       transform: rotate(-8deg);
       filter: saturate(1.2) contrast(1.05);
@@ -2036,7 +2036,7 @@
           background:
               linear-gradient(90deg, rgba(243, 242, 236, 0.96) 0%, rgba(243, 242, 236, 0.84) 62%, rgba(243, 242, 236, 0.32) 100%),
               linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04)),
-              url("./assets/fondo.jpg") center center / cover no-repeat;
+              url("./assets/fondo2.jpg") center center / cover no-repeat;
           gap: 28px;
       }
 
