@@ -271,12 +271,12 @@
       }
 
       .intro-copy p {
-          font-size: clamp(0.76rem, 3.45vw, 1.06rem);
+          font-size: clamp(0.86rem, 3.85vw, 1.16rem);
       }
 
       .intro-copy span {
           gap: 0.26em;
-          font-size: clamp(0.74rem, 3.4vw, 1rem);
+          font-size: clamp(0.82rem, 3.75vw, 1.08rem);
       }
   }
 
