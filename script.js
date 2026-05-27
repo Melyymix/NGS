@@ -153,12 +153,17 @@ function prefillQuote(productName) {
     }
 }
 
-let visibleProducts = 12;
+const INITIAL_ALL_PRODUCTS = 5;
 const PRODUCTS_PAGE_SIZE = 12;
+let visibleProducts = INITIAL_ALL_PRODUCTS;
 const selectedQuoteProducts = new Map();
 const QUOTE_MESSAGE_SINGLE_PREFIX = 'Hola, me interesa solicitar información del siguiente producto:';
 const QUOTE_MESSAGE_MULTI_PREFIX = 'Hola, me interesa solicitar información de los siguientes productos:';
 const QUOTE_MESSAGE_PREFIXES = [QUOTE_MESSAGE_SINGLE_PREFIX, QUOTE_MESSAGE_MULTI_PREFIX];
+
+function getInitialVisibleProducts(category = currentCategory) {
+    return category === 'todos' ? INITIAL_ALL_PRODUCTS : PRODUCTS_PAGE_SIZE;
+}
 
 function getProductKey(product) {
     return `${product.category}::${product.name}::${product.subcategory}`;
@@ -436,7 +441,7 @@ function displayProducts() {
 
     countLabel.textContent = `Mostrando ${productsToShow.length} de ${filteredProducts.length} productos`;
     loadMoreButton.style.display = productsToShow.length < filteredProducts.length ? 'inline-flex' : 'none';
-    collapseButton.style.display = productsToShow.length > PRODUCTS_PAGE_SIZE ? 'inline-flex' : 'none';
+    collapseButton.style.display = productsToShow.length > getInitialVisibleProducts() ? 'inline-flex' : 'none';
     updateQuoteSelectionUI();
 }
 
@@ -494,7 +499,7 @@ function scrollToCatalogResults() {
 
 function filterCategory(category) {
     currentCategory = category;
-    visibleProducts = PRODUCTS_PAGE_SIZE;
+    visibleProducts = getInitialVisibleProducts(category);
     syncCatalogControls();
     displayProducts();
     window.requestAnimationFrame(scrollToCatalogResults);
@@ -554,7 +559,7 @@ window.addEventListener('resize', updateCatalogFilterJump);
 
 searchInput?.addEventListener('input', () => {
     currentCategory = 'todos';
-    visibleProducts = PRODUCTS_PAGE_SIZE;
+    visibleProducts = getInitialVisibleProducts('todos');
     syncCatalogControls();
     displayProducts();
     updateSearchClearButton();
@@ -563,7 +568,7 @@ searchInput?.addEventListener('input', () => {
 clearSearchInput?.addEventListener('click', () => {
     searchInput.value = '';
     currentCategory = 'todos';
-    visibleProducts = PRODUCTS_PAGE_SIZE;
+    visibleProducts = getInitialVisibleProducts('todos');
     syncCatalogControls();
     displayProducts();
     updateSearchClearButton();
@@ -576,7 +581,7 @@ document.getElementById('loadMoreProducts')?.addEventListener('click', () => {
 });
 
 document.getElementById('collapseProductsBtn')?.addEventListener('click', () => {
-    visibleProducts = PRODUCTS_PAGE_SIZE;
+    visibleProducts = getInitialVisibleProducts();
     displayProducts();
     document.getElementById('productos').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });

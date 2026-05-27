@@ -41,6 +41,9 @@
         <symbol id="icon-message" viewBox="0 0 24 24">
             <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"></path>
         </symbol>
+        <symbol id="icon-phone" viewBox="0 0 24 24">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.5 2.1L8 9.5a16 16 0 0 0 6.5 6.5l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.5.6A2 2 0 0 1 22 16.9Z"></path>
+        </symbol>
         <symbol id="icon-send" viewBox="0 0 24 24">
             <path d="M22 2 11 13"></path>
             <path d="m22 2-7 20-4-9-9-4 20-7Z"></path>
@@ -237,17 +240,23 @@
     <section id="empresa">
         <div class="trayectoria-showcase">
             <div class="trayectoria-copy">
-                <span class="section-kicker">Más de 30 años en la industria textil</span>
+                <span class="section-kicker">Innovación y tradición en el color</span>
                 <h2>Nuestra Trayectoria</h2>
-                <p>En NGS trabajamos con un fuerte compromiso hacia la innovación y la competitividad, ofreciendo
-                    productos que responden a las necesidades actuales de la industria textil. Nuestra experiencia,
-                    atención cercana y enfoque en la mejora continua nos permiten brindar opciones eficientes y
-                    confiables para cada cliente.</p>
-
-                <p>Con más de 30 años de trayectoria, nos enfocamos en la comercialización de colorantes y auxiliares
-                    para la
-                    industria textil, siempre enfocados en ofrecer un servicio de calidad y atención de personalizada.
-                </p>
+                <p>Con más de 30 años de experiencia en la industria textil, en NGS hemos construido relaciones sólidas
+                    y duraderas con nuestros clientes, basadas en la confianza, el conocimiento del sector y el
+                    compromiso con la calidad.
+                    Nos especializamos en la comercialización de colorantes y auxiliares para la industria textil,
+                    ofreciendo un portafolio amplio que incluye colorantes reactivos, directos, dispersos, ácidos, de
+                    azufre, pigmentos, glitters y auxiliares especializados, adaptados a las necesidades de cada proceso
+                    productivo.</p>
+                    
+                    <p>Lo que nos distingue no es solo la variedad de nuestros productos, sino la cercanía con cada
+                    cliente. Contamos con un laboratorio propio en el que realizamos igualaciones de color utilizando
+                    tecnología de espectrofotometría de punta, combinada con el criterio y experiencia de nuestro equipo
+                    técnico, para garantizar resultados precisos y consistentes.
+                    Trabajamos con un enfoque en la mejora continua, evaluando cada lote con pruebas de solidez al
+                    lavado y al frote, y apoyando a nuestros clientes con asesoría especializada en teñido y acabados
+                    textiles. Porque en NGS, el trato cercano y el respaldo técnico van siempre de la mano.</p>
             </div>
             <figure class="trayectoria-photo">
                 <img src="./assets/carrusel-4.jpeg" alt="Placa con el logotipo de Productos y Colorantes NGS">
@@ -366,7 +375,8 @@
             </div>
 
             <div class="filter-tabs">
-                <button class="filter-btn active" data-filter-id="todos" onclick="filterCategory('todos')">Todos</button>
+                <button class="filter-btn active" data-filter-id="todos"
+                    onclick="filterCategory('todos')">Todos</button>
                 <button class="filter-btn" data-filter-id="directos"
                     onclick="filterCategory('directos')">Directos</button>
                 <button class="filter-btn" data-filter-id="reactivos"
@@ -374,8 +384,7 @@
                 <button class="filter-btn" data-filter-id="dispersos"
                     onclick="filterCategory('dispersos')">Dispersos</button>
                 <button class="filter-btn" data-filter-id="acidos" onclick="filterCategory('acidos')">Ácidos</button>
-                <button class="filter-btn" data-filter-id="azufre"
-                    onclick="filterCategory('azufre')">Azufre</button>
+                <button class="filter-btn" data-filter-id="azufre" onclick="filterCategory('azufre')">Azufre</button>
                 <button class="filter-btn" data-filter-id="transfer"
                     onclick="filterCategory('transfer')">Transfer</button>
                 <button class="filter-btn" data-filter-id="solventes"
@@ -386,8 +395,7 @@
                     onclick="filterCategory('glitters')">Glitters</button>
                 <button class="filter-btn" data-filter-id="auxiliares"
                     onclick="filterCategory('auxiliares')">Auxiliares</button>
-                <button class="filter-btn" data-filter-id="blancos"
-                    onclick="filterCategory('blancos')">Ópticos</button>
+                <button class="filter-btn" data-filter-id="blancos" onclick="filterCategory('blancos')">Ópticos</button>
             </div>
         </div>
 
@@ -494,13 +502,40 @@
                 <div class="ubicacion-column">
                     <div class="ubicacion-intro">
                         <h2>Ubicación</h2>
-                        <p class="section-subtitle">Visítanos en: Las Coronelas 302, Benito Juárez, 57000 Cdad. Nezahualcóyotl, Méx.</p>
+                        <p class="section-subtitle">Visítanos en: Las Coronelas 302, Benito Juárez, 57000 Cdad.
+                            Nezahualcóyotl, Méx.</p>
                     </div>
 
                     <div class="map-container">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.9773960401176!2d-99.0095803!3d19.4133826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e335adc0f5dd%3A0xc4ff776948b1da99!2sLas%20Coronelas%20302%2C%20Benito%20Ju%C3%A1rez%2C%2057000%20Cdad.%20Nezahualc%C3%B3yotl%2C%20M%C3%A9x.!5e0!3m2!1ses-419!2smx!4v1779314990215!5m2!1ses-419!2smx"
                             allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contacto-directo" aria-label="Datos directos de contacto">
+                <a class="contacto-method" href="mailto:colorantesngs@prodigy.net.mx">
+                    <svg class="icon" aria-hidden="true">
+                        <use href="#icon-message"></use>
+                    </svg>
+                    <span>
+                        <strong>Correo electrónico</strong>
+                        <small>colorantesngs@prodigy.net.mx</small>
+                    </span>
+                </a>
+
+                <div class="contacto-method contacto-phones">
+                    <svg class="icon" aria-hidden="true">
+                        <use href="#icon-phone"></use>
+                    </svg>
+                    <div>
+                        <strong>Teléfonos</strong>
+                        <div class="contacto-phone-list">
+                            <a href="tel:+525557301034">55 5730 1034</a>
+                            <a href="tel:+525557300514">55 5730 0514</a>
+                            <a href="tel:+525557301602">55 5730 1602</a>
+                        </div>
                     </div>
                 </div>
             </div>

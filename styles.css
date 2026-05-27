@@ -2240,6 +2240,82 @@
       color: #526071;
   }
 
+  .contacto-directo {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+      gap: 12px;
+      margin: 24px 0 0;
+  }
+
+  .contacto-method {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid rgba(8, 70, 216, 0.12);
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.82);
+      color: #1f2a44;
+      text-decoration: none;
+      box-shadow: 0 14px 30px rgba(20, 24, 32, 0.06);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .contacto-method:hover {
+      border-color: rgba(8, 70, 216, 0.28);
+      box-shadow: 0 18px 36px rgba(8, 70, 216, 0.12);
+      transform: translateY(-2px);
+  }
+
+  .contacto-method .icon {
+      width: 20px;
+      height: 20px;
+      color: var(--azul-claro);
+  }
+
+  .contacto-method strong {
+      display: block;
+      color: var(--azul-principal);
+      font-size: 0.92rem;
+      font-weight: 900;
+      line-height: 1.2;
+  }
+
+  .contacto-method small {
+      display: block;
+      margin-top: 3px;
+      color: #526071;
+      font-size: 0.92rem;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+  }
+
+  .contacto-phone-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 9px;
+  }
+
+  .contacto-phone-list a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 9px;
+      border-radius: 999px;
+      background-color: rgba(8, 70, 216, 0.08);
+      color: var(--azul-claro);
+      font-size: 0.88rem;
+      font-weight: 900;
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .contacto-phone-list a:hover {
+      background-color: var(--azul-claro);
+      color: #ffffff;
+  }
+
   .contacto-form {
       position: relative;
       display: flex;
@@ -2397,6 +2473,10 @@
           min-height: auto;
           height: auto;
           padding: 22px;
+      }
+
+      .contacto-directo {
+          grid-template-columns: 1fr;
       }
 
       .map-container {
