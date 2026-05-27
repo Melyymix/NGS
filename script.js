@@ -742,6 +742,86 @@ startCarouselTimer();
 // Inicializar renderizado al cargar la página
 window.onload = initCatalog;
 
+let contactToastTimer;
+
+function getContactToast() {
+    let toast = document.getElementById('contactToast');
+
+    if (toast) return toast;
+
+    toast = document.createElement('div');
+    toast.className = 'contact-toast';
+    toast.id = 'contactToast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    document.body.appendChild(toast);
+
+    return toast;
+}
+
+function fallbackCopyText(value) {
+    const textarea = document.createElement('textarea');
+    textarea.value = value;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'fixed';
+    textarea.style.top = '-999px';
+    textarea.style.left = '-999px';
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    try {
+        document.execCommand('copy');
+    } finally {
+        textarea.remove();
+    }
+}
+
+async function copyContactValue(value) {
+    if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(value);
+        return;
+    }
+
+    fallbackCopyText(value);
+}
+
+function showContactToast(title, value) {
+    const toast = getContactToast();
+
+    toast.innerHTML = `
+        <div>
+            <strong>${escapeHtml(title)}</strong>
+            <span>${escapeHtml(value)}</span>
+        </div>
+    `;
+
+    clearTimeout(contactToastTimer);
+    toast.classList.add('show');
+    contactToastTimer = window.setTimeout(() => {
+        toast.classList.remove('show');
+    }, 2600);
+}
+
+document.querySelectorAll('[data-copy-contact]').forEach(link => {
+    link.addEventListener('click', async event => {
+        event.preventDefault();
+
+        const value = link.dataset.copyContact;
+        const label = link.dataset.copyLabel || 'Dato copiado';
+
+        if (!value) return;
+
+        try {
+            await copyContactValue(value);
+            showContactToast(label, value);
+        } catch (error) {
+            showContactToast('Dato de contacto', value);
+        }
+
+        link.blur();
+    });
+});
+
 
 // --- MANEJO DEL FORMULARIO DE WHATSAPP ---
 document.getElementById('wppForm').addEventListener('submit', function (event) {
