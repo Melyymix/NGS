@@ -682,14 +682,14 @@ function showCarouselSlide(index) {
 
 carouselDots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
-        clearInterval(carouselTimer);
+        clearTimeout(carouselTimer);
         showCarouselSlide(index);
         startCarouselTimer();
     });
 });
 
 function moveCarousel(step) {
-    clearInterval(carouselTimer);
+    clearTimeout(carouselTimer);
     showCarouselSlide(currentSlide + step);
     startCarouselTimer();
 }
@@ -697,13 +697,15 @@ function moveCarousel(step) {
 function startCarouselTimer() {
     if (carouselSlides.length <= 1) return;
 
-    carouselTimer = setInterval(() => {
+    clearTimeout(carouselTimer);
+    carouselTimer = setTimeout(() => {
         showCarouselSlide(currentSlide + 1);
+        startCarouselTimer();
     }, 4500);
 }
 
 function restartCarouselTimer() {
-    clearInterval(carouselTimer);
+    clearTimeout(carouselTimer);
     startCarouselTimer();
 }
 
@@ -716,9 +718,11 @@ carouselNext?.addEventListener('pointerdown', event => event.stopPropagation());
 carouselTrack?.addEventListener('pointerdown', event => {
     if (event.target.closest('.carousel-arrow')) return;
 
+    clearTimeout(carouselTimer);
     isSwipingCarousel = true;
     swipeStartX = event.clientX;
     swipeStartY = event.clientY;
+    carouselTrack.setPointerCapture?.(event.pointerId);
 });
 
 carouselTrack?.addEventListener('pointerup', event => {
@@ -727,14 +731,19 @@ carouselTrack?.addEventListener('pointerup', event => {
     const diffX = event.clientX - swipeStartX;
     const diffY = event.clientY - swipeStartY;
     isSwipingCarousel = false;
+    carouselTrack.releasePointerCapture?.(event.pointerId);
 
     if (Math.abs(diffX) > 48 && Math.abs(diffX) > Math.abs(diffY) * 1.25) {
         moveCarousel(diffX > 0 ? -1 : 1);
+    } else {
+        startCarouselTimer();
     }
 });
 
-carouselTrack?.addEventListener('pointercancel', () => {
+carouselTrack?.addEventListener('pointercancel', event => {
     isSwipingCarousel = false;
+    carouselTrack.releasePointerCapture?.(event.pointerId);
+    startCarouselTimer();
 });
 
 startCarouselTimer();
@@ -768,20 +777,22 @@ function showReview(index) {
 function startReviewsTimer() {
     if (reviewCards.length <= 1) return;
 
-    reviewsTimer = setInterval(() => {
+    clearTimeout(reviewsTimer);
+    reviewsTimer = setTimeout(() => {
         showReview(currentReview + 1);
+        startReviewsTimer();
     }, 5200);
 }
 
 function moveReview(step) {
-    clearInterval(reviewsTimer);
+    clearTimeout(reviewsTimer);
     showReview(currentReview + step);
     startReviewsTimer();
 }
 
 reviewDots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
-        clearInterval(reviewsTimer);
+        clearTimeout(reviewsTimer);
         showReview(index);
         startReviewsTimer();
     });
@@ -791,9 +802,11 @@ reviewsPrev?.addEventListener('click', () => moveReview(-1));
 reviewsNext?.addEventListener('click', () => moveReview(1));
 
 reviewsTrack?.addEventListener('pointerdown', event => {
+    clearTimeout(reviewsTimer);
     isSwipingReviews = true;
     reviewSwipeStartX = event.clientX;
     reviewSwipeStartY = event.clientY;
+    reviewsTrack.setPointerCapture?.(event.pointerId);
 });
 
 reviewsTrack?.addEventListener('pointerup', event => {
@@ -802,14 +815,19 @@ reviewsTrack?.addEventListener('pointerup', event => {
     const diffX = event.clientX - reviewSwipeStartX;
     const diffY = event.clientY - reviewSwipeStartY;
     isSwipingReviews = false;
+    reviewsTrack.releasePointerCapture?.(event.pointerId);
 
     if (Math.abs(diffX) > 48 && Math.abs(diffX) > Math.abs(diffY) * 1.25) {
         moveReview(diffX > 0 ? -1 : 1);
+    } else {
+        startReviewsTimer();
     }
 });
 
-reviewsTrack?.addEventListener('pointercancel', () => {
+reviewsTrack?.addEventListener('pointercancel', event => {
     isSwipingReviews = false;
+    reviewsTrack.releasePointerCapture?.(event.pointerId);
+    startReviewsTimer();
 });
 
 showReview(0);
