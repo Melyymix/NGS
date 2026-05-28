@@ -739,6 +739,82 @@ carouselTrack?.addEventListener('pointercancel', () => {
 
 startCarouselTimer();
 
+const reviewCards = document.querySelectorAll('.review-card');
+const reviewDots = document.querySelectorAll('.reviews-dots button');
+const reviewsTrack = document.querySelector('.reviews-track');
+const reviewsPrev = document.querySelector('.reviews-prev');
+const reviewsNext = document.querySelector('.reviews-next');
+let currentReview = 0;
+let reviewsTimer;
+let reviewSwipeStartX = 0;
+let reviewSwipeStartY = 0;
+let isSwipingReviews = false;
+
+function showReview(index) {
+    if (!reviewCards.length || !reviewsTrack) return;
+
+    currentReview = (index + reviewCards.length) % reviewCards.length;
+    reviewsTrack.style.transform = `translateX(-${currentReview * 100}%)`;
+
+    reviewCards.forEach((card, cardIndex) => {
+        card.classList.toggle('active', cardIndex === currentReview);
+    });
+
+    reviewDots.forEach((dot, dotIndex) => {
+        dot.classList.toggle('active', dotIndex === currentReview);
+    });
+}
+
+function startReviewsTimer() {
+    if (reviewCards.length <= 1) return;
+
+    reviewsTimer = setInterval(() => {
+        showReview(currentReview + 1);
+    }, 5200);
+}
+
+function moveReview(step) {
+    clearInterval(reviewsTimer);
+    showReview(currentReview + step);
+    startReviewsTimer();
+}
+
+reviewDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        clearInterval(reviewsTimer);
+        showReview(index);
+        startReviewsTimer();
+    });
+});
+
+reviewsPrev?.addEventListener('click', () => moveReview(-1));
+reviewsNext?.addEventListener('click', () => moveReview(1));
+
+reviewsTrack?.addEventListener('pointerdown', event => {
+    isSwipingReviews = true;
+    reviewSwipeStartX = event.clientX;
+    reviewSwipeStartY = event.clientY;
+});
+
+reviewsTrack?.addEventListener('pointerup', event => {
+    if (!isSwipingReviews) return;
+
+    const diffX = event.clientX - reviewSwipeStartX;
+    const diffY = event.clientY - reviewSwipeStartY;
+    isSwipingReviews = false;
+
+    if (Math.abs(diffX) > 48 && Math.abs(diffX) > Math.abs(diffY) * 1.25) {
+        moveReview(diffX > 0 ? -1 : 1);
+    }
+});
+
+reviewsTrack?.addEventListener('pointercancel', () => {
+    isSwipingReviews = false;
+});
+
+showReview(0);
+startReviewsTimer();
+
 // Inicializar renderizado al cargar la página
 window.onload = initCatalog;
 
