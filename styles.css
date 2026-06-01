@@ -1842,11 +1842,6 @@
       line-height: 1.75;
   }
 
-  .why-choose-copy p:last-child {
-      color: #111318;
-      font-weight: 800;
-  }
-
   .why-reviews {
       display: grid;
       align-content: start;
