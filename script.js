@@ -922,7 +922,7 @@ document.getElementById('wppForm').addEventListener('submit', function (event) {
     event.preventDefault();
 
     // Configura aquí el número de la empresa anteponiendo el código de país (52 para México)
-    const telefonoEmpresa = "525545698672";
+    const telefonoEmpresa = "525518336765";
 
     if (selectedQuoteProducts.size) {
         updateQuoteMessage();
