@@ -847,10 +847,9 @@
   .hero-content h1 {
       font-size: clamp(3.2rem, 8.6vw, 6.5rem);
       color: #111318;
-      font-weight: 400;
-      font-family: 'Great Vibes', cursive;
+      font-weight: 800;
       margin-bottom: 20px;
-      line-height: 0.98;
+      line-height: 1.05;
   }
 
   .hero-content h1 span {
