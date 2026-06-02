@@ -357,10 +357,29 @@ function getFriendlyCategoryName(cat) {
 
 function renderColorCode(product) {
     const hiddenCategories = ['auxiliares', 'blancos'];
+
+    if (hiddenCategories.includes(product.category)) {
+        return '';
+    }
+
+    if (product.category === 'glitters') {
+        let imageUrl = '';
+        if (product.name.includes('Multicolor')) imageUrl = 'multicolor.jpeg';
+        else if (product.name.includes('Plata')) imageUrl = 'plata.jpeg';
+        else if (product.name.includes('Dorado')) imageUrl = 'dorado.jpeg';
+        else if (product.name.includes('Rosa')) imageUrl = 'rosa.jpeg';
+        
+        return `
+        <div class="product-color-code" aria-label="Muestra de glitter">
+            <span class="color-swatch" style="background-image: url('./assets/${imageUrl}'); background-position: center; background-repeat: no-repeat;" aria-hidden="true"></span>
+        </div>
+        `;
+    }
+
     const hex = product.hex || '';
     const isValidHex = /^#([0-9A-F]{3}|[0-9A-F]{6})$/i.test(hex);
 
-    if (hiddenCategories.includes(product.category) || !isValidHex) {
+    if (!isValidHex) {
         return '';
     }
 
@@ -654,6 +673,45 @@ if (companyFeaturesGrid && 'IntersectionObserver' in window) {
 } else {
     companyFeatureCards.forEach(card => card.classList.add('active'));
 }
+
+const valueItems = Array.from(document.querySelectorAll('#servicios .value-item'));
+const valueList = document.querySelector('#servicios .value-list');
+let valueItemsExpanded = false;
+let valueAnimationTimers = [];
+
+function setValueItemsExpanded(expanded) {
+    if (!valueItems.length || valueItemsExpanded === expanded) return;
+
+    valueItemsExpanded = expanded;
+    valueAnimationTimers.forEach(timer => clearTimeout(timer));
+    valueAnimationTimers = [];
+
+    const orderedItems = expanded ? valueItems : [...valueItems].reverse();
+
+    orderedItems.forEach((item, index) => {
+        const timer = setTimeout(() => {
+            item.classList.toggle('active', expanded);
+        }, index * 135);
+
+        valueAnimationTimers.push(timer);
+    });
+}
+
+if (valueList && 'IntersectionObserver' in window) {
+    const valueCardsObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            setValueItemsExpanded(entry.isIntersecting && entry.intersectionRatio >= 0.15);
+        });
+    }, {
+        threshold: [0, 0.15, 0.45],
+        rootMargin: '-8% 0px -14% 0px'
+    });
+
+    valueCardsObserver.observe(valueList);
+} else {
+    valueItems.forEach(item => item.classList.add('active'));
+}
+
 
 const carouselSlides = document.querySelectorAll('.carousel-slide');
 const carouselDots = document.querySelectorAll('.carousel-dots button');
