@@ -1,14 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos y Colorantes NGS</title>
-    <link rel="icon" type="image/svg+xml" href="./assets/ngs_logo_redondeado.svg">
+    <link rel="icon" type="image/png" href="./assets/logo.png">
     <link rel="preload" as="image" href="./assets/inicio-horizontal.png?v=2" media="(orientation: landscape)">
     <link rel="preload" as="image" href="./assets/inicio-vertical.png?v=2" media="(orientation: portrait)">
-    <link rel="preload" as="image" href="./assets/inicio2.png?v=4">
+    <link rel="preload" as="image" href="./assets/logo2.png?v=4">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=5">
+    <link rel="stylesheet" href="./styles.css?v=6">
 </head>
 
 <body>
@@ -122,7 +122,7 @@
             <span></span>
         </div>
         <div class="intro-sink" aria-hidden="true"></div>
-        <img src="./assets/inicio2.png?v=4" alt="" class="intro-logo-mark" fetchpriority="high" decoding="async">
+        <img src="./assets/logo2.png?v=4" alt="" class="intro-logo-mark" fetchpriority="high" decoding="async">
         <div class="intro-copy">
             <p>PRODUCTOS Y COLORANTES <strong>NGS</strong> SA DE CV</p>
             <span class="cursive-quote">
@@ -181,6 +181,13 @@
     </nav>
 
     <section id="inicio">
+        <div class="hero-bg-video-wrapper">
+            <video autoplay muted loop playsinline preload="auto" class="hero-bg-video">
+                <source src="./assets/video-inicio.mp4" type="video/mp4">
+            </video>
+            <div class="hero-bg-overlay"></div>
+        </div>
+
         <div class="hero-content">
             <h1>Con la <span>naturaleza</span> del <span class="red">color</span>.</h1>
             <p>NGS es una empresa líder en la comercialización de colorantes y auxiliares dirigidos a la industria
@@ -192,68 +199,6 @@
                 <a href="#productos" class="btn btn-secondary"><svg class="icon" aria-hidden="true">
                         <use href="#icon-catalog"></use>
                     </svg>Ver catálogo</a>
-            </div>
-        </div>
-
-        <div class="hero-carousel" aria-label="Galería de colorantes NGS">
-            <div class="carousel-track">
-                <figure class="carousel-slide active">
-                    <img src="./assets/carrusel-1.jpeg" alt="Cajas de productos NGS listas para distribución">
-                    <figcaption>Inventario listo para distribución</figcaption>
-                </figure>
-                <figure class="carousel-slide">
-                    <img src="./assets/carrusel-2.jpeg" alt="Equipo de espectrofotometría Datacolor">
-                    <figcaption>Espectrofotómetro</figcaption>
-                </figure>
-                <figure class="carousel-slide">
-                    <img src="./assets/carrusel-3.jpeg" alt="Área de trabajo de Productos y Colorantes NGS">
-                    <figcaption>Oficina Central - Recepción</figcaption>
-                </figure>
-                <figure class="carousel-slide">
-                    <img src="./assets/carrusel-5.jpeg" alt="Equipo y materiales de laboratorio textil">
-                    <figcaption>Productos del laboratorio</figcaption>
-                </figure>
-                <figure class="carousel-slide">
-                    <img src="./assets/carrusel-6.jpeg" alt="Transporte">
-                    <figcaption>Transporte NGS</figcaption>
-                </figure>
-                <figure class="carousel-slide">
-                    <img src="./assets/carrusel-7.jpeg" alt="Equipo de laboratorio para pruebas textiles">
-                    <figcaption>Máquina de tintura a infrarrojo</figcaption>
-                </figure>
-                <figure class="carousel-slide">
-                    <img src="./assets/carrusel-8.jpeg" alt="Equipo de laboratorio">
-                    <figcaption>Laboratorio</figcaption>
-                </figure>
-                <figure class="carousel-slide">
-                    <img src="./assets/carrusel-9.jpeg" alt="Termofijado">
-                    <figcaption>Máquina de Termofijado</figcaption>
-                </figure>
-                <figure class="carousel-slide">
-                    <img src="./assets/carrusel-10.jpeg" alt="Termofijado">
-                    <figcaption>Foulard</figcaption>
-                </figure>
-                <button type="button" class="carousel-arrow carousel-prev" aria-label="Imagen anterior">
-                    <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
-                        <path d="m15 18-6-6 6-6"></path>
-                    </svg>
-                </button>
-                <button type="button" class="carousel-arrow carousel-next" aria-label="Imagen siguiente">
-                    <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
-                        <path d="m9 18 6-6-6-6"></path>
-                    </svg>
-                </button>
-            </div>
-            <div class="carousel-dots" aria-label="Controles del carrusel">
-                <button type="button" class="active" aria-label="Mostrar imagen 1"></button>
-                <button type="button" aria-label="Mostrar imagen 2"></button>
-                <button type="button" aria-label="Mostrar imagen 3"></button>
-                <button type="button" aria-label="Mostrar imagen 4"></button>
-                <button type="button" aria-label="Mostrar imagen 5"></button>
-                <button type="button" aria-label="Mostrar imagen 6"></button>
-                <button type="button" aria-label="Mostrar imagen 7"></button>
-                <button type="button" aria-label="Mostrar imagen 8"></button>
-                <button type="button" aria-label="Mostrar imagen 9"></button>
             </div>
         </div>
     </section>
@@ -364,6 +309,91 @@
                     <p>Incorporación de nuevas alternativas alineadas con la evolución de la industria textil.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="infraestructura">
+        <span class="section-kicker">Instalaciones de primer nivel</span>
+        <h2>Nuestra Infraestructura</h2>
+        <p class="section-subtitle">Conoce de cerca nuestras oficinas, laboratorios de teñido, control de calidad y flota de distribución.</p>
+        
+        <div class="carousel-container">
+            <button type="button" class="carousel-btn prev" aria-label="Imagen anterior">&#10094;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <div class="carousel-item" data-index="0">
+                        <img src="./assets/carrusel-1.jpeg" alt="Cajas de productos NGS listas para distribución" loading="lazy">
+                        <div class="carousel-item-info">
+                            <h3>Centro de Distribución</h3>
+                            <p>Inventario listo para distribución</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-index="1">
+                        <img src="./assets/carrusel-2.jpeg" alt="Equipo de espectrofotometría Datacolor" loading="lazy">
+                        <div class="carousel-item-info">
+                            <h3>Espectrofotómetro</h3>
+                            <p>Equipo de espectrofotometría Datacolor</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-index="2">
+                        <img src="./assets/carrusel-3.jpeg" alt="Área de trabajo de Productos y Colorantes NGS" loading="lazy">
+                        <div class="carousel-item-info">
+                            <h3>Oficina Central</h3>
+                            <p>Recepción y área administrativa</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-index="3">
+                        <img src="./assets/carrusel-5.jpeg" alt="Equipo y materiales de laboratorio textil" loading="lazy">
+                        <div class="carousel-item-info">
+                            <h3>Control de Calidad</h3>
+                            <p>Materiales y reactivos de laboratorio</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-index="4">
+                        <img src="./assets/carrusel-6.jpeg" alt="Transporte" loading="lazy">
+                        <div class="carousel-item-info">
+                            <h3>Logística</h3>
+                            <p>Flotilla de distribución propia</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-index="5">
+                        <img src="./assets/carrusel-7.jpeg" alt="Equipo de laboratorio para pruebas textiles" loading="lazy">
+                        <div class="carousel-item-info">
+                            <h3>Máquina de Tintura</h3>
+                            <p>Máquina de teñido a infrarrojo</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-index="6">
+                        <img src="./assets/carrusel-8.jpeg" alt="Equipo de laboratorio" loading="lazy">
+                        <div class="carousel-item-info">
+                            <h3>Laboratorio</h3>
+                            <p>Pruebas físicas y solidez</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-index="7">
+                        <img src="./assets/carrusel-9.jpeg" alt="Termofijado" loading="lazy">
+                        <div class="carousel-item-info">
+                            <h3>Termofijado</h3>
+                            <p>Máquina de termofijado de muestras</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-index="8">
+                        <img src="./assets/carrusel-10.jpeg" alt="Foulard" loading="lazy">
+                        <div class="carousel-item-info">
+                            <h3>Foulard</h3>
+                            <p>Máquina Foulard de laboratorio</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-index="9">
+                        <img src="./assets/carrusel-4.jpeg" alt="Placa con el logotipo de Productos y Colorantes NGS" loading="lazy">
+                        <div class="carousel-item-info">
+                            <h3>Productos y Colorantes NGS</h3>
+                            <p>Compromiso y calidad garantizada</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="carousel-btn next" aria-label="Siguiente imagen">&#10095;</button>
         </div>
     </section>
 
@@ -724,14 +754,16 @@
     <footer>
         <div class="footer-inner">
             <div class="footer-brand">
-                <img src="./assets/ngs_logo_redondeado.svg" alt="Logo NGS">
+                <img src="./assets/logo.png" alt="Logo NGS">
                 <span>Productos y Colorantes NGS</span>
             </div>
             <p>&copy; 2026 Todos los derechos reservados. Nezahualcóyotl, Estado de México.</p>
         </div>
     </footer>
 
+
+
     <script src="./productos.js"></script>
-    <script src="./script.js?v=4"></script>
+    <script src="./script.js?v=6"></script>
 </body>
 </html>

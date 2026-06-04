@@ -713,98 +713,231 @@ if (valueList && 'IntersectionObserver' in window) {
 }
 
 
-const carouselSlides = document.querySelectorAll('.carousel-slide');
-const carouselDots = document.querySelectorAll('.carousel-dots button');
-const carouselTrack = document.querySelector('.carousel-track');
-const carouselPrev = document.querySelector('.carousel-prev');
-const carouselNext = document.querySelector('.carousel-next');
-let currentSlide = 0;
-let carouselTimer;
-let swipeStartX = 0;
-let swipeStartY = 0;
-let isSwipingCarousel = false;
+// Infrastructure Slider Logic
+const infraTrack = document.querySelector('.carousel-track');
+const infraViewport = document.querySelector('.carousel-viewport');
+const infraPrev = document.querySelector('.carousel-btn.prev');
+const infraNext = document.querySelector('.carousel-btn.next');
 
-function showCarouselSlide(index) {
-    if (!carouselSlides.length) return;
+let originalItems = [];
+let allItems = [];
+let activeInfraIndex = 2; // start centered
+const cloneCount = 5;
+let infraTimer;
+let infraWrapResetTimer;
 
-    currentSlide = (index + carouselSlides.length) % carouselSlides.length;
-
-    carouselSlides.forEach((slide, slideIndex) => {
-        slide.classList.toggle('active', slideIndex === currentSlide);
-    });
-
-    carouselDots.forEach((dot, dotIndex) => {
-        dot.classList.toggle('active', dotIndex === currentSlide);
-    });
+function getRealInfraIndex(index) {
+    const total = originalItems.length;
+    if (!total) return 0;
+    return ((index % total) + total) % total;
 }
 
-carouselDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        clearTimeout(carouselTimer);
-        showCarouselSlide(index);
-        startCarouselTimer();
+function getNearestInfraIndex(targetRealIndex) {
+    const total = originalItems.length;
+    if (total <= 1) return targetRealIndex;
+
+    const currentRealIndex = getRealInfraIndex(activeInfraIndex);
+    let step = targetRealIndex - currentRealIndex;
+
+    if (step > total / 2) step -= total;
+    if (step < -total / 2) step += total;
+
+    return activeInfraIndex + step;
+}
+
+function initInfraCarousel() {
+    if (!infraTrack) return;
+    
+    originalItems = Array.from(infraTrack.querySelectorAll('.carousel-item'));
+    if (!originalItems.length) return;
+    
+    // Clone first N items and append to end
+    for (let i = 0; i < cloneCount; i++) {
+        const clone = originalItems[i].cloneNode(true);
+        clone.classList.add('clone');
+        infraTrack.appendChild(clone);
+    }
+    
+    // Clone last N items and prepend to start
+    for (let i = originalItems.length - 1; i >= originalItems.length - cloneCount; i--) {
+        const clone = originalItems[i].cloneNode(true);
+        clone.classList.add('clone');
+        infraTrack.insertBefore(clone, infraTrack.firstChild);
+    }
+    
+    // Get list of all items (including clones)
+    allItems = Array.from(infraTrack.querySelectorAll('.carousel-item'));
+    allItems.forEach(item => {
+        item.addEventListener('click', () => focusInfraItem(item));
     });
+    
+    // Initial position calculation without transition
+    setTimeout(() => {
+        updateInfraCarousel(false);
+    }, 50);
+}
+
+function updateInfraCarousel(animate = true) {
+    if (!infraTrack || !allItems.length || !infraViewport) return;
+
+    clearTimeout(infraWrapResetTimer);
+    
+    // Highlight center item
+    const activeTrackIndex = activeInfraIndex + cloneCount;
+    allItems.forEach((item, index) => {
+        item.classList.toggle('active', index === activeTrackIndex);
+        item.style.zIndex = index === activeTrackIndex ? '2' : '1';
+    });
+    
+    // Calculate center-align offset
+    const activeItem = allItems[activeTrackIndex];
+    if (!activeItem) return;
+    
+    const itemCenter = activeItem.offsetLeft + activeItem.offsetWidth / 2;
+    const translateOffset = (infraViewport.offsetWidth / 2) - itemCenter;
+    
+    // Apply transform with transition
+    infraTrack.style.transition = animate ? 'transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)' : 'none';
+    infraTrack.style.transform = `translateX(${translateOffset}px)`;
+
+    if (animate && (activeInfraIndex >= originalItems.length || activeInfraIndex < 0)) {
+        infraWrapResetTimer = window.setTimeout(normalizeInfraPosition, 680);
+    }
+}
+
+// Transition End listener for instant reset jumps
+infraTrack?.addEventListener('transitionend', (e) => {
+    if (e.target !== infraTrack || e.propertyName !== 'transform') return;
+    
+    normalizeInfraPosition();
 });
 
-function moveCarousel(step) {
-    clearTimeout(carouselTimer);
-    showCarouselSlide(currentSlide + step);
-    startCarouselTimer();
+function normalizeInfraPosition() {
+    if (activeInfraIndex < originalItems.length && activeInfraIndex >= 0) return;
+
+    activeInfraIndex = getRealInfraIndex(activeInfraIndex);
+    jumpToRealItem();
 }
 
-function startCarouselTimer() {
-    if (carouselSlides.length <= 1) return;
+function jumpToRealItem() {
+    if (!infraTrack || !allItems.length || !infraViewport) return;
 
-    clearTimeout(carouselTimer);
-    carouselTimer = setTimeout(() => {
-        showCarouselSlide(currentSlide + 1);
-        startCarouselTimer();
+    clearTimeout(infraWrapResetTimer);
+    
+    infraTrack.style.transition = 'none';
+    
+    // Re-apply active class to match the new index immediately
+    allItems.forEach((item, index) => {
+        item.classList.toggle('active', index === activeInfraIndex + cloneCount);
+        item.style.zIndex = index === activeInfraIndex + cloneCount ? '2' : '1';
+    });
+    
+    const activeItem = allItems[activeInfraIndex + cloneCount];
+    if (!activeItem) return;
+    
+    const itemCenter = activeItem.offsetLeft + activeItem.offsetWidth / 2;
+    const translateOffset = (infraViewport.offsetWidth / 2) - itemCenter;
+    infraTrack.style.transform = `translateX(${translateOffset}px)`;
+}
+
+// Autoplay logic
+function startInfraAutoplay() {
+    clearTimeout(infraTimer);
+    infraTimer = setTimeout(() => {
+        activeInfraIndex++;
+        updateInfraCarousel();
+        startInfraAutoplay();
     }, 4500);
 }
 
-function restartCarouselTimer() {
-    clearTimeout(carouselTimer);
-    startCarouselTimer();
+function resetInfraAutoplay() {
+    clearTimeout(infraTimer);
+    startInfraAutoplay();
 }
 
-carouselPrev?.addEventListener('click', () => moveCarousel(-1));
-carouselNext?.addEventListener('click', () => moveCarousel(1));
-
-carouselPrev?.addEventListener('pointerdown', event => event.stopPropagation());
-carouselNext?.addEventListener('pointerdown', event => event.stopPropagation());
-
-carouselTrack?.addEventListener('pointerdown', event => {
-    if (event.target.closest('.carousel-arrow')) return;
-
-    clearTimeout(carouselTimer);
-    isSwipingCarousel = true;
-    swipeStartX = event.clientX;
-    swipeStartY = event.clientY;
-    carouselTrack.setPointerCapture?.(event.pointerId);
+// Navigation Controls
+infraPrev?.addEventListener('click', () => {
+    activeInfraIndex--;
+    updateInfraCarousel();
+    resetInfraAutoplay();
 });
 
-carouselTrack?.addEventListener('pointerup', event => {
-    if (!isSwipingCarousel) return;
+infraNext?.addEventListener('click', () => {
+    activeInfraIndex++;
+    updateInfraCarousel();
+    resetInfraAutoplay();
+});
 
-    const diffX = event.clientX - swipeStartX;
-    const diffY = event.clientY - swipeStartY;
-    isSwipingCarousel = false;
-    carouselTrack.releasePointerCapture?.(event.pointerId);
+// Drag/Swipe Logic
+let infraStartX = 0;
+let isDraggingInfra = false;
+let infraPressedItem = null;
 
-    if (Math.abs(diffX) > 48 && Math.abs(diffX) > Math.abs(diffY) * 1.25) {
-        moveCarousel(diffX > 0 ? -1 : 1);
-    } else {
-        startCarouselTimer();
+function focusInfraItem(item) {
+    if (!item || !allItems.includes(item)) return;
+
+    const targetRealIndex = Number.parseInt(item.dataset.index, 10);
+    if (Number.isNaN(targetRealIndex)) return;
+
+    activeInfraIndex = getNearestInfraIndex(targetRealIndex);
+    updateInfraCarousel();
+    resetInfraAutoplay();
+}
+
+infraTrack?.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    clearTimeout(infraTimer); // pause autoplay during drag
+    infraStartX = e.clientX;
+    isDraggingInfra = true;
+    infraPressedItem = e.target.closest('.carousel-item');
+    infraTrack.setPointerCapture?.(e.pointerId);
+});
+
+infraTrack?.addEventListener('pointerup', (e) => {
+    if (!isDraggingInfra) return;
+    isDraggingInfra = false;
+    infraTrack.releasePointerCapture?.(e.pointerId);
+    
+    const diffX = e.clientX - infraStartX;
+    const wasDragged = Math.abs(diffX) > 25;
+    
+    if (Math.abs(diffX) > 40) {
+        if (diffX > 0) {
+            activeInfraIndex--;
+        } else {
+            activeInfraIndex++;
+        }
+        updateInfraCarousel();
+        startInfraAutoplay(); // resume autoplay
+        infraPressedItem = null;
+        return;
     }
+
+    if (!wasDragged) {
+        focusInfraItem(infraPressedItem);
+        infraPressedItem = null;
+        return;
+    }
+
+    updateInfraCarousel();
+    startInfraAutoplay(); // resume autoplay
+    infraPressedItem = null;
 });
 
-carouselTrack?.addEventListener('pointercancel', event => {
-    isSwipingCarousel = false;
-    carouselTrack.releasePointerCapture?.(event.pointerId);
-    startCarouselTimer();
+infraTrack?.addEventListener('pointercancel', (e) => {
+    isDraggingInfra = false;
+    infraPressedItem = null;
+    infraTrack.releasePointerCapture?.(e.pointerId);
+    updateInfraCarousel();
+    startInfraAutoplay(); // resume autoplay
 });
 
-startCarouselTimer();
+window.addEventListener('resize', () => {
+    if (!infraTrack) return;
+    updateInfraCarousel(false);
+});
+
+
 
 const reviewCards = document.querySelectorAll('.review-card');
 const reviewDots = document.querySelectorAll('.reviews-dots button');
@@ -892,7 +1025,12 @@ showReview(0);
 startReviewsTimer();
 
 // Inicializar renderizado al cargar la página
-window.onload = initCatalog;
+window.onload = () => {
+    initCatalog();
+    initInfraCarousel();
+    updateInfraCarousel();
+    startInfraAutoplay();
+};
 
 let contactToastTimer;
 

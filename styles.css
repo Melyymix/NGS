@@ -827,21 +827,43 @@
 
   /* --- SECCIÓN INICIO (HERO) --- */
   #inicio {
+      position: relative;
+      overflow: hidden;
       background:
-          linear-gradient(90deg, rgba(243, 242, 236, 0.98) 0%, rgba(243, 242, 236, 0.86) 43%, rgba(243, 242, 236, 0.18) 74%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04)),
+          linear-gradient(rgba(243, 242, 236, 0.42), rgba(243, 242, 236, 0.42)),
           url("./assets/fondo2.jpg") right center / cover no-repeat;
-      display: grid;
-      grid-template-columns: minmax(0, 0.95fr) minmax(360px, 500px);
-      gap: clamp(28px, 5vw, 72px);
+      display: flex;
       align-items: center;
+      justify-content: flex-start;
       min-height: 92vh;
+  }
+
+  .hero-bg-video-wrapper {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+  }
+
+  .hero-bg-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.56;
+  }
+
+  .hero-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(243, 242, 236, 0.9) 0%, rgba(243, 242, 236, 0.68) 43%, rgba(243, 242, 236, 0.04) 82%);
+      z-index: 1;
   }
 
   .hero-content {
       max-width: 760px;
       position: relative;
-      z-index: 1;
+      z-index: 2;
   }
 
   .hero-content h1 {
@@ -869,131 +891,10 @@
       color: #252936;
   }
 
-  .hero-carousel {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 500px;
-      justify-self: end;
-      padding: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.68);
-      border-radius: 8px;
-      background-color: rgba(255, 255, 255, 0.74);
-      box-shadow: 0 22px 48px rgba(20, 24, 32, 0.18);
-      backdrop-filter: blur(12px);
-      transform: translateX(18px);
-  }
-
-  .carousel-track {
-      position: relative;
-      aspect-ratio: 1 / 1.06;
-      overflow: hidden;
-      border-radius: 6px;
-      background-color: #e7eaf0;
-      touch-action: pan-y;
-  }
-
-  .carousel-slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 0.45s ease;
-  }
-
-  .carousel-slide.active {
-      opacity: 1;
-  }
-
-  .carousel-slide img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-  }
-
-  .carousel-slide figcaption {
-      position: absolute;
-      left: 50%;
-      bottom: 12px;
-      transform: translateX(-50%);
-      width: fit-content;
-      padding: 10px 12px;
-      border-radius: 6px;
-      background-color: rgba(255, 255, 255, 0.6);
-      color: #111318;
-      font-size: 0.88rem;
-      font-weight: 800;
-      text-align: center;
-      box-shadow: 0 10px 24px rgba(20, 24, 32, 0.12);
-      white-space: nowrap;
-  }
-
-  .carousel-arrow {
-      position: absolute;
-      top: 50%;
-      z-index: 2;
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(255, 255, 255, 0.72);
-      border-radius: 999px;
-      background-color: rgba(255, 255, 255, 0.32);
-      color: #ffffff;
-      cursor: pointer;
-      transform: translateY(-50%);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 24px rgba(20, 24, 32, 0.18);
-      transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
-  }
-
-  .carousel-arrow:hover {
-      background-color: rgba(255, 255, 255, 0.52);
-      transform: translateY(-50%) scale(1.04);
-  }
-
-  .carousel-prev {
-      left: 12px;
-  }
-
-  .carousel-next {
-      right: 12px;
-  }
-
-  .carousel-arrow .icon {
-      width: 22px;
-      height: 22px;
-      stroke-width: 2.6;
-      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.32));
-  }
-
-  .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      padding-top: 10px;
-  }
-
-  .carousel-dots button {
-      width: 9px;
-      height: 9px;
-      border: 0;
-      border-radius: 999px;
-      background-color: #aeb7c7;
-      cursor: pointer;
-      transition: width 0.2s ease, background-color 0.2s ease;
-  }
-
-  .carousel-dots button.active {
-      width: 24px;
-      background-color: var(--azul-claro);
-  }
-
   @media (min-width: 1180px) {
       #inicio {
           background:
-              linear-gradient(90deg, rgba(243, 242, 236, 0.98) 0%, rgba(243, 242, 236, 0.86) 43%, rgba(243, 242, 236, 0.18) 74%),
-              linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04)),
+              linear-gradient(rgba(243, 242, 236, 0.38), rgba(243, 242, 236, 0.38)),
               url("./assets/fondo2-horizontal.jpg") center center / cover no-repeat;
       }
   }
@@ -1247,6 +1148,209 @@
   .f-amarillo,
   .f-verde {
       background-color: var(--blanco);
+  }
+
+  /* --- SECCIÓN INFRAESTRUCTURA (SLIDER HORIZONTAL CON CENTRO RESALTADO) --- */
+  #infraestructura {
+      background: #ffffff;
+      border-top: 1px solid #ebe9e2;
+      min-height: auto;
+      padding-top: 96px;
+      padding-bottom: 96px;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+  }
+
+  #infraestructura .section-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 700px;
+      padding: 0 20px;
+  }
+
+  .carousel-container {
+      position: relative;
+      width: 100%;
+      margin: 48px auto 0;
+      padding: 20px 0;
+  }
+
+  .carousel-viewport {
+      width: 100%;
+      overflow: visible;
+  }
+
+  .carousel-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      will-change: transform;
+      cursor: grab;
+      touch-action: pan-y;
+  }
+
+  .carousel-track:active {
+      cursor: grabbing;
+  }
+
+  .carousel-item {
+      flex: 0 0 420px;
+      margin: 0 15px;
+      aspect-ratio: 4 / 3;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      cursor: pointer;
+      border: 1px solid rgba(20, 24, 32, 0.06);
+      opacity: 0.4;
+      transform: scale(0.9);
+      filter: grayscale(40%) blur(1px);
+      position: relative;
+      z-index: 1;
+      transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+                  opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+                  filter 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+                  box-shadow 0.6s ease;
+  }
+
+  .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+      transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .carousel-item.active {
+      opacity: 1;
+      transform: scale(1.06);
+      filter: grayscale(0%) blur(0);
+      box-shadow: 0 20px 48px rgba(10, 75, 155, 0.18);
+      border-color: rgba(10, 75, 155, 0.15);
+      z-index: 2;
+  }
+
+  .carousel-item.active:hover img {
+      transform: scale(1.06);
+  }
+
+  .carousel-item-info {
+      position: absolute;
+      inset: auto 0 0 0;
+      background: linear-gradient(to top, rgba(17, 19, 24, 0.92) 0%, rgba(17, 19, 24, 0.4) 75%, rgba(17, 19, 24, 0) 100%);
+      color: #ffffff;
+      padding: 32px 24px 20px;
+      text-align: left;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
+  }
+
+  .carousel-item:hover .carousel-item-info {
+      opacity: 1;
+      transform: translateY(0);
+  }
+
+  .carousel-item.active .carousel-item-info {
+      opacity: 1;
+      transform: translateY(0);
+  }
+
+  .carousel-item-info h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #ffffff;
+  }
+
+  .carousel-item-info p {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0;
+  }
+
+  .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(20, 24, 32, 0.08);
+      color: #111318;
+      font-size: 20px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      transition: background-color 0.25s, transform 0.25s, color 0.25s, box-shadow 0.25s;
+      z-index: 10;
+  }
+
+  .carousel-btn:hover {
+      background-color: var(--azul-principal);
+      color: #ffffff;
+      transform: translateY(-50%) scale(1.06);
+      box-shadow: 0 12px 28px rgba(10, 75, 155, 0.25);
+  }
+
+  .carousel-btn.prev {
+      left: 40px;
+  }
+
+  .carousel-btn.next {
+      right: 40px;
+  }
+
+  @media (max-width: 1024px) {
+      .carousel-btn.prev {
+          left: 20px;
+      }
+      .carousel-btn.next {
+          right: 20px;
+      }
+  }
+
+  @media (max-width: 760px) {
+      #infraestructura {
+          padding-top: 64px;
+          padding-bottom: 64px;
+      }
+      .carousel-container {
+          margin-top: 32px;
+          padding-bottom: 68px;
+      }
+      .carousel-item {
+          flex: 0 0 280px;
+          margin: 0 8px;
+          border-radius: 14px;
+      }
+      .carousel-btn {
+          width: 44px;
+          height: 44px;
+          font-size: 16px;
+          top: auto;
+          bottom: 8px;
+          transform: none;
+      }
+      .carousel-btn:hover {
+          transform: scale(1.06);
+      }
+      .carousel-btn.prev {
+          left: calc(50% - 54px);
+      }
+      .carousel-btn.next {
+          right: calc(50% - 54px);
+      }
+      .carousel-item-info {
+          padding: 20px 16px 12px;
+          opacity: 1;
+          transform: translateY(0);
+          background: linear-gradient(to top, rgba(17, 19, 24, 0.85) 0%, rgba(17, 19, 24, 0.4) 80%, rgba(17, 19, 24, 0) 100%);
+      }
   }
 
   /* --- SECCIÓN PRODUCTOS (BUSCADOR Y FILTROS INTERACTIVOS) --- */
@@ -2203,14 +2307,17 @@
       }
 
       #inicio {
-          grid-template-columns: 1fr;
-          align-content: center;
+          justify-content: center;
       }
 
-      .hero-carousel {
-          justify-self: start;
-          max-width: 380px;
-          transform: none;
+      .hero-content {
+          text-align: center;
+          margin: 0 auto;
+      }
+
+      .hero-content p {
+          margin-left: auto;
+          margin-right: auto;
       }
 
       .features-grid {
@@ -2356,37 +2463,22 @@
 
       #inicio {
           min-height: 100vh;
-          padding-top: 25%;
+          padding-top: 140px;
+          padding-bottom: 60px;
           background:
-              linear-gradient(90deg, rgba(243, 242, 236, 0.96) 0%, rgba(243, 242, 236, 0.84) 62%, rgba(243, 242, 236, 0.32) 100%),
-              linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04)),
+              linear-gradient(rgba(243, 242, 236, 0.5), rgba(243, 242, 236, 0.5)),
               url("./assets/fondo2.jpg") center center / cover no-repeat;
-          gap: 28px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+
+      .hero-bg-overlay {
+          background: linear-gradient(180deg, rgba(243, 242, 236, 0.9) 0%, rgba(243, 242, 236, 0.7) 62%, rgba(243, 242, 236, 0.18) 100%);
       }
 
       .hero-content h1 {
           font-size: clamp(2.45rem, 10.5vw, 3.7rem);
-      }
-
-      .hero-carousel {
-          max-width: 100%;
-      }
-
-      .carousel-track {
-          aspect-ratio: 1.28 / 1;
-      }
-
-      .carousel-arrow {
-          width: 36px;
-          height: 36px;
-      }
-
-      .carousel-prev {
-          left: 8px;
-      }
-
-      .carousel-next {
-          right: 8px;
       }
 
       #empresa,
