@@ -103,6 +103,14 @@
             <path d="M10 18h4"></path>
             <path d="M10.5 21h3"></path>
         </symbol>
+        <symbol id="icon-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+            </path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+        </symbol>
     </svg>
 
     <div class="intro-screen" id="introScreen" aria-hidden="true">
@@ -183,7 +191,7 @@
     <section id="inicio">
         <div class="hero-bg-video-wrapper">
             <video autoplay muted loop playsinline preload="auto" class="hero-bg-video">
-                <source src="./assets/video-inicio.mp4" type="video/mp4">
+                <source src="./assets/video-inicio-2.mp4" type="video/mp4">
             </video>
             <div class="hero-bg-overlay"></div>
         </div>
@@ -225,9 +233,7 @@
                 <p>Nos mantenemos atentos a las tendencias e innovaciones que impulsan la evolución de la industria
                     textil, incorporando nuevas alternativas que contribuyan al desarrollo de textiles competitivos y de
                     alta calidad.</p>
-                <p>Porque en NGS creemos que el conocimiento, la innovación y la confianza son la base de las
-                    relaciones que perduran en el tiempo.</p>
-
+                <p>Porque en NGS, el trato cercano y el respaldo técnico van siempre de la mano.</p>
             </div>
             <figure class="trayectoria-photo">
                 <img src="./assets/carrusel-4.jpeg" alt="Placa con el logotipo de Productos y Colorantes NGS">
@@ -246,7 +252,7 @@
                 </div>
 
                 <div class="feature-description">
-                    <p>Conocimiento construido a través de años de trabajo junto a la industria textil.</p>
+                    <p>Conocimiento construido a través de años de trabajo en la industria.</p>
                 </div>
             </div>
 
@@ -254,10 +260,10 @@
                 <div class="feature-header">
                     <div class="icon-badge">
                         <svg class="icon" aria-hidden="true">
-                            <use href="#icon-headset"></use>
+                            <use href="#icon-box"></use>
                         </svg>
                     </div>
-                    <h4>Soluciones Especializadas</h4>
+                    <h4>Productos especializados</h4>
                 </div>
 
                 <div class="feature-description">
@@ -276,7 +282,7 @@
                 </div>
 
                 <div class="feature-description">
-                    <p>Colorantes, auxiliares y productos especializados para la industria textil y de lavandería.</p>
+                    <p>Colorantes y auxiliares especializados para la industria textil.</p>
                 </div>
             </div>
 
@@ -311,81 +317,87 @@
             </div>
         </div>
         <div id="infraestructura">
-        <span class="section-kicker">Instalaciones de primer nivel</span>
-        <h2>Nuestra Infraestructura</h2>
-        <p class="section-subtitle">Conoce de cerca nuestras oficinas, laboratorios de teñido, control de calidad y flota de distribución.</p>
-        
-        <div class="carousel-container">
-            <button type="button" class="carousel-btn prev" aria-label="Imagen anterior">&#10094;</button>
-            <div class="carousel-viewport">
-                <div class="carousel-track">
-                    <div class="carousel-item" data-index="0">
-                        <img src="./assets/carrusel-1.jpeg" alt="Cajas de productos NGS listas para distribución" loading="lazy">
-                        <div class="carousel-item-info">
-                            <h3>Centro de Distribución</h3>
-                            <p>Inventario listo para distribución</p>
+            <span class="section-kicker">Instalaciones de primer nivel</span>
+            <h2>Nuestra Infraestructura</h2>
+            <p class="section-subtitle">Conoce de cerca nuestras oficinas, laboratorios de teñido, control de calidad y
+                flota de distribución.</p>
+
+            <div class="carousel-container">
+                <button type="button" class="carousel-btn prev" aria-label="Imagen anterior">&#10094;</button>
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+                        <div class="carousel-item" data-index="0">
+                            <img src="./assets/carrusel-1.jpeg" alt="Cajas de productos NGS listas para distribución"
+                                loading="lazy">
+                            <div class="carousel-item-info">
+                                <h3>Centro de Distribución</h3>
+                                <p>Inventario listo para distribución</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="carousel-item" data-index="1">
-                        <img src="./assets/carrusel-2.jpeg" alt="Equipo de espectrofotometría Datacolor" loading="lazy">
-                        <div class="carousel-item-info">
-                            <h3>Espectrofotómetro</h3>
-                            <p>Equipo de espectrofotometría Datacolor</p>
+                        <div class="carousel-item" data-index="1">
+                            <img src="./assets/carrusel-2.jpeg" alt="Equipo de espectrofotometría Datacolor"
+                                loading="lazy">
+                            <div class="carousel-item-info">
+                                <h3>Espectrofotómetro</h3>
+                                <p>Equipo de espectrofotometría Datacolor</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="carousel-item" data-index="2">
-                        <img src="./assets/carrusel-3.jpeg" alt="Área de trabajo de Productos y Colorantes NGS" loading="lazy">
-                        <div class="carousel-item-info">
-                            <h3>Oficina Central</h3>
-                            <p>Recepción y área administrativa</p>
+                        <div class="carousel-item" data-index="2">
+                            <img src="./assets/carrusel-3.jpeg" alt="Área de trabajo de Productos y Colorantes NGS"
+                                loading="lazy">
+                            <div class="carousel-item-info">
+                                <h3>Oficina Central</h3>
+                                <p>Recepción y área administrativa</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="carousel-item" data-index="3">
-                        <img src="./assets/carrusel-5.jpeg" alt="Equipo y materiales de laboratorio textil" loading="lazy">
-                        <div class="carousel-item-info">
-                            <h3>Control de Calidad</h3>
-                            <p>Materiales y reactivos de laboratorio</p>
+                        <div class="carousel-item" data-index="3">
+                            <img src="./assets/carrusel-5.jpeg" alt="Equipo y materiales de laboratorio textil"
+                                loading="lazy">
+                            <div class="carousel-item-info">
+                                <h3>Control de Calidad</h3>
+                                <p>Materiales y reactivos de laboratorio</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="carousel-item" data-index="4">
-                        <img src="./assets/carrusel-6.jpeg" alt="Transporte" loading="lazy">
-                        <div class="carousel-item-info">
-                            <h3>Logística</h3>
-                            <p>Flotilla de distribución propia</p>
+                        <div class="carousel-item" data-index="4">
+                            <img src="./assets/carrusel-6.jpeg" alt="Transporte" loading="lazy">
+                            <div class="carousel-item-info">
+                                <h3>Logística</h3>
+                                <p>Flotilla de distribución propia</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="carousel-item" data-index="5">
-                        <img src="./assets/carrusel-7.jpeg" alt="Equipo de laboratorio para pruebas textiles" loading="lazy">
-                        <div class="carousel-item-info">
-                            <h3>Máquina de Tintura</h3>
-                            <p>Máquina de teñido a infrarrojo</p>
+                        <div class="carousel-item" data-index="5">
+                            <img src="./assets/carrusel-7.jpeg" alt="Equipo de laboratorio para pruebas textiles"
+                                loading="lazy">
+                            <div class="carousel-item-info">
+                                <h3>Máquina de Tintura</h3>
+                                <p>Máquina de teñido a infrarrojo</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="carousel-item" data-index="6">
-                        <img src="./assets/carrusel-8.jpeg" alt="Equipo de laboratorio" loading="lazy">
-                        <div class="carousel-item-info">
-                            <h3>Laboratorio</h3>
-                            <p>Pruebas físicas y solidez</p>
+                        <div class="carousel-item" data-index="6">
+                            <img src="./assets/carrusel-8.jpeg" alt="Equipo de laboratorio" loading="lazy">
+                            <div class="carousel-item-info">
+                                <h3>Laboratorio</h3>
+                                <p>Pruebas físicas y solidez</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="carousel-item" data-index="7">
-                        <img src="./assets/carrusel-9.jpeg" alt="Termofijado" loading="lazy">
-                        <div class="carousel-item-info">
-                            <h3>Termofijado</h3>
-                            <p>Máquina de termofijado de muestras</p>
+                        <div class="carousel-item" data-index="7">
+                            <img src="./assets/carrusel-9.jpeg" alt="Termofijado" loading="lazy">
+                            <div class="carousel-item-info">
+                                <h3>Termofijado</h3>
+                                <p>Máquina de termofijado de muestras</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="carousel-item" data-index="8">
-                        <img src="./assets/carrusel-10.jpeg" alt="Foulard" loading="lazy">
-                        <div class="carousel-item-info">
-                            <h3>Foulard</h3>
-                            <p>Máquina Foulard de laboratorio</p>
+                        <div class="carousel-item" data-index="8">
+                            <img src="./assets/carrusel-10.jpeg" alt="Foulard" loading="lazy">
+                            <div class="carousel-item-info">
+                                <h3>Foulard</h3>
+                                <p>Máquina Foulard de laboratorio</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <button type="button" class="carousel-btn next" aria-label="Siguiente imagen">&#10095;</button>
             </div>
-            <button type="button" class="carousel-btn next" aria-label="Siguiente imagen">&#10095;</button>
-        </div>
         </div>
     </section>
 
@@ -493,8 +505,7 @@
                     <div class="value-content">
                         <h3>Control de Calidad</h3>
                         <p>Cada lote es evaluado mediante pruebas de solidez al lavado, al frote y a la sublimación, con
-                            el fin de garantizar resultados consistentes y confiables en distintas aplicaciones
-                            textiles.
+                            el fin de garantizar resultados consistentes y confiables en cada aplicación.
                         </p>
                     </div>
                 </article>
@@ -758,4 +769,5 @@
     <script src="./productos.js"></script>
     <script src="./script.js?v=6"></script>
 </body>
+
 </html>

@@ -829,9 +829,6 @@
   #inicio {
       position: relative;
       overflow: hidden;
-      background:
-          linear-gradient(rgba(243, 242, 236, 0.42), rgba(243, 242, 236, 0.42)),
-          url("./assets/fondo2.jpg") right center / cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -851,6 +848,7 @@
       height: 100%;
       object-fit: cover;
       opacity: 0.82;
+      transform: scale(1.18);
   }
 
   .hero-bg-overlay {
@@ -891,13 +889,6 @@
       color: #252936;
   }
 
-  @media (min-width: 1180px) {
-      #inicio {
-          background:
-              linear-gradient(rgba(243, 242, 236, 0.38), rgba(243, 242, 236, 0.38)),
-              url("./assets/fondo2-horizontal.jpg") center center / cover no-repeat;
-      }
-  }
 
   .btn-container {
       display: flex;
@@ -1262,7 +1253,7 @@
       background: linear-gradient(to top, rgba(17, 19, 24, 0.92) 0%, rgba(17, 19, 24, 0.4) 75%, rgba(17, 19, 24, 0) 100%);
       color: #ffffff;
       padding: 32px 24px 20px;
-      text-align: left;
+      text-align: center;
       opacity: 0;
       transform: translateY(15px);
       transition: opacity 0.4s ease, transform 0.4s ease;
@@ -2483,12 +2474,9 @@
       }
 
       #inicio {
-          min-height: 70vh;
+          min-height: 100vh;
           padding-top: 104px;
           padding-bottom: 34px;
-          background:
-              linear-gradient(rgba(243, 242, 236, 0.5), rgba(243, 242, 236, 0.5)),
-              url("./assets/fondo2.jpg") center center / cover no-repeat;
           display: flex;
           align-items: center;
           justify-content: center;
