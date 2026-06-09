@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -127,18 +127,13 @@
             <source srcset="./assets/inicio-vertical.png?v=2" media="(orientation: portrait)">
             <img src="./assets/inicio-horizontal.png?v=2" alt="" fetchpriority="high" decoding="async">
         </picture>
-        <div class="intro-orbit orbit-yellow"></div>
-        <div class="intro-orbit orbit-blue"></div>
-        <div class="intro-orbit orbit-red"></div>
-        <div class="intro-sparkles">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+        <!-- Efecto de humo de colores localizado -->
+        <div class="ink-drop-container">
+            <span class="ink-blob blob-yellow-1"></span>
+            <span class="ink-blob blob-yellow-2"></span>
+            <span class="ink-blob blob-yellow-3"></span>
         </div>
-        <div class="intro-sink" aria-hidden="true"></div>
+
         <img src="./assets/logo2.png?v=4" alt="" class="intro-logo-mark" fetchpriority="high" decoding="async">
         <div class="intro-copy">
             <p>PRODUCTOS Y COLORANTES <strong>NGS</strong> SA DE CV</p>
@@ -409,17 +404,14 @@
 
         <div class="catalog-spotlight">
             <div>
-                <span class="section-kicker">Catálogo interactivo</span>
                 <h3>Encuentra el producto ideal para tu proceso</h3>
             </div>
             <div class="catalog-total">
-                <strong id="catalogTotal">0</strong>
+                <strong id="catalogTotal">144</strong>
                 <span>productos disponibles</span>
             </div>
         </div>
 
-        <div class="category-cards" id="categoryCards" aria-label="Categorías principales del catálogo">
-        </div>
 
         <div class="search-filter-container" id="catalogControls">
             <div class="search-box">
@@ -688,12 +680,13 @@
         </div>
         <div class="faq-wrapper">
             <h2>Preguntas Frecuentes</h2>
-            <p class="section-subtitle">Resolvemos sus dudas principales sobre nuestros productos, servicios de igualación y logística.</p>
+            <p class="section-subtitle">Resolvemos sus dudas principales sobre nuestros productos, servicios de
+                igualación y logística.</p>
 
             <div class="faq-container">
                 <div class="faq-item">
                     <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a1">
-                        <span>¿Qué tipo de colorantes ofrecen en su catálogo?</span>
+                        <span>¿Existe un monto mínimo de compra por pedido?</span>
                         <svg class="faq-trigger-icon icon" aria-hidden="true" viewBox="0 0 24 24">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
@@ -701,7 +694,9 @@
                     <div class="faq-answer-wrapper" id="faq-a1">
                         <div class="faq-answer-content">
                             <div class="faq-answer">
-                                <p>Ofrecemos una amplia gama de colorantes directos, reactivos (bifuncionales a 60°C y monofuncionales a 80°C), dispersos, ácidos, solventes, pigmentos, glitters y blanqueadores ópticos para la industria textil.</p>
+                                <p>No contamos con un mínimo restrictivo. Suministramos nuestros colorantes y auxiliares
+                                    desde 1 kg en adelante, adaptándonos al volumen y escala que requiera su producción.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -709,7 +704,7 @@
 
                 <div class="faq-item">
                     <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a2">
-                        <span>¿Realizan envíos a toda la República Mexicana?</span>
+                        <span>¿Qué se necesita para realizar una igualación de color exacta?</span>
                         <svg class="faq-trigger-icon icon" aria-hidden="true" viewBox="0 0 24 24">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
@@ -717,7 +712,9 @@
                     <div class="faq-answer-wrapper" id="faq-a2">
                         <div class="faq-answer-content">
                             <div class="faq-answer">
-                                <p>Sí, contamos con flotilla de distribución propia para entregas locales y coordinamos envíos nacionales a través de fleteras y servicios de logística de confianza para asegurar que sus productos lleguen a tiempo.</p>
+                                <p>Requerimos la muestra física del tono objetivo y un fragmento de la tela sobre la que
+                                    se aplicará. Recomendamos evitar referencias digitales o fotos, ya que las pantallas
+                                    alteran la percepción real del color.</p>
                             </div>
                         </div>
                     </div>
@@ -725,7 +722,7 @@
 
                 <div class="faq-item">
                     <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a3">
-                        <span>¿Cómo funciona el servicio de igualación de color?</span>
+                        <span>¿Cómo puedo solicitar las Fichas Técnicas y Hojas de Seguridad?</span>
                         <svg class="faq-trigger-icon icon" aria-hidden="true" viewBox="0 0 24 24">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
@@ -733,7 +730,9 @@
                     <div class="faq-answer-wrapper" id="faq-a3">
                         <div class="faq-answer-content">
                             <div class="faq-answer">
-                                <p>Utilizamos tecnología de espectrofotometría Datacolor de última generación para analizar el tono de su muestra física. Nuestro equipo de técnicos expertos formula y realiza pruebas de laboratorio para garantizar una igualación precisa, reproducible y sólida en el material textil deseado.</p>
+                                <p>Puede solicitarlas directamente a través de nuestro WhatsApp o en la sección de
+                                    Contacto. Nuestro equipo le enviará la documentación requerida por su departamento
+                                    de calidad.</p>
                             </div>
                         </div>
                     </div>
@@ -741,7 +740,7 @@
 
                 <div class="faq-item">
                     <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a4">
-                        <span>¿Cuáles son los requisitos para solicitar una cotización?</span>
+                        <span>¿La asesoría técnica incluye visitas presenciales a nuestra planta?</span>
                         <svg class="faq-trigger-icon icon" aria-hidden="true" viewBox="0 0 24 24">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
@@ -749,7 +748,9 @@
                     <div class="faq-answer-wrapper" id="faq-a4">
                         <div class="faq-answer-content">
                             <div class="faq-answer">
-                                <p>Puede seleccionar los productos directamente desde nuestro catálogo en la web y presionar "Solicitar información" para enviar la consulta por WhatsApp, o bien llenar el formulario de contacto con sus datos y las cantidades aproximadas que requiere para que un asesor técnico le atienda.</p>
+                                <p>Sí. Ante un problema en su producción, brindamos soporte inicial vía telefónica. Si
+                                    la complejidad del proceso lo requiere, nuestro personal técnico acudirá
+                                    directamente a sus instalaciones para resolverlo en planta.</p>
                             </div>
                         </div>
                     </div>
@@ -757,7 +758,7 @@
 
                 <div class="faq-item">
                     <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a5">
-                        <span>¿Qué pruebas de calidad realizan a sus colorantes?</span>
+                        <span>¿Cuánto tiempo toma la igualación de un tono nuevo?</span>
                         <svg class="faq-trigger-icon icon" aria-hidden="true" viewBox="0 0 24 24">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
@@ -765,23 +766,10 @@
                     <div class="faq-answer-wrapper" id="faq-a5">
                         <div class="faq-answer-content">
                             <div class="faq-answer">
-                                <p>Evaluamos cada lote en nuestro laboratorio de control de calidad mediante pruebas de solidez al lavado, solidez al frote (seco y húmedo) y solidez a la sublimación, garantizando que el rendimiento cumpla con los estándares de la industria textil.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a6">
-                        <span>¿Cuáles son sus horarios de atención?</span>
-                        <svg class="faq-trigger-icon icon" aria-hidden="true" viewBox="0 0 24 24">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </button>
-                    <div class="faq-answer-wrapper" id="faq-a6">
-                        <div class="faq-answer-content">
-                            <div class="faq-answer">
-                                <p>Nuestros horarios de atención en oficinas y almacén son de lunes a jueves de 8:00 am a 6:00 pm, y los viernes de 8:00 am a 5:00 pm.</p>
+                                <p>El tiempo estimado en nuestro laboratorio es de 2 a 5 días hábiles. Este plazo nos
+                                    permite asegurar la solidez y calidad del color, variando según la complejidad
+                                    técnica y la demanda de la temporada.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -803,7 +791,7 @@
                     <form id="wppForm" class="contacto-form">
                         <div class="form-group">
                             <label for="nombre">Nombre Completo:</label>
-                            <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required>
+                            <input type="text" id="nombre" placeholder="Ej. Jorge Torres" required>
                         </div>
 
                         <div class="form-group">

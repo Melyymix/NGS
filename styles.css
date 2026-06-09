@@ -100,11 +100,11 @@
 
   .intro-screen::after {
       background:
-          linear-gradient(105deg, transparent 0 32%, rgba(255, 255, 255, 0.18) 40%, rgba(255, 255, 255, 0.98) 49%, rgba(255, 255, 255, 0.18) 58%, transparent 68%),
-          radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.68), transparent 30%);
+          linear-gradient(135deg, transparent 0 30%, rgba(255, 255, 255, 0.18) 40%, rgba(255, 255, 255, 0.98) 50%, rgba(255, 255, 255, 0.18) 60%, transparent 70%),
+          radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.68), transparent 30%);
       opacity: 0;
       z-index: 6;
-      transform: translateX(-58%) skewX(-12deg);
+      transform: translate(-65%, -65%);
       mix-blend-mode: screen;
       animation: introLightSweep 4.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
@@ -128,56 +128,47 @@
       animation: introLogoPress 4.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .intro-orbit {
+  .ink-drop-container {
       position: absolute;
-      z-index: 1;
+      left: var(--intro-logo-x);
+      top: var(--intro-logo-y);
+      width: calc(var(--intro-logo-size) * 0.95);
+      height: calc(var(--intro-logo-size) * 0.95);
+      transform: translate(calc(-50% + var(--intro-logo-offset-x)), calc(-50% + var(--intro-logo-offset-y)));
+      z-index: 2; /* behind logo (4) and copy (5), but in front of background photo */
+      pointer-events: none;
+      filter: blur(50px);
+      mix-blend-mode: normal;
+      overflow: visible;
+      will-change: filter;
+  }
+
+  .ink-blob {
+      position: absolute;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
       left: 50%;
       top: 50%;
-      width: min(86vw, 920px);
-      height: min(42vw, 410px);
-      border-radius: 999px;
+      transform: translate(-50%, -50%) scale(0.6);
       opacity: 0;
-      filter: blur(18px) saturate(1.22);
-      transform: translate(-50%, -50%) rotate(var(--orbit-angle)) scale(0.72);
-      animation: introOrbit 5s ease forwards;
+      transform-origin: center;
+      will-change: transform, opacity;
   }
 
-  .orbit-yellow {
-      --orbit-angle: -16deg;
-      background: radial-gradient(ellipse at 20% 52%, rgba(244, 196, 0, 0.66), transparent 42%);
-      animation-delay: 0.1s;
+  .blob-yellow-1 {
+      background: radial-gradient(circle at center, rgba(244, 196, 0, 0.68) 0%, rgba(253, 224, 71, 0.22) 50%, transparent 70%);
+      animation: smokeHalo1 4.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .orbit-blue {
-      --orbit-angle: 9deg;
-      background: radial-gradient(ellipse at 74% 36%, rgba(8, 70, 216, 0.58), transparent 46%);
-      animation-delay: 0.18s;
+  .blob-yellow-2 {
+      background: radial-gradient(circle at center, rgba(234, 179, 8, 0.6) 0%, rgba(254, 240, 138, 0.2) 50%, transparent 70%);
+      animation: smokeHalo2 4.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .orbit-red {
-      --orbit-angle: 13deg;
-      background: radial-gradient(ellipse at 75% 62%, rgba(218, 37, 42, 0.52), transparent 46%);
-      animation-delay: 0.26s;
-  }
-
-  .intro-sparkles {
-      position: absolute;
-      inset: 0;
-      z-index: 3;
-      pointer-events: none;
-      opacity: 0;
-      animation: sparklesLayer 4.7s ease forwards;
-  }
-
-  .intro-sparkles span {
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: currentColor;
-      box-shadow: 0 0 16px currentColor;
-      opacity: 0;
-      animation: sparkleDrift 3.5s ease-in-out forwards;
+  .blob-yellow-3 {
+      background: radial-gradient(circle at center, rgba(250, 204, 21, 0.7) 0%, rgba(253, 224, 71, 0.22) 50%, transparent 70%);
+      animation: smokeHalo3 4.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .intro-copy {
@@ -250,12 +241,7 @@
           filter: saturate(1.08) contrast(1.04);
       }
 
-      .intro-orbit {
-          left: var(--intro-logo-x);
-          top: var(--intro-logo-y);
-          width: min(118vw, 700px);
-          height: min(72vw, 470px);
-      }
+      /* intro-orbit removed */
 
       .intro-copy {
           bottom: clamp(44px, 8vh, 84px);
@@ -272,100 +258,9 @@
           font-size: clamp(1.4rem, 5vw, 1.8rem);
       }
 
-      .intro-sink {
-          filter: blur(1.2px);
-          opacity: 0;
-      }
   }
 
-  .intro-sparkles span:nth-child(1) {
-      left: 22%;
-      top: 42%;
-      color: rgba(244, 196, 0, 0.92);
-      animation-delay: 0.28s;
-  }
-
-  .intro-sparkles span:nth-child(2) {
-      left: 33%;
-      top: 34%;
-      color: rgba(244, 196, 0, 0.78);
-      animation-delay: 0.5s;
-  }
-
-  .intro-sparkles span:nth-child(3) {
-      left: 67%;
-      top: 29%;
-      color: rgba(8, 70, 216, 0.82);
-      animation-delay: 0.38s;
-  }
-
-  .intro-sparkles span:nth-child(4) {
-      left: 78%;
-      top: 42%;
-      color: rgba(8, 70, 216, 0.7);
-      animation-delay: 0.62s;
-  }
-
-  .intro-sparkles span:nth-child(5) {
-      left: 70%;
-      top: 60%;
-      color: rgba(218, 37, 42, 0.78);
-      animation-delay: 0.46s;
-  }
-
-  .intro-sparkles span:nth-child(6) {
-      left: 58%;
-      top: 64%;
-      color: rgba(218, 37, 42, 0.7);
-      animation-delay: 0.72s;
-  }
-
-  .intro-sink {
-      position: absolute;
-      z-index: 2;
-      left: var(--intro-logo-x);
-      top: var(--intro-logo-y);
-      width: calc(var(--intro-logo-size) * 1.55);
-      height: calc(var(--intro-logo-size) * 0.88);
-      border-radius: 50%;
-      opacity: 0;
-      pointer-events: none;
-      background:
-          radial-gradient(ellipse at 50% 50%, rgba(58, 50, 38, 0.36) 0 12%, rgba(112, 100, 78, 0.25) 24%, rgba(255, 255, 255, 0.62) 36%, transparent 61%),
-          radial-gradient(ellipse at 44% 38%, rgba(255, 255, 255, 0.82), transparent 37%),
-          radial-gradient(ellipse at 57% 66%, rgba(72, 62, 46, 0.28), transparent 49%);
-      filter: blur(1.4px);
-      transform: translate(-50%, -50%) scale(0.68);
-      animation: introSinkPress 3.08s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  .intro-sink::before,
-  .intro-sink::after {
-      content: "";
-      position: absolute;
-      inset: -18% -30%;
-      border-radius: 50%;
-      pointer-events: none;
-  }
-
-  .intro-sink::before {
-      background:
-          linear-gradient(172deg, transparent 0 23%, rgba(120, 110, 92, 0.24) 29%, rgba(255, 255, 255, 0.72) 35%, rgba(118, 108, 90, 0.15) 41%, transparent 53%),
-          linear-gradient(166deg, transparent 0 33%, rgba(255, 255, 255, 0.64) 43%, rgba(122, 112, 94, 0.15) 50%, transparent 63%),
-          linear-gradient(160deg, transparent 0 46%, rgba(110, 100, 84, 0.14) 55%, rgba(255, 255, 255, 0.48) 64%, transparent 76%);
-      opacity: 0.8;
-      transform: translateX(-24%);
-      filter: blur(1.2px);
-      mix-blend-mode: multiply;
-  }
-
-  .intro-sink::after {
-      inset: 18% 2% 6%;
-      background:
-          radial-gradient(ellipse at 50% 52%, transparent 0 33%, rgba(255, 255, 255, 0.68) 43%, rgba(76, 66, 50, 0.28) 54%, transparent 70%);
-      filter: blur(4px);
-      opacity: 0.82;
-  }
+    /* intro-sink removed */
 
   @keyframes introBgReveal {
       0% {
@@ -373,12 +268,17 @@
           transform: scale(1.035);
           filter: blur(3px) saturate(0.98) contrast(1);
       }
-
-      34%,
-      100% {
+      28%,
+      78% {
           opacity: 1;
           transform: scale(1);
           filter: blur(0) saturate(1.05) contrast(1.02);
+      }
+      96%,
+      100% {
+          opacity: 0;
+          transform: scale(0.98);
+          filter: blur(5px) saturate(0.98) contrast(1);
       }
   }
 
@@ -414,65 +314,72 @@
           opacity: 0;
           transform: scale(0.97) translateX(-2%);
       }
-
-      42% {
+      38%,
+      78% {
           opacity: 1;
+          transform: scale(1) translateX(0);
       }
-
+      96%,
       100% {
-          opacity: 0.86;
+          opacity: 0;
           transform: scale(1.02) translateX(0);
       }
   }
 
-  @keyframes introSinkPress {
+  @keyframes smokeHalo1 {
       0% {
+          transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
           opacity: 0;
-          transform: translate(-50%, -50%) scale(0.46);
       }
-
-      28% {
-          opacity: 0.96;
-          transform: translate(-50%, -50%) scale(1.08);
+      30% {
+          opacity: 0.52;
+          transform: translate(-46%, -54%) scale(1.1) rotate(60deg);
       }
-
-      100% {
-          opacity: 0.78;
-          transform: translate(-50%, -50%) scale(1);
+      78% {
+          opacity: 0.52;
+          transform: translate(-52%, -48%) scale(1.35) rotate(140deg);
+      }
+      96%, 100% {
+          opacity: 0;
+          transform: translate(-52%, -48%) scale(1.1) rotate(180deg);
       }
   }
 
-  @keyframes introLightSweep {
-      0%,
-      28% {
-          opacity: 0;
-          transform: translateX(-54%) skewX(-12deg);
-      }
-
-      44% {
-          opacity: 0.95;
-      }
-
-      70%,
-      100% {
-          opacity: 0;
-          transform: translateX(58%) skewX(-12deg);
-      }
-  }
-
-  @keyframes introOrbit {
+  @keyframes smokeHalo2 {
       0% {
+          transform: translate(-50%, -50%) scale(0.6) rotate(0deg);
           opacity: 0;
-          transform: translate(-50%, -50%) rotate(var(--orbit-angle)) scale(0.66);
       }
-
       35% {
-          opacity: 0.9;
+          opacity: 0.45;
+          transform: translate(-54%, -46%) scale(1.2) rotate(-60deg);
       }
+      78% {
+          opacity: 0.45;
+          transform: translate(-48%, -52%) scale(1.4) rotate(-130deg);
+      }
+      96%, 100% {
+          opacity: 0;
+          transform: translate(-48%, -52%) scale(1.15) rotate(-160deg);
+      }
+  }
 
-      100% {
-          opacity: 0.62;
-          transform: translate(-50%, -50%) rotate(calc(var(--orbit-angle) + 16deg)) scale(1.2);
+  @keyframes smokeHalo3 {
+      0% {
+          transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
+          opacity: 0;
+      }
+      40% {
+          opacity: 0.5;
+          transform: translate(-50%, -50%) scale(1.15) rotate(90deg);
+      }
+      78% {
+          opacity: 0.5;
+          transform: translate(-52%, -52%) scale(1.35) rotate(180deg);
+      }
+      96%, 100% {
+          opacity: 0;
+          transform: translate(-52%, -52%) scale(1.1) rotate(220deg);
       }
   }
 
@@ -503,50 +410,36 @@
       }
   }
 
-  @keyframes sparklesLayer {
+  @keyframes introLightSweep {
       0%,
-      16% {
+      26% {
           opacity: 0;
+          transform: translate(-65%, -65%);
       }
-
-      34%,
-      68% {
+      30% {
+          opacity: 0;
+          transform: translate(-65%, -65%);
+      }
+      48% {
           opacity: 1;
+          transform: translate(0%, 0%);
       }
-
+      66%,
       100% {
           opacity: 0;
+          transform: translate(65%, 65%);
       }
   }
 
-  @keyframes sparkleDrift {
-      0% {
-          opacity: 0;
-          transform: translate3d(0, 12px, 0) scale(0.45);
-      }
-
-      38% {
-          opacity: 0.9;
-          transform: translate3d(0, 0, 0) scale(1);
-      }
-
-      100% {
-          opacity: 0;
-          transform: translate3d(18px, -26px, 0) scale(0.2);
-      }
-  }
+  /* sparklesLayer and sparkleDrift removed */
 
   @media (prefers-reduced-motion: reduce) {
       .intro-screen,
       .intro-screen::before,
       .intro-screen::after,
       .intro-bg img,
-      .intro-orbit,
-      .intro-sparkles,
-      .intro-sparkles span,
-      .intro-sink,
-      .intro-sink::before,
-      .intro-sink::after,
+      .ink-drop-container,
+      .ink-blob,
       .intro-copy,
       .intro-logo-mark {
           animation: none;
@@ -3365,7 +3258,7 @@
   .faq-bg-overlay {
       position: absolute;
       inset: 0;
-      background-color: rgba(247, 249, 252, 0.45);
+      background-color: rgba(247, 249, 252, 0.75);
       z-index: 1;
   }
 
