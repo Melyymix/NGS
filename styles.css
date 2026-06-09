@@ -79,15 +79,11 @@
       animation: introBgReveal 5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .intro-screen::before,
-  .intro-screen::after {
+  .intro-screen::before {
       content: "";
       position: absolute;
       inset: 0;
       pointer-events: none;
-  }
-
-  .intro-screen::before {
       background:
           radial-gradient(ellipse at var(--intro-logo-x) var(--intro-logo-y), rgba(68, 56, 40, 0.28), transparent 17%),
           radial-gradient(ellipse at var(--intro-logo-x) calc(var(--intro-logo-y) - 2%), rgba(255, 255, 255, 0.58), transparent 24%);
@@ -96,16 +92,6 @@
       filter: blur(0.6px);
       transform: scale(0.97) translateX(-2%);
       animation: introBackdrop 4.8s ease forwards;
-  }
-
-  .intro-screen::after {
-      background: linear-gradient(135deg, transparent 0 35%, rgba(255, 255, 255, 0.22) 43%, rgba(255, 255, 255, 0.98) 50%, rgba(255, 255, 255, 0.22) 57%, transparent 65%);
-      opacity: 0;
-      z-index: 6;
-      transform: translate(-65%, -65%);
-      mix-blend-mode: screen;
-      will-change: transform;
-      animation: introLightSweep 4.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .intro-screen.is-hidden {
@@ -409,33 +395,13 @@
       }
   }
 
-  @keyframes introLightSweep {
-      0%,
-      26% {
-          opacity: 0;
-          transform: translate(-65%, -65%);
-      }
-      30% {
-          opacity: 0;
-          transform: translate(-65%, -65%);
-      }
-      48% {
-          opacity: 1;
-          transform: translate(0%, 0%);
-      }
-      66%,
-      100% {
-          opacity: 0;
-          transform: translate(65%, 65%);
-      }
-  }
+
 
   /* sparklesLayer and sparkleDrift removed */
 
   @media (prefers-reduced-motion: reduce) {
       .intro-screen,
       .intro-screen::before,
-      .intro-screen::after,
       .intro-bg img,
       .ink-drop-container,
       .ink-blob,
