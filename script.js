@@ -40,11 +40,11 @@ function initIntro() {
         window.setTimeout(() => {
             introScreen.classList.add('is-hidden');
             document.body.classList.remove('intro-lock');
-        }, 3200);
+        }, 4800);
 
         window.setTimeout(() => {
             introScreen.remove();
-        }, 4200);
+        }, 6200);
     });
 }
 
@@ -1024,12 +1024,71 @@ reviewsTrack?.addEventListener('pointercancel', event => {
 showReview(0);
 startReviewsTimer();
 
+// --- MANEJO DEL ACORDEÓN DE PREGUNTAS FRECUENTES (FAQ) ---
+function initFaq() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const questionBtn = item.querySelector('.faq-question');
+        if (!questionBtn) return;
+        
+        questionBtn.addEventListener('click', () => {
+            const isExpanded = questionBtn.getAttribute('aria-expanded') === 'true';
+            
+            // Cierra los otros acordeones abiertos para una vista más limpia
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    const otherBtn = otherItem.querySelector('.faq-question');
+                    if (otherBtn) {
+                        otherBtn.setAttribute('aria-expanded', 'false');
+                    }
+                    otherItem.classList.remove('active');
+                }
+            });
+
+            questionBtn.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
+            item.classList.toggle('active', !isExpanded);
+        });
+    });
+}
+
+// --- PARALLAX DE FONDO ANIMADO DE PREGUNTAS FRECUENTES (FAQ) ---
+function initFaqParallax() {
+    const faqSection = document.getElementById('faq');
+    const wrappers = document.querySelectorAll('.blob-parallax-wrapper');
+    if (!faqSection || wrappers.length === 0) return;
+
+    window.addEventListener('scroll', () => {
+        const rect = faqSection.getBoundingClientRect();
+        const viewHeight = window.innerHeight;
+        
+        // Ejecutar parallax si la sección está en el viewport
+        if (rect.top < viewHeight && rect.bottom > 0) {
+            // Calcular cuánto de la sección se ha desplazado en pantalla
+            const scrolledDistance = viewHeight - rect.top;
+            const totalDistance = viewHeight + rect.height;
+            const scrolledPercent = scrolledDistance / totalDistance; // 0 a 1
+            
+            // Mapear scrolledPercent de -0.5 a 0.5 para centrar el efecto
+            const offsetMultiplier = scrolledPercent - 0.5;
+
+            wrappers.forEach(wrapper => {
+                const factor = parseFloat(wrapper.getAttribute('data-parallax-factor')) || 0.1;
+                // Multiplicamos por 200 para un desplazamiento responsivo y elegante
+                const translateY = offsetMultiplier * factor * 200;
+                wrapper.style.transform = `translateY(${translateY}px)`;
+            });
+        }
+    }, { passive: true });
+}
+
 // Inicializar renderizado al cargar la página
 window.onload = () => {
     initCatalog();
     initInfraCarousel();
     updateInfraCarousel();
     startInfraAutoplay();
+    initFaq();
+    initFaqParallax();
 };
 
 let contactToastTimer;
