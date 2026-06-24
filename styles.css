@@ -1043,6 +1043,12 @@
       min-height: 240px;
   }
 
+  @media (max-width: 800px) {
+      .mv-modern-split {
+          background-attachment: scroll; /* Fix for mobile parallax zoom bug */
+      }
+  }
+
   @media (min-width: 800px) {
       .mv-modern-split {
           flex-direction: row;
@@ -1128,7 +1134,7 @@
   }
 
   .mv-modern-item.active .mv-content-box p {
-      max-height: 200px;
+      max-height: 500px; /* Increased from 200px to prevent cutoff on narrow screens */
       opacity: 0.95;
       margin-top: 15px;
   }
@@ -1138,7 +1144,7 @@
           transform: translateY(-5px);
       }
       .mv-modern-item:hover .mv-content-box p {
-          max-height: 200px;
+          max-height: 500px; /* Increased from 200px */
           opacity: 0.95;
           margin-top: 15px;
       }
