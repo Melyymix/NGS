@@ -632,8 +632,9 @@ const sectionObserver = new IntersectionObserver(entries => {
 sections.forEach(section => sectionObserver.observe(section));
 setActiveNavLink('inicio');
 
-const companyFeatureCards = Array.from(document.querySelectorAll('#empresa .feature-card'));
+const companyFeatureCards = Array.from(document.querySelectorAll('#empresa .features-grid .feature-card'));
 const companyFeaturesGrid = document.querySelector('#empresa .features-grid');
+
 let featureCardsExpanded = false;
 let featureAnimationTimers = [];
 
@@ -1160,4 +1161,11 @@ document.getElementById('wppForm').addEventListener('submit', function (event) {
     const urlWhatsApp = `https://wa.me/${telefonoEmpresa}?text=${mensajeCodificado}`;
 
     window.open(urlWhatsApp, '_blank');
+});
+
+const mvPanels = document.querySelectorAll('.mv-panel');
+mvPanels.forEach(panel => {
+    panel.addEventListener('click', () => {
+        panel.classList.toggle('active');
+    });
 });

@@ -928,10 +928,226 @@
 
   .features-grid {
       display: grid;
-      grid-template-columns: repeat(5, minmax(150px, 1fr));
+      grid-template-columns: repeat(3, minmax(150px, 1fr));
       gap: 18px;
       width: 95%;
       margin: 34px auto 0;
+  }
+
+  .mv-parallax {
+      position: relative;
+      width: 95%;
+      background-image: url('./assets/carrusel-1.jpeg');
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 68px auto 0;
+  }
+
+  .mv-split {
+      display: flex;
+      flex-direction: column;
+      min-height: 240px;
+  }
+
+  @media (min-width: 800px) {
+      .mv-split {
+          flex-direction: row;
+          height: 280px;
+      }
+  }
+
+  .mv-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+      overflow: hidden;
+      padding: 20px;
+      color: var(--blanco);
+  }
+
+  .panel-mision {
+      background: rgba(8, 70, 216, 0.88);
+  }
+
+  .panel-vision {
+      background: rgba(45, 55, 72, 0.90);
+  }
+
+  @media (min-width: 800px) {
+      .mv-panel:hover,
+      .mv-panel.active {
+          flex: 1.6;
+      }
+  }
+
+  .mv-panel-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.5s ease;
+  }
+
+  .mv-panel:hover .mv-panel-header,
+  .mv-panel.active .mv-panel-header {
+      transform: translateY(-5px);
+  }
+
+  .mv-panel-header .icon {
+      width: 42px;
+      height: 42px;
+      color: var(--blanco);
+      fill: none;
+  }
+
+  .mv-panel-header h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin: 0;
+  }
+
+  .mv-panel-content {
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.6s ease, opacity 0.5s ease, margin-top 0.5s ease;
+      text-align: center;
+      max-width: 480px;
+      overflow: hidden;
+  }
+
+  .mv-panel:hover .mv-panel-content,
+  .mv-panel.active .mv-panel-content {
+      max-height: 180px;
+      opacity: 1;
+      margin-top: 15px;
+  }
+
+  /* --- NUEVA PROPUESTA: MODERN SPLIT --- */
+  .mv-modern-split {
+      display: flex;
+      flex-direction: column;
+      width: 95%;
+      margin: 80px auto 0;
+      /* Parallax background */
+      background-image: url('./assets/fondo3-horizontal.png');
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 240px;
+  }
+
+  @media (min-width: 800px) {
+      .mv-modern-split {
+          flex-direction: row;
+          height: 280px;
+      }
+  }
+
+  .mv-modern-item {
+      flex: 1;
+      padding: 20px 40px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      transition: flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+      cursor: pointer;
+  }
+
+  @media (min-width: 800px) {
+      .mv-modern-item.active {
+          flex: 1.8;
+      }
+  }
+
+  @media (max-width: 799px) {
+      .mv-modern-item.active {
+          flex: 1.6;
+      }
+  }
+
+  @media (hover: hover) and (min-width: 800px) {
+      .mv-modern-item:hover {
+          flex: 1.8;
+      }
+  }
+
+  .mv-blue {
+      background: rgba(74, 144, 226, 0.65); /* Very light cerulean blue */
+      color: var(--blanco);
+  }
+
+  .mv-light {
+      background: rgba(248, 250, 252, 0.92); /* Slightly higher opacity to reduce color bleeding */
+      color: #1e293b;
+  }
+
+  .mv-content-box {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+  }
+
+  .mv-content-box h4 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center; /* Center the title horizontally */
+      gap: 15px;
+      margin: 0;
+      transition: transform 0.5s ease;
+  }
+
+  .mv-modern-item.active .mv-content-box h4 {
+      transform: translateY(-5px);
+  }
+
+  .mv-content-box h4 .icon {
+      width: 40px;
+      height: 40px;
+      fill: none;
+      color: currentColor;
+  }
+
+  .mv-content-box p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      margin: 0;
+      text-align: center; /* Center the paragraph */
+      transition: max-height 0.6s ease, opacity 0.5s ease, margin-top 0.5s ease;
+  }
+
+  .mv-modern-item.active .mv-content-box p {
+      max-height: 200px;
+      opacity: 0.95;
+      margin-top: 15px;
+  }
+
+  @media (hover: hover) {
+      .mv-modern-item:hover .mv-content-box h4 {
+          transform: translateY(-5px);
+      }
+      .mv-modern-item:hover .mv-content-box p {
+          max-height: 200px;
+          opacity: 0.95;
+          margin-top: 15px;
+      }
+  }
+  
+  .mv-panel-content p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.95);
   }
 
   .feature-card {
@@ -2386,6 +2602,12 @@
           padding-bottom: 52px;
       }
 
+      .features-grid {
+          width: 90%;
+          gap: 24px;
+      }
+
+
       .trayectoria-showcase {
           width: 100%;
           gap: 24px;
@@ -2503,7 +2725,8 @@
       }
 
       .products-grid,
-      .features-grid {
+      .features-grid,
+      .mision-vision-grid {
           grid-template-columns: 1fr;
       }
 
