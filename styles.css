@@ -1028,25 +1028,32 @@
       margin-top: 15px;
   }
 
-  /* --- NUEVA PROPUESTA: MODERN SPLIT --- */
   .mv-modern-split {
       display: flex;
       flex-direction: column;
       width: 95%;
       margin: 80px auto 0;
+      min-height: 240px;
+      position: relative;
+      overflow: hidden;
+  }
+
+  .mv-modern-split::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       /* Parallax background */
       background-image: url('./assets/fondo3-horizontal.png');
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      min-height: 240px;
-  }
-
-  @media (max-width: 800px) {
-      .mv-modern-split {
-          background-attachment: scroll; /* Fix for mobile parallax zoom bug */
-      }
+      filter: saturate(0.6) brightness(0.85); /* Slightly desaturates and dims the background photo */
+      z-index: 1;
+      pointer-events: none;
   }
 
   @media (min-width: 800px) {
@@ -1058,39 +1065,46 @@
 
   .mv-modern-item {
       flex: 1;
-      padding: 20px 40px;
+      padding: 120px 40px 40px; /* Centered top padding when collapsed on desktop */
       position: relative;
+      z-index: 2; /* Position above the background pseudo-element */
       display: flex;
-      align-items: center;
-      transition: flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+      flex-direction: column; /* Stack contents vertically */
+      justify-content: flex-start; /* Align contents to the top to allow smooth padding-based alignment */
+      align-items: center; /* Center contents horizontally */
+      transition: 
+          flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1),
+          padding-top 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
       cursor: pointer;
   }
-
+ 
   @media (min-width: 800px) {
       .mv-modern-item.active {
           flex: 1.8;
+          padding-top: 40px; /* Smoothly slide the title to the top when active */
       }
   }
-
+ 
   @media (max-width: 799px) {
       .mv-modern-item.active {
           flex: 1.6;
       }
   }
-
+ 
   @media (hover: hover) and (min-width: 800px) {
       .mv-modern-item:hover {
           flex: 1.8;
+          padding-top: 40px; /* Smoothly slide the title to the top on hover */
       }
   }
 
   .mv-blue {
-      background: rgba(74, 144, 226, 0.65); /* Very light cerulean blue */
+      background: rgba(11, 47, 159, 0.20); /* Soft transparent blue, letting the background photo show clearly */
       color: var(--blanco);
   }
 
   .mv-light {
-      background: rgba(248, 250, 252, 0.92); /* Slightly higher opacity to reduce color bleeding */
+      background: rgba(255, 255, 255, 0.48); /* Whitish and transparent, without blur */
       color: #1e293b;
   }
 
@@ -1123,7 +1137,7 @@
   }
 
   .mv-content-box p {
-      font-size: 1.15rem;
+      font-size: 1.25rem; /* Increased from 1.15rem for desktop readability */
       line-height: 1.7;
       opacity: 0;
       max-height: 0;
@@ -1463,6 +1477,57 @@
           opacity: 1;
           transform: translateY(0);
           background: linear-gradient(to top, rgba(17, 19, 24, 0.85) 0%, rgba(17, 19, 24, 0.4) 80%, rgba(17, 19, 24, 0) 100%);
+      }
+  }
+
+  @media (max-width: 800px) {
+      /* Misión y Visión responsive adjustments */
+      .mv-modern-split {
+          margin: 24px auto 0; /* Reduced margin to bring closer to the carousel section */
+          min-height: auto; /* Remove min-height to prevent stretching on mobile */
+          height: auto;
+      }
+
+      .mv-modern-split::before {
+          background-attachment: scroll; /* Fix for mobile parallax zoom bug */
+      }
+
+      .mv-modern-item {
+          flex: none; /* Disable flex stretching on mobile */
+          width: 100%;
+          height: 64px; /* Fixed collapsed height on mobile to ensure they match perfectly */
+          padding: 0 24px; /* Horizontal padding, no vertical padding to allow flex centering */
+          justify-content: center; /* Center content vertically on mobile when collapsed or expanded */
+          transition: height 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth height transition */
+      }
+
+      .mv-modern-item.active {
+          flex: none; /* Override flex growth on mobile */
+          height: 165px; /* Equal active height for both on mobile to keep them identical */
+      }
+
+      .mv-content-box h4 {
+          font-size: 1.45rem; /* Reduced font size on mobile */
+          gap: 10px;
+      }
+
+      .mv-content-box h4 .icon {
+          width: 28px; /* Smaller icon on mobile */
+          height: 28px;
+      }
+
+      .mv-content-box p {
+          font-size: 0.80rem; /* Made description text smaller as requested */
+          line-height: 1.4;
+      }
+
+      /* Infraestructura (Carousel) responsive spacing adjustments */
+      #infraestructura {
+          padding-bottom: 24px; /* Reduced from 64px to reduce gap between carousel and mission/vision */
+      }
+
+      .carousel-container {
+          padding-bottom: 56px; /* Slightly reduced bottom padding */
       }
   }
 
