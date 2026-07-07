@@ -1099,7 +1099,11 @@
   }
 
   .mv-blue {
-      background: rgba(11, 47, 159, 0.20); /* Soft transparent blue, letting the background photo show clearly */
+      background:
+          linear-gradient(rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.24)),
+          rgba(11, 47, 159, 0.16); /* Light white veil, softer than the vision panel */
+      -webkit-backdrop-filter: saturate(0.9) brightness(0.96);
+      backdrop-filter: saturate(0.9) brightness(0.96);
       color: var(--blanco);
   }
 
