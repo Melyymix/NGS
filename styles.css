@@ -934,244 +934,82 @@
       margin: 34px auto 0;
   }
 
-  .mv-parallax {
-      position: relative;
+  .filosofia-compacta {
       width: 95%;
-      background-image: url('./assets/carrusel-1.jpeg');
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      margin: 68px auto 0;
+      margin: 24px auto 0;
+      padding: 0 0 6px;
   }
 
-  .mv-split {
+  .filosofia-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(26px, 5vw, 58px);
+  }
+
+  .filosofia-item {
+      position: relative;
+      padding: 22px 18px 4px;
+      border-top: 2px solid #0f766e;
+      background:
+          linear-gradient(135deg, rgba(20, 184, 166, 0.09), rgba(20, 184, 166, 0.02) 58%, rgba(255, 255, 255, 0) 100%);
+      opacity: 0;
+      transform: translateY(10px);
+      transition:
+          opacity 0.38s ease,
+          transform 0.38s ease,
+          background-color 0.38s ease;
+  }
+
+  .filosofia-item.active {
+      opacity: 1;
+      transform: translateY(-4px);
+  }
+
+  .filosofia-vision {
+      border-top-color: #7c3aed;
+      background:
+          linear-gradient(135deg, rgba(124, 58, 237, 0.075), rgba(124, 58, 237, 0.018) 58%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  .filosofia-item h4 {
       display: flex;
-      flex-direction: column;
-      min-height: 240px;
-  }
-
-  @media (min-width: 800px) {
-      .mv-split {
-          flex-direction: row;
-          height: 280px;
-      }
-  }
-
-  .mv-panel {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-      overflow: hidden;
-      padding: 20px;
-      color: var(--blanco);
-  }
-
-  .panel-mision {
-      background: rgba(8, 70, 216, 0.88);
-  }
-
-  .panel-vision {
-      background: rgba(45, 55, 72, 0.90);
-  }
-
-  @media (min-width: 800px) {
-      .mv-panel:hover,
-      .mv-panel.active {
-          flex: 1.6;
-      }
-  }
-
-  .mv-panel-header {
-      display: flex;
-      flex-direction: column;
       align-items: center;
       gap: 10px;
-      transition: transform 0.5s ease;
-  }
-
-  .mv-panel:hover .mv-panel-header,
-  .mv-panel.active .mv-panel-header {
-      transform: translateY(-5px);
-  }
-
-  .mv-panel-header .icon {
-      width: 42px;
-      height: 42px;
-      color: var(--blanco);
-      fill: none;
-  }
-
-  .mv-panel-header h3 {
-      font-size: 1.6rem;
+      margin: 0 0 8px;
+      color: #172033;
+      font-size: 1rem;
       font-weight: 800;
+      letter-spacing: 0.01em;
+  }
+
+  .filosofia-item h4::before {
+      content: "01";
+      width: 34px;
+      height: 34px;
+      display: inline-grid;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid rgba(15, 118, 110, 0.30);
+      border-radius: 50%;
+      background-color: rgba(20, 184, 166, 0.10);
+      color: #0f766e;
+      font-size: 0.72rem;
+      font-weight: 900;
+      line-height: 1;
+  }
+
+  .filosofia-vision h4::before {
+      content: "02";
+      border-color: rgba(124, 58, 237, 0.34);
+      background-color: rgba(124, 58, 237, 0.08);
+      color: #6d28d9;
+  }
+
+  .filosofia-item p {
       margin: 0;
-  }
-
-  .mv-panel-content {
-      max-height: 0;
-      opacity: 0;
-      transition: max-height 0.6s ease, opacity 0.5s ease, margin-top 0.5s ease;
-      text-align: center;
-      max-width: 480px;
-      overflow: hidden;
-  }
-
-  .mv-panel:hover .mv-panel-content,
-  .mv-panel.active .mv-panel-content {
-      max-height: 180px;
-      opacity: 1;
-      margin-top: 15px;
-  }
-
-  .mv-modern-split {
-      display: flex;
-      flex-direction: column;
-      width: 95%;
-      margin: 80px auto 0;
-      min-height: 240px;
-      position: relative;
-      overflow: hidden;
-  }
-
-  .mv-modern-split::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      /* Parallax background */
-      background-image: url('./assets/fondo3-horizontal.png');
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      filter: saturate(0.6) brightness(0.85); /* Slightly desaturates and dims the background photo */
-      z-index: 1;
-      pointer-events: none;
-  }
-
-  @media (min-width: 800px) {
-      .mv-modern-split {
-          flex-direction: row;
-          height: 280px;
-      }
-  }
-
-  .mv-modern-item {
-      flex: 1;
-      padding: 120px 40px 40px; /* Centered top padding when collapsed on desktop */
-      position: relative;
-      z-index: 2; /* Position above the background pseudo-element */
-      display: flex;
-      flex-direction: column; /* Stack contents vertically */
-      justify-content: flex-start; /* Align contents to the top to allow smooth padding-based alignment */
-      align-items: center; /* Center contents horizontally */
-      transition: 
-          flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1),
-          padding-top 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-      cursor: pointer;
-  }
- 
-  @media (min-width: 800px) {
-      .mv-modern-item.active {
-          flex: 1.8;
-          padding-top: 40px; /* Smoothly slide the title to the top when active */
-      }
-  }
- 
-  @media (max-width: 799px) {
-      .mv-modern-item.active {
-          flex: 1.6;
-      }
-  }
- 
-  @media (hover: hover) and (min-width: 800px) {
-      .mv-modern-item:hover {
-          flex: 1.8;
-          padding-top: 40px; /* Smoothly slide the title to the top on hover */
-      }
-  }
-
-  .mv-blue {
-      background:
-          linear-gradient(rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.24)),
-          rgba(11, 47, 159, 0.16); /* Light white veil, softer than the vision panel */
-      -webkit-backdrop-filter: saturate(0.9) brightness(0.96);
-      backdrop-filter: saturate(0.9) brightness(0.96);
-      color: var(--blanco);
-  }
-
-  .mv-light {
-      background: rgba(255, 255, 255, 0.48); /* Whitish and transparent, without blur */
-      color: #1e293b;
-  }
-
-  .mv-content-box {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-  }
-
-  .mv-content-box h4 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center; /* Center the title horizontally */
-      gap: 15px;
-      margin: 0;
-      transition: transform 0.5s ease;
-  }
-
-  .mv-modern-item.active .mv-content-box h4 {
-      transform: translateY(-5px);
-  }
-
-  .mv-content-box h4 .icon {
-      width: 40px;
-      height: 40px;
-      fill: none;
-      color: currentColor;
-  }
-
-  .mv-content-box p {
-      font-size: 1.25rem; /* Increased from 1.15rem for desktop readability */
-      line-height: 1.7;
-      opacity: 0;
-      max-height: 0;
-      overflow: hidden;
-      margin: 0;
-      text-align: center; /* Center the paragraph */
-      transition: max-height 0.6s ease, opacity 0.5s ease, margin-top 0.5s ease;
-  }
-
-  .mv-modern-item.active .mv-content-box p {
-      max-height: 500px; /* Increased from 200px to prevent cutoff on narrow screens */
-      opacity: 0.95;
-      margin-top: 15px;
-  }
-
-  @media (hover: hover) {
-      .mv-modern-item:hover .mv-content-box h4 {
-          transform: translateY(-5px);
-      }
-      .mv-modern-item:hover .mv-content-box p {
-          max-height: 500px; /* Increased from 200px */
-          opacity: 0.95;
-          margin-top: 15px;
-      }
-  }
-  
-  .mv-panel-content p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.95);
+      color: #425066;
+      font-size: 0.98rem;
+      line-height: 1.72;
   }
 
   .feature-card {
@@ -1197,7 +1035,7 @@
 
   .feature-card.active {
       border-color: rgba(8, 70, 216, 0.2);
-      box-shadow: 0 20px 42px rgba(8, 70, 216, 0.14);
+      box-shadow: 0 16px 34px rgba(20, 24, 32, 0.08);
       transform: translateY(-6px) scale(1.01);
   }
 
@@ -1485,53 +1323,12 @@
   }
 
   @media (max-width: 800px) {
-      /* Misión y Visión responsive adjustments */
-      .mv-modern-split {
-          margin: 24px auto 0; /* Reduced margin to bring closer to the carousel section */
-          min-height: auto; /* Remove min-height to prevent stretching on mobile */
-          height: auto;
-      }
-
-      .mv-modern-split::before {
-          background-attachment: scroll; /* Fix for mobile parallax zoom bug */
-      }
-
-      .mv-modern-item {
-          flex: none; /* Disable flex stretching on mobile */
-          width: 100%;
-          height: 64px; /* Fixed collapsed height on mobile to ensure they match perfectly */
-          padding: 0 24px; /* Horizontal padding, no vertical padding to allow flex centering */
-          justify-content: center; /* Center content vertically on mobile when collapsed or expanded */
-          transition: height 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth height transition */
-      }
-
-      .mv-modern-item.active {
-          flex: none; /* Override flex growth on mobile */
-          height: 165px; /* Equal active height for both on mobile to keep them identical */
-      }
-
-      .mv-content-box h4 {
-          font-size: 1.45rem; /* Reduced font size on mobile */
-          gap: 10px;
-      }
-
-      .mv-content-box h4 .icon {
-          width: 28px; /* Smaller icon on mobile */
-          height: 28px;
-      }
-
-      .mv-content-box p {
-          font-size: 0.80rem; /* Made description text smaller as requested */
-          line-height: 1.4;
-      }
-
-      /* Infraestructura (Carousel) responsive spacing adjustments */
       #infraestructura {
-          padding-bottom: 24px; /* Reduced from 64px to reduce gap between carousel and mission/vision */
+          padding-bottom: 48px;
       }
 
       .carousel-container {
-          padding-bottom: 56px; /* Slightly reduced bottom padding */
+          padding-bottom: 56px;
       }
   }
 
@@ -2448,16 +2245,12 @@
       padding: 15px;
       border-radius: 5px;
       font-weight: bold;
-      transition: background-color 0.3s;
+      transition: background-color 0.25s ease, background-position 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
   }
 
   .btn-wpp .icon {
       width: 20px;
       height: 20px;
-  }
-
-  .btn-wpp:hover {
-      background-color: #1ebd54;
   }
 
   /* --- FOOTER --- */
@@ -2492,6 +2285,10 @@
 
       .trayectoria-photo {
           max-width: 560px;
+      }
+
+      .filosofia-list {
+          grid-template-columns: 1fr;
       }
 
       #inicio {
@@ -3096,37 +2893,22 @@
 
   .btn-wpp {
       background:
-          linear-gradient(135deg, #17a34a 0%, #25d366 44%, #45f083 72%, #0c8f3a 100%);
-      border: 1px solid rgba(255, 255, 255, 0.36);
+          linear-gradient(135deg, #128c43 0%, #1fb65a 52%, #25d366 100%);
+      border: 1px solid rgba(255, 255, 255, 0.28);
       border-radius: 8px;
-      background-size: 170% 170%;
+      background-size: 130% 130%;
+      box-shadow: 0 12px 24px rgba(18, 140, 67, 0.22);
   }
 
   .btn-wpp:hover {
-      background-position: 100% 50%;
-      box-shadow:
-          0 22px 44px rgba(37, 211, 102, 0.44),
-          0 0 34px rgba(37, 211, 102, 0.38),
-          inset 0 1px 0 rgba(255, 255, 255, 0.34);
-      transform: translateY(-2px);
+      background-position: 70% 50%;
+      box-shadow: 0 14px 28px rgba(18, 140, 67, 0.28);
+      transform: translateY(-1px);
   }
 
-  @keyframes whatsappGlow {
-
-      0%,
-      100% {
-          box-shadow:
-              0 18px 34px rgba(37, 211, 102, 0.34),
-              0 0 24px rgba(37, 211, 102, 0.22),
-              inset 0 1px 0 rgba(255, 255, 255, 0.28);
-      }
-
-      50% {
-          box-shadow:
-              0 22px 42px rgba(37, 211, 102, 0.42),
-              0 0 36px rgba(37, 211, 102, 0.34),
-              inset 0 1px 0 rgba(255, 255, 255, 0.32);
-      }
+  .btn-wpp:active {
+      transform: translateY(0);
+      box-shadow: 0 10px 20px rgba(18, 140, 67, 0.22);
   }
 
   footer {
