@@ -421,23 +421,31 @@
       }
   }
 
-  /* --- NAVBAR --- */
   .navbar {
       position: fixed;
-      top: 16px;
-      left: 50%;
-      width: 85%;
-      transform: translateX(-50%);
-      background-color: rgba(255, 255, 255, 0.97);
-      border: 1px solid rgba(20, 24, 32, 0.1);
-      border-radius: 18px;
-      box-shadow: 0 10px 28px rgba(20, 24, 32, 0.12);
-      backdrop-filter: blur(10px);
+      top: 0;
+      left: 0;
+      width: 100%;
+      box-sizing: border-box;
+      transform: none;
+      background-color: transparent;
+      border-bottom: 1px solid transparent;
+      border-radius: 0;
+      box-shadow: none;
+      backdrop-filter: none;
+      transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 24px;
       z-index: 1000;
+  }
+
+  .navbar.scrolled {
+      background-color: rgba(255, 255, 255, 0.98);
+      border-bottom: 1px solid rgba(20, 24, 32, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   }
 
   .logo-container {
@@ -855,7 +863,7 @@
 
   .trayectoria-showcase {
       display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.7fr);
       gap: clamp(28px, 5vw, 58px);
       width: 95%;
       margin: 0 auto;
@@ -928,7 +936,7 @@
 
   .features-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(150px, 1fr));
+      grid-template-columns: repeat(2, minmax(150px, 1fr));
       gap: 18px;
       width: 95%;
       margin: 34px auto 0;
@@ -1013,13 +1021,14 @@
   }
 
   .feature-card {
+      position: relative;
       min-height: 128px;
       padding: 22px 18px;
       border: 1px solid rgba(20, 24, 32, 0.08);
       border-radius: 8px;
       background-color: var(--blanco);
       color: var(--texto-oscuro);
-      box-shadow: 0 10px 28px rgba(20, 24, 32, 0.06);
+      box-shadow: none;
       transform: translateY(10px) scale(0.98);
       transition:
           transform 0.38s ease,
@@ -1034,8 +1043,8 @@
   }
 
   .feature-card.active {
-      border-color: rgba(8, 70, 216, 0.2);
-      box-shadow: 0 16px 34px rgba(20, 24, 32, 0.08);
+      border-color: rgba(20, 24, 32, 0.15);
+      box-shadow: none;
       transform: translateY(-6px) scale(1.01);
   }
 
@@ -1070,7 +1079,7 @@
   }
 
   .feature-card.active .feature-description {
-      max-height: 120px;
+      max-height: 200px;
       opacity: 1;
       margin-top: 16px;
   }
@@ -1096,6 +1105,54 @@
   .f-amarillo,
   .f-verde {
       background-color: var(--blanco);
+  }
+
+  .mision-card {
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.09), rgba(20, 184, 166, 0.02) 58%, rgba(255, 255, 255, 0) 100%), var(--blanco);
+  }
+
+  .vision-card {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.075), rgba(124, 58, 237, 0.018) 58%, rgba(255, 255, 255, 0) 100%), var(--blanco);
+  }
+
+  .mision-card .icon-badge {
+      color: #0f766e;
+      background-color: rgba(20, 184, 166, 0.10);
+      border: 1px solid rgba(15, 118, 110, 0.30);
+      border-radius: 50%;
+  }
+
+  .vision-card .icon-badge {
+      color: #6d28d9;
+      background-color: rgba(124, 58, 237, 0.08);
+      border: 1px solid rgba(124, 58, 237, 0.34);
+      border-radius: 50%;
+  }
+
+  .mision-card::before,
+  .vision-card::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background-size: 200% 200%;
+      animation: gradientMove 3s ease-in-out infinite;
+  }
+
+  .mision-card::before {
+      background-image: linear-gradient(90deg, #0f766e 0%, #5eead4 50%, #0f766e 100%);
+  }
+
+  .vision-card::before {
+      background-image: linear-gradient(90deg, #6d28d9 0%, #d8b4fe 50%, #6d28d9 100%);
+  }
+
+  @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
   }
 
   /* --- SECCIÓN INFRAESTRUCTURA (SLIDER HORIZONTAL CON CENTRO RESALTADO) --- */
@@ -1290,7 +1347,7 @@
       }
       .carousel-container {
           margin-top: 32px;
-          padding-bottom: 68px;
+          padding-bottom: 100px;
       }
       .carousel-item {
           flex: 0 0 280px;
@@ -1302,7 +1359,7 @@
           height: 44px;
           font-size: 16px;
           top: auto;
-          bottom: 8px;
+          bottom: 0px;
           transform: none;
       }
       .carousel-btn:hover {
@@ -1770,7 +1827,7 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: minmax(260px, 360px) minmax(0, 1fr);
+      grid-template-columns: minmax(460px, 1fr) minmax(0, 1.5fr);
       gap: clamp(34px, 6vw, 74px);
       width: min(100%, 1120px);
       margin: 0 auto;
@@ -1779,7 +1836,7 @@
 
   .value-title {
       position: relative;
-      max-width: 430px;
+      max-width: none;
       margin-bottom: 0;
       color: #20242d;
       background: linear-gradient(135deg, #031a63 0%, #0846d8 46%, #0f5cff 72%, #04267f 100%);
@@ -2262,16 +2319,12 @@
       font-size: 0.9rem;
   }
 
-  @media (max-width: 1400px) {
-      .navbar {
-          width: 93%;
-      }
-  }
+
 
   /* --- RESPONSIVE --- */
   @media (max-width: 1024px) {
       .navbar {
-          width: calc(100% - 32px);
+          width: 100%;
           padding: 16px 20px;
       }
 
@@ -2306,7 +2359,7 @@
       }
 
       .features-grid {
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(2, 1fr);
       }
 
       .value-services {
@@ -2356,10 +2409,10 @@
           flex-direction: row;
           flex-wrap: wrap;
           gap: 10px;
-          top: 10px;
-          width: calc(100% - 24px);
+          top: 0;
+          width: 100%;
           padding: 14px 16px;
-          border-radius: 12px;
+          border-radius: 0;
       }
 
       .logo-container {
@@ -2407,16 +2460,17 @@
           display: none;
           flex-direction: column;
           position: absolute;
-          top: calc(100% + 8px);
+          top: 100%;
           right: 0;
           width: min(280px, calc(100vw - 32px));
           gap: 2px;
           overflow-x: visible;
-          padding: 8px;
+          padding: 16px 20px;
           background-color: rgba(255, 255, 255, 0.98);
-          border: 1px solid rgba(226, 232, 240, 0.95);
-          border-radius: 12px;
-          box-shadow: 0 18px 36px rgba(26, 54, 93, 0.14);
+          border: 1px solid rgba(20, 24, 32, 0.1);
+          border-top: none;
+          border-radius: 0;
+          box-shadow: none;
           backdrop-filter: blur(14px);
       }
 
@@ -2475,7 +2529,7 @@
       }
 
       .features-grid {
-          width: 90%;
+          width: 100%;
           gap: 24px;
       }
 
@@ -2609,7 +2663,7 @@
 
   @media (max-width: 420px) {
       .navbar {
-          width: calc(100% - 18px);
+          width: 100%;
           padding: 12px 12px;
       }
 

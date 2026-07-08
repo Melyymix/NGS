@@ -1192,12 +1192,27 @@ document.getElementById('wppForm').addEventListener('submit', function (event) {
     }
 
     const nombre = document.getElementById('nombre').value;
+    const empresa = document.getElementById('empresa_contacto').value;
     const mensaje = document.getElementById('mensaje').value;
 
-    const textoMensaje = `Hola, mi nombre es *${nombre}*. Me comunico desde el sitio web con el siguiente interés:\n\n${mensaje}`;
+    let textoMensaje = `Hola, mi nombre es *${nombre}*`;
+    if (empresa.trim() !== '') {
+        textoMensaje += ` de la empresa *${empresa.trim()}*`;
+    }
+    textoMensaje += `. Me comunico desde el sitio web con el siguiente interés:\n\n${mensaje}`;
     const mensajeCodificado = encodeURIComponent(textoMensaje);
     const urlWhatsApp = `https://wa.me/${telefonoEmpresa}?text=${mensajeCodificado}`;
 
     window.open(urlWhatsApp, '_blank');
 });
 
+// --- NAVBAR SCROLL EFFECT ---
+document.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+}, { passive: true });
